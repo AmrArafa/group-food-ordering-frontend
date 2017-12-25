@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
-import Item from '../../containers/ItemContainer';
+import CartItem from '../CartItem';
 
 
 export default class Cart extends Component {
@@ -14,7 +14,7 @@ export default class Cart extends Component {
         
         {items.map((item) => {
       return  (
-                <Item item={item} />
+                <CartItem item={item} />
                             )
                     }
                     )}
