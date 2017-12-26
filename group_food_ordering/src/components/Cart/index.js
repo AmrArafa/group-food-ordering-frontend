@@ -10,8 +10,7 @@ export default class Cart extends Component {
         console.log(items);
       return  ( <div className='cart'>
         
-      
-        
+         <p>Your Cart</p>
         {items.map((item) => {
       return  (
                 <CartItem item={item} />

@@ -21,7 +21,7 @@ export const getItemsLoading = () => {
     }
 }
 export const getItems = () => {
-    const payload = Axios.get('https://jsonplaceholder.typicode.com/photos');
+    const payload = Axios.get('http://localhost:3000/items');
     return {
         type: GET_ITEMS,
         payload

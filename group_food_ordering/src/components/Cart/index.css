@@ -1,4 +1,6 @@
 .cart{
-	/*width: 30%;*/
-	/*float: right;*/
+	width: 250px;
+	position: fixed;
+	right: 40px;
+	top:170px
 }

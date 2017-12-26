@@ -6,9 +6,9 @@ export default class CartItem extends Component {
         const { item } = this.props;
         return (
         <div className= 'cartItem'>
-        <p>Your Cart</p>
-        {item.title} <br/>
-        {item.url}
+       
+        {item.name} <br/>
+        {item.price} EGP
         </div>
           )}
     }
