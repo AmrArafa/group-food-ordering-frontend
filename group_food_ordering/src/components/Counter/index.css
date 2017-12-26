@@ -1,0 +1,13 @@
+.counter button, .counter p {
+  float: right;
+}
+
+.counter button {
+  width: 30px;
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
