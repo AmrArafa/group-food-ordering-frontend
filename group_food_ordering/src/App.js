@@ -3,7 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import { Link, Route } from 'react-router-dom';
 import ItemsPage from './pages/ItemsPage';
-import Cart from './containers/CartContainer';
+
+
+
 
 class App extends Component {
   render() {
@@ -13,10 +15,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Almakinah Resturant</h1>
         </header>
-        <ItemsPage className='items'/>
-        <Cart/>
+        <Link to="/menu">Menu</Link>
+       
         
     
+    <Route path="/menu" component={ItemsPage} />
+   
+
       </div>
     );
   }

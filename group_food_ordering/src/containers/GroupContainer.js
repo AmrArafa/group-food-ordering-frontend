@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import Item from '../components/Item';
+import Group from '../components/Group';
 import {
-    addItemToCart
-} from '../actions/cart';
+    createOrder, createOrderItems
+} from '../actions/groups';
 
 const mapStateToProps = (state) => {
     return {
@@ -11,10 +11,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addItemToCart : (item) => {
+        createOrder : (group.id) => {
           
-                dispatch(addItemToCart(item))
+                dispatch(createOrder(group.id))
            }
+
+        createOrderItems : (items) => {
+          
+                dispatch(createOrderItems(items))
+           }   
 }
 }
 

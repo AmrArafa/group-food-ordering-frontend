@@ -5,7 +5,7 @@ import './index.css';
 
 export default class Item extends Component {
     render(){
-        const { item, addItem } = this.props;
+        const { item, addItemToCart } = this.props;
         return (
         <div className= 'oneItem'>
         <Card>
@@ -13,7 +13,7 @@ export default class Item extends Component {
        <CardBody>
           <CardText>{item.name}</CardText>
           <CardText>{item.price} EGP</CardText>
-          <Button onClick={() => addItem(item)}>Add to Cart </Button>
+          <Button onClick={() => addItemToCart(item)}>Add to Cart </Button>
         </CardBody>
         </Card>
         </div>

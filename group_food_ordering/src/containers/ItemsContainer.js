@@ -16,7 +16,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getItems : () => {
             dispatch(getItemsLoading());
-            setTimeout(() => {
                 dispatch(getItems()).then(response => {
                     if(response.payload.status < 400){
                         dispatch(getItemsSuccess(response.payload.data));
@@ -24,7 +23,6 @@ const mapDispatchToProps = (dispatch) => {
                         dispatch(getItemsFailure(response.payload.message));
                     }
                 })
-                 }, 2000)
         },
            }
 }
