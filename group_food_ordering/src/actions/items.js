@@ -38,7 +38,7 @@ export const getItemsLoading = () => {
     }
 }
 export const getItems = () => {
-    const payload = Axios.get('http://localhost:3000/items');
+    const payload = Axios.get(itemsApi);
     return {
         type: GET_ITEMS,
         payload

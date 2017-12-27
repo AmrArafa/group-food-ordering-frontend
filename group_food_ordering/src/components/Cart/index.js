@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import './index.css';
 import CartItem from '../CartItem';
+import { Link, Route } from 'react-router-dom';
+import {Button } from 'reactstrap';
+import OptionsPage from '../../pages/OptionsPage';
+
+
 
 
 export default class Cart extends Component {
     
     render(){
-        const { items} = this.props;
+        const { items, copyItems} = this.props;
         console.log(items);
       return  ( <div className='cart'>
         
@@ -17,8 +22,13 @@ export default class Cart extends Component {
                             )
                     }
                     )}
+<Button onClick={() => copyItems(items)}>Order</Button>
+<OptionsPage/>
+
 
 </div>
+
+
         )
   }
                

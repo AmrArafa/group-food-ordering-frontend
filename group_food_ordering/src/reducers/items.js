@@ -8,12 +8,11 @@ import {
 } from '../actions/items';
 // ADD_TODO_LOADING, ADD_TODO_SUCCESS, ADD_TODO_FAILURE} from '../actions/items';
 
+
 const INITIAL_STATE = {
     items: [],
     loading: false,
     error: null,
-    // adding: false,
-    // errorAdding: null
 }
 
 

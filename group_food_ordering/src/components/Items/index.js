@@ -3,9 +3,7 @@ import Item from '../../containers/ItemContainer';
 import './index.css';
 
 export default class Items extends Component {
-    // constructor(){
-    //     super();
-    // }
+	
     componentWillMount (){
         this.props.getItems();
     }

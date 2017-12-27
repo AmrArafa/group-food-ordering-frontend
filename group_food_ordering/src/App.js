@@ -3,8 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import { Link, Route } from 'react-router-dom';
 import ItemsPage from './pages/ItemsPage';
-import Cart from './containers/CartContainer';
 import AdminPage from './pages/Admin/AdminMenu';
+
+
+
 
 class App extends Component {
   render() {
@@ -14,14 +16,18 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Almakinah Resturant</h1>
         </header>
-        <ItemsPage className='items'/>
-        <Cart/>
+        <Link to="/menu">Menu</Link>
+        <Link to="/admin/menu">AdminMenu</Link>
 
         <div className="App-container">
-                    <Route path="/admin/menu" component={AdminPage} />
+            <Route path="/admin/menu" component={AdminPage} />
+             <Route path="/menu" component={ItemsPage} />
         </div>
+       
         
     
+   
+
       </div>
     );
   }
