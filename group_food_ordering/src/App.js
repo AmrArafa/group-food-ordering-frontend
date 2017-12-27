@@ -4,6 +4,7 @@ import './App.css';
 import { Link, Route } from 'react-router-dom';
 import ItemsPage from './pages/ItemsPage';
 import Cart from './containers/CartContainer';
+import AdminPage from './pages/Admin/AdminMenu';
 
 class App extends Component {
   render() {
@@ -15,6 +16,10 @@ class App extends Component {
         </header>
         <ItemsPage className='items'/>
         <Cart/>
+
+        <div className="App-container">
+                    <Route path="/admin/menu" component={AdminPage} />
+        </div>
         
     
       </div>
