@@ -1,19 +1,49 @@
-{
-  "posts": [
-    {
+{"items":  [  {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Chicken spring roll with soy sauce and sweet chili sauce",
+      "image": "https://www.getmumm.com/uploads/items/328x222/3151/4389.jpeg",
+      "price": 46
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "name": "Chicken breaded kofta with pasta red sauce",
+      "image": "https://www.getmumm.com/uploads/items/328x222/3150/4384.jpeg",
+      "price": 59
+    },
+    {
+      "id": 3,
+      "name": "Boneless chicken thigh with potato pure",
+      "image": "https://www.getmumm.com/uploads/items/328x222/3149/4383.jpeg",
+      "price": 68
+    },
+    {
+      "id": 4,
+      "name": "Bechamil pasta with pane",
+      "image": "https://www.getmumm.com/uploads/items/328x222/3144/4387.jpeg",
+      "price": 68
+    },
+    {
+      "id": 5,
+      "name": "Chicken Mushroom & Lemon Sauce, with Rice",
+      "image": "https://www.getmumm.com/uploads/items/328x222/2246/3208.jpeg",
+      "price": 57
+    },
+    {
+      "id": 6,
+      "name": "Bechamil pasta with green salad",
+      "image": "https://www.getmumm.com/uploads/items/328x222/3146/4385.jpeg",
+      "price": 73
+    },
+    {
+      "id": 7,
+      "name": "Zucchini bechamel with white rice",
+      "image": "https://www.getmumm.com/uploads/items/328x222/3145/4386.jpeg",
+      "price": 55
+    },
+    {
+      "id": 8,
+      "name": "Meat mombar with baba ghanouj",
+      "image": "https://www.getmumm.com/uploads/items/328x222/3141/4402.jpeg",
+      "price": 61
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
-}
+  ]}

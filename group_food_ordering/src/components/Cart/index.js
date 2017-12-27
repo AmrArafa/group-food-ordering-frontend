@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
 import './index.css';
-import CartItem from '../CartItem';
-
+import CartItem from '../../containers/CartItemContainer';
 
 export default class Cart extends Component {
-    
-    render(){
-        const { items} = this.props;
-        console.log(items);
-      return ( 
-        <div className='cart'>
+  render(){
+    const {items} = this.props;
+    return ( 
+      <div className='cart'>
         <p>Your Cart</p>
         {items.map((item) => {
-          return  (
-            <CartItem item={item} />
-            )
-          }
-        )}
-        </div>
-        )
-    }
-               
-    
+          return (
+            <div>
+              <CartItem item={item} />
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
 }
-

@@ -1,0 +1,9 @@
+.oneItem{
+	float: left;
+	width: 33%;
+	height: 370px;
+	padding: 10px;
+}
+.cardImage{
+	height: 201px;
+}

@@ -12,6 +12,9 @@
   height: 150px;
   padding: 20px;
   color: white;
+  position: relative;
+  
+
 }
 
 .App-title {
@@ -22,7 +25,17 @@
   font-size: large;
 }
 
+.items {
+  width: 80%;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }

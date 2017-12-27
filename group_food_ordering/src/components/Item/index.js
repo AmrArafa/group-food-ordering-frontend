@@ -4,6 +4,12 @@ import { Card, CardImg, CardText, CardBody,
 import './index.css';	
 
 export default class Item extends Component {
+    // constructor(){
+    //   super();
+    //   this.state = {
+    //     totalPrice: 0
+    //   }
+    // }
     render(){
         const { item, addItem } = this.props;
         return (
@@ -13,7 +19,7 @@ export default class Item extends Component {
             <CardBody>
               <CardText>{item.name}</CardText>
               <CardText>{item.price} EGP</CardText>
-              <Button onClick={() => addItem(item)}>Add to Cart </Button>
+              <Button onClick={() => addItem(item)}>Add to Cart</Button>
             </CardBody>
           </Card>
         </div>
