@@ -23,5 +23,5 @@ export default class Item extends Component {
             </CardBody>
           </Card>
         </div>
-        	)}
+        )}
     }

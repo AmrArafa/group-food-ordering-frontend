@@ -20,9 +20,7 @@ export default (currentState = INITIAL_STATE, action) => {
             // console.log("items in reducer");
             // console.log(items);
             // items.splice(items.indexOf(action.item), 1);
-            const newItems = currentState.items.filter(a => a !== action.item); 
-
-
+            const newItems = currentState.items.filter(a => a !== action.item);
             return {...currentState, items: newItems};
             //return currentState;
         default:

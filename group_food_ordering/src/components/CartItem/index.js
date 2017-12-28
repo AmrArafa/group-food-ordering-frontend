@@ -4,7 +4,7 @@ import './index.css';
 export default class CartItem extends Component {
   constructor(props){
     super(props);
-    const {item} = this.props;
+    const {item, calculateCart} = this.props;
     this.state = {
       quantity: 1,
       initial_price: item.price,
@@ -12,6 +12,9 @@ export default class CartItem extends Component {
     };
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
+    this.updateCartTotal = this.updateCartTotal.bind(this);
+    this.deleteAndUpdateCart = this.deleteAndUpdateCart.bind(this);
+    this.props.calculateCart(this.state.initial_price);
   }
 
   increment(){
@@ -20,6 +23,7 @@ export default class CartItem extends Component {
     this.setState({quantity: this.state.quantity + 1,
       price: this.state.price + currentPrice
     });
+    this.props.calculateCart(currentPrice);
   }
 
   decrement(){
@@ -29,6 +33,17 @@ export default class CartItem extends Component {
     }
     this.setState({quantity: this.state.quantity - 1,
       price: this.state.price - currentPrice});
+    this.props.calculateCart(-currentPrice);
+  }
+
+  deleteAndUpdateCart(item){
+    const {deleteItem} = this.props;
+    deleteItem(item);
+    this.updateCartTotal();
+  }
+
+  updateCartTotal(){
+    this.props.calculateCart(-this.state.price)
   }
 
   render(){
@@ -43,8 +58,8 @@ export default class CartItem extends Component {
           <button className="increment" onClick={() => this.increment()}>+</button>
           <p className="quantity">{this.state.quantity}</p>
           <button className="decrement" onClick={() => this.decrement()}>-</button>
-          <button className="remove" onClick={() => deleteItem(item)}>X</button>
-          <p>{this.state.price}</p>
+          <button className="remove" onClick={() => this.deleteAndUpdateCart(item)}>X</button>
+          <p>Item Total: {this.state.price} EGP</p>
         </div>
       </div>
     )}
