@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
-import Group from '../components/Group';
-import {
-    createOrder, createOrderItems
-} from '../actions/groups';
+import CartItem from '../components/CartItem';
+import {deleteItem} from '../actions/cart';
 
 const mapStateToProps = (state) => {
     return {
@@ -11,15 +9,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createOrder : (group.id) => {
+        deleteItem : (item) => {
           
-                dispatch(createOrder(group.id))
+                dispatch(deleteItem(item))
            }
 }
 }
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
-    
+    console.log(ownProps);
     return {
         // Find the user with the id passed from the url by the route
         ...stateProps,
@@ -28,4 +26,4 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Group);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CartItem);

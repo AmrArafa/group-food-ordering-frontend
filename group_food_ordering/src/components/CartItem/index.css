@@ -1,0 +1,24 @@
+.item-name, .remove {
+  float: left;
+}
+
+.item-name {
+  width: 80%;
+}
+
+.item-price {
+  float: right;
+}
+
+.increment, .quantity, .decrement {
+  float: right;
+}
+
+.increment, .decrement {
+  width: 25px;
+}
+
+.quantity {
+  padding: 5px;
+  font-size: 14px;
+}

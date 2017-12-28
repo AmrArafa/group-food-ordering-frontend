@@ -3,12 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import { Link, Route } from 'react-router-dom';
 import ItemsPage from './pages/ItemsPage';
+import OptionsPage from './pages/OptionsPage';
 import AdminPage from './pages/Admin/AdminMenu';
 import AdminEditItem from './pages/Admin/AdminEditItem';
 import AdminAddItem from './pages/Admin/AdminAddItem';
-
-
-
 
 class App extends Component {
   render() {
@@ -18,6 +16,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Almakinah Resturant</h1>
         </header>
+
         <Link to="/menu">Menu</Link>
         <Link to="/admin/menu">AdminMenu</Link>
 
@@ -29,8 +28,10 @@ class App extends Component {
         </div>
        
         
-    
+    <Route path="/menu" component={ItemsPage} />
+    <Route path="/options" component={OptionsPage} />
    
+
 
       </div>
     );

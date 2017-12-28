@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import Cart from '../components/Cart';
+
 import {
     copyItems 
 } from '../actions/groups';
+
 
 const mapStateToProps = (state) => {
     return {
@@ -20,7 +22,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
-    console.log(ownProps);
     return {
         ...stateProps,
         ...dispatchProps,

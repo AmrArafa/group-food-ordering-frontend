@@ -52,3 +52,16 @@
 //   <MenuItem disabled>disabled</MenuItem>
 //   <MenuItem key="5">outer3</MenuItem>
 // </Menu>);
+
+  // {for(var i=0; i < this.props.items.length; i++){
+  //         var s = 0;
+  //         var e = 3;
+  //         <div>
+  //         {this.props.items.slice(s, e).map(item=>{
+  //           return(
+  //               <p>item</p>
+  //           )
+  //         })}
+  //         </div>
+  //         s += 3;
+  //         e += 3}

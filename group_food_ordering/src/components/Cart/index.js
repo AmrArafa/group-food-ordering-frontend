@@ -5,14 +5,10 @@ import { Link, Route } from 'react-router-dom';
 import {Button } from 'reactstrap';
 import OptionsPage from '../../pages/OptionsPage';
 
-
-
-
 export default class Cart extends Component {
     
     render(){
         const { items, copyItems} = this.props;
-        console.log(items);
       return  ( <div className='cart'>
         
          <p>Your Cart</p>
@@ -22,16 +18,15 @@ export default class Cart extends Component {
                             )
                     }
                     )}
-<Button onClick={() => copyItems(items)}>Order</Button>
-<OptionsPage/>
+      <Link onClick={() => copyItems(items)} to="/options">Confirm your Order</Link>
+
+
 
 
 </div>
 
 
         )
-  }
-               
-    
-    }
 
+  }
+}

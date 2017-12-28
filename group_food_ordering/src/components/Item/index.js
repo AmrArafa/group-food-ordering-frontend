@@ -4,10 +4,17 @@ import { Card, CardImg, CardText, CardBody,
 import './index.css';	
 
 export default class Item extends Component {
+    // constructor(){
+    //   super();
+    //   this.state = {
+    //     totalPrice: 0
+    //   }
+    // }
     render(){
         const { item, addItemToCart } = this.props;
         return (
         <div className= 'oneItem'>
+
         <Card>
         <CardImg className= 'cardImage' top width="50px" src={item.image} alt="Card image cap" />
        <CardBody>
@@ -16,6 +23,7 @@ export default class Item extends Component {
           <Button onClick={() => addItemToCart(item)}>Add to Cart </Button>
         </CardBody>
         </Card>
+
         </div>
         	)}
     }

@@ -1,6 +1,7 @@
 .cart{
-	width: 250px;
+	width: 26%;
 	position: fixed;
 	right: 40px;
-	top:170px
+	top:170px;
+  font-size: 12px;
 }

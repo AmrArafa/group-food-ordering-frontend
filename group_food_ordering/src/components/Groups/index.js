@@ -2,16 +2,23 @@ import React, { Component } from 'react';
 import Group from '../Group';
 import './index.css';
 import CartItem from '../CartItem';
+import {Button } from 'reactstrap';
 
 export default class Groups extends Component {
+
+  constructor(){
+        super();
+        this.state = {
+            newGroup: ''
+        }
+    }    
     
     componentWillMount (){
         this.props.getGroups();
     }
 
     render(){
-      const { items, groups, loading, error} = this.props;
-      console.log(items);
+      const { items, groups, loading, error, createGroup} = this.props;
 
       if(loading){
             return (
@@ -30,10 +37,11 @@ export default class Groups extends Component {
 
         {items.map((item) => {
       return  (
-                <CartItem item={item} />
+                <CartItem item={item} itemID={item.id} quantity={item.count} />
                             )
                     }
                     )} <br/>
+        <h3>Join a Group Order</h3>
       
       {groups.map((group) => {
       return  (
@@ -41,10 +49,19 @@ export default class Groups extends Component {
                             )
                     }
                     )}
+
+      <h3>Create a New Group</h3>
+      Make your order after:
+      <input type="number" value={this.state.newGroup} onChange={event => this.setState({newGroup: event.target.value})} step="30" required/> minutes.
+      <Button onClick={value => {createGroup(value, () => this.setState({newGroup: ''}));}}>Create</Button> <br/>
+      <Button> Order Now </Button>
+
+
 </div>
       )
       
     }
+
 }
 }
                

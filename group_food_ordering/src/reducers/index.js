@@ -6,10 +6,12 @@ import editItem from './EditItem';
 
 const rootReducer = combineReducers({
     items,
+
     cart,
     groups,
     editItem
     
+
 })
 
 export default rootReducer;

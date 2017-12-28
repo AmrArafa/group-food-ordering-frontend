@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Item from '../../containers/ItemContainer';
 import './index.css';
+import Cart from '../../containers/CartContainer'
 
 export default class Items extends Component {
 	
@@ -31,10 +32,10 @@ export default class Items extends Component {
                             )
                     }
                     )}
+        <Cart />
 </div>
     	)
     	
     }
 }
 }
-               
