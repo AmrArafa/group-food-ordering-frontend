@@ -33,3 +33,9 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -9,6 +9,7 @@ import OptionsPage from './pages/OptionsPage';
 
 
 
+
 class App extends Component {
   render() {
     return (
@@ -17,6 +18,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Almakinah Resturant</h1>
         </header>
+
         <Link to="/menu">Menu</Link>
        
         
@@ -24,6 +26,7 @@ class App extends Component {
     <Route path="/menu" component={ItemsPage} />
     <Route path="/options" component={OptionsPage} />
    
+
 
       </div>
     );
