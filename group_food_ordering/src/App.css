@@ -12,6 +12,9 @@
   height: 150px;
   padding: 20px;
   color: white;
+  position: relative;
+  
+
 }
 
 .App-title {
@@ -20,6 +23,10 @@
 
 .App-intro {
   font-size: large;
+}
+
+.items {
+  width: 80%;
 }
 
 @keyframes App-logo-spin {
