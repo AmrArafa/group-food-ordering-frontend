@@ -90,9 +90,9 @@ export const addItemLoading = () => {
     }
 }
 export const addItem = (item) => {
-    const payload = Axios.post(itemsApi, {
+    const payload = Axios.post(itemsApi, 
         item
-    });
+    );
     return {
         type: ADD_ITEM,
         payload
@@ -118,8 +118,8 @@ export const editItemLoading = (id) => {
         id
     }
 }
-export const editItem = (id, edit) => {
-    const payload = Axios.patch(itemApi(id), edit);
+export const editItem = (id, item) => {
+    const payload = Axios.patch(itemApi(id), item);
     return {
         type: EDIT_ITEM,
         payload

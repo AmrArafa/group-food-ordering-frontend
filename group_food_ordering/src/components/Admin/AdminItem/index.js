@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, 
 	CardTitle, CardSubtitle, Button } from 'reactstrap';
 import './index.css';	
+import { Link } from 'react-router-dom';
 export default class Item extends Component {
     render(){
-        const { item } = this.props;
+        const { item, handleDelete, sendItem } = this.props;
+        
         return (
         <div className= 'oneItem'>
         <Card>
@@ -12,10 +14,12 @@ export default class Item extends Component {
        <CardBody>
           <CardText>{item.name}</CardText>
           <CardText>{item.price} EGP</CardText>
-          <Button >Edit </Button>
-          <Button >Delete </Button>
+          <Button ><Link to={`/admin/menu/edit/${item.id}`}>Edit</Link></Button>
+          <Button onClick={() => handleDelete(item.id)} > Delete </Button>
         </CardBody>
         </Card>
         </div>
         	)}
     }
+
+    // onClick={() => sendItem(item)}

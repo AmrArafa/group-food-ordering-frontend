@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 import AdminItem from '../AdminItem';
 import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 export default class AdminItems extends Component {
@@ -9,7 +10,8 @@ export default class AdminItems extends Component {
         this.props.getItems();
     }
     render(){
-        const { items, loading, error } = this.props;
+        console.log("hamdaawi", this.props)
+        const { items, loading, error, deleteItem, sendItem } = this.props;
         if(loading){
             return (
                 <p>Is loading</p>
@@ -24,11 +26,14 @@ export default class AdminItems extends Component {
                     <p>Menu</p>
                     {items.map((item) => {
                      return  (
-                        <AdminItem item={item} />
+                        <AdminItem item={item} 
+                        handleDelete={deleteItem}
+                         sendItem={sendItem}
+                         />
                         )
                      })
                      }
-                    <Button > Add New Item </Button>
+                    <Button ><Link to="/admin/menu/add">Add New Item</Link></Button>
                  </div>
                  
                 )

@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import AdminItems from '../components/Admin/AdminItems';
-import { getItemsLoading, getItems, getItemsSuccess, getItemsFailure } from '../actions/items';
+import { getItemsLoading, getItems, getItemsSuccess, getItemsFailure,
+        deleteItemLoading, deleteItem, deleteItemSuccess, deleteItemFailure
+         } from '../actions/items';
+import { sendItemToEdit } from '../actions/sendItemToEdit';
 
 const mapStateToProps = (state) => {
     return {
@@ -22,9 +25,35 @@ const mapDispatchToProps = (dispatch) => {
                         dispatch(getItemsFailure(response.payload.message));
                     }
                 })
-            }, 2000)
-        }
+            }, 1)
+        },
+         deleteItem: (id) => {
+            dispatch(deleteItemLoading(id));
+            setTimeout(() => {
+                dispatch(deleteItem(id)).then(response => {
+                    if(response.payload.status < 400){
+                        dispatch(deleteItemSuccess(id));
+                    }else{
+                        dispatch(deleteItemFailure(id));
+                    }
+                })
+            }, 1)
+        },
+        sendItem: (item) => {
+                dispatch(sendItemToEdit(item))
+           }
+
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminItems);
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+    
+    return {
+        // Find the user with the id passed from the url by the route
+        ...stateProps,
+        ...dispatchProps,
+        ...ownProps
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(AdminItems);

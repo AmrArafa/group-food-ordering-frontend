@@ -1,0 +1,15 @@
+import React, { Component } from 'react';
+import AdminEditItems from '../../../containers/AdminEditItemContainer';
+
+import { Route } from 'react-router-dom';
+
+export default class AdminEditItemPage extends Component {
+    render (){
+        return (
+            <div>
+                <h2>Admin Edit item Page</h2>
+                <Route path="/admin/menu/edit/:id" component={AdminEditItems} />
+            </div>
+        )
+    }
+}

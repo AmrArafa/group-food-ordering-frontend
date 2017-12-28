@@ -4,6 +4,8 @@ import './App.css';
 import { Link, Route } from 'react-router-dom';
 import ItemsPage from './pages/ItemsPage';
 import AdminPage from './pages/Admin/AdminMenu';
+import AdminEditItem from './pages/Admin/AdminEditItem';
+import AdminAddItem from './pages/Admin/AdminAddItem';
 
 
 
@@ -20,8 +22,10 @@ class App extends Component {
         <Link to="/admin/menu">AdminMenu</Link>
 
         <div className="App-container">
-            <Route path="/admin/menu" component={AdminPage} />
+            <Route path="/admin/menu" exact component={AdminPage} />
              <Route path="/menu" component={ItemsPage} />
+             <Route path="/admin/menu/edit" component={AdminEditItem} />
+             <Route path="/admin/menu/add" component={AdminAddItem} />
         </div>
        
         

@@ -13,6 +13,7 @@ const INITIAL_STATE = {
     items: [],
     loading: false,
     error: null,
+    item: ''
 }
 
 
@@ -29,7 +30,7 @@ export default (currentState = INITIAL_STATE, action) => {
         case GET_ITEM_LOADING:
             return {...currentState, loading: true};
         case GET_ITEM_SUCCESS:
-            return {...currentState, items: [...currentState.items, action.item], loading: false};
+            return {...currentState, item: action.item, loading: false};
         case GET_ITEM_FAILURE:
             return {...currentState, error: action.error, loading: false};
         // Add item 
@@ -52,7 +53,7 @@ export default (currentState = INITIAL_STATE, action) => {
                 return item;
             })
             return {...currentState, items: newItems}
-        case EDIT_ITEM_SUCCESS:
+        case EDIT_ITEM_FAILURE:
             var newItems = currentState.items.map(item => {
                 if (item.id == action.id) {item.loading = false; item.error = action.error}
                 return item;
