@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import { Link, Route } from 'react-router-dom';
 import ItemsPage from './pages/ItemsPage';
+import OptionsPage from './pages/OptionsPage';
+
 
 
 
@@ -20,6 +22,7 @@ class App extends Component {
         
     
     <Route path="/menu" component={ItemsPage} />
+    <Route path="/options" component={OptionsPage} />
    
 
       </div>

@@ -20,7 +20,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
-    console.log(ownProps);
     return {
         ...stateProps,
         ...dispatchProps,

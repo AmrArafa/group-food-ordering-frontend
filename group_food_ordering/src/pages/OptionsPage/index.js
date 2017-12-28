@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Groups from '../../containers/GroupsContainer';
 import './index.css';	
+import { Link, Route } from 'react-router-dom';
 
-export default class GroupsPage extends Component {
+export default class OptionsPage extends Component {
     render (){
         return (
             <div>
            
-                <Groups className="groups"/>
+               
+                <Route path="/options" component={Groups} />
             </div>
         )
     }

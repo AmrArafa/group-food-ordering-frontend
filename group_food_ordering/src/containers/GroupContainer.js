@@ -15,11 +15,6 @@ const mapDispatchToProps = (dispatch) => {
           
                 dispatch(createOrder(group.id))
            }
-
-        createOrderItems : (items) => {
-          
-                dispatch(createOrderItems(items))
-           }   
 }
 }
 
@@ -33,4 +28,4 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Item);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Group);
