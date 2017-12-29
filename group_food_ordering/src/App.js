@@ -17,7 +17,6 @@ Moment.globalFormat = 'YYYY-MMMM-D HH:M:ss';
 class App extends Component {
   render() {
     const date = new Date();
-        
     return (
       <div className="App">
         <header className="App-header">
@@ -35,8 +34,6 @@ class App extends Component {
              <Route path="/admin/menu/add" component={AdminAddItem} />
         </div>
        
-        
-    <Route path="/menu" component={ItemsPage} />
     <Route path="/options" component={OptionsPage} />
    
 
