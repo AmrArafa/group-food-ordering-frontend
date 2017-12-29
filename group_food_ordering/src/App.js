@@ -7,15 +7,23 @@ import OptionsPage from './pages/OptionsPage';
 import AdminPage from './pages/Admin/AdminMenu';
 import AdminEditItem from './pages/Admin/AdminEditItem';
 import AdminAddItem from './pages/Admin/AdminAddItem';
+import Moment from 'react-moment';
+Moment.globalFormat = 'YYYY-MMMM-D HH:M:ss';
+
+
+
+
 
 class App extends Component {
   render() {
+    const date = new Date();
+        
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Almakinah Resturant</h1>
         </header>
+        <Moment add={{ minutes: 30 }}>{date}</Moment>
 
         <Link to="/menu">Menu</Link>
         <Link to="/admin/menu">AdminMenu</Link>

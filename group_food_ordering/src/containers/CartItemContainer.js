@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import CartItem from '../components/CartItem';
 import {deleteItem} from '../actions/cart';
 
+
+
 const mapStateToProps = (state) => {
     return {
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Group from '../Group';
 import './index.css';
-import CartItem from '../CartItem';
+import CartItem from '../../containers/CartItemContainer';
 import {Button } from 'reactstrap';
 
 export default class Groups extends Component {
@@ -9,9 +9,19 @@ export default class Groups extends Component {
   constructor(){
         super();
         this.state = {
-            newGroup: ''
+            newGroup: '',
+            cartTotal: 0
         }
+        this.calculateCartTotal = this.calculateCartTotal.bind(this);
     }    
+
+  calculateCartTotal(newPrice){
+    this.setState({
+      cartTotal: this.state.cartTotal + newPrice
+    });
+  }
+
+  
     
     componentWillMount (){
         this.props.getGroups();
@@ -27,8 +37,7 @@ export default class Groups extends Component {
         }else if(error){
             return (
                 <div>
-                    message={error}
-                    type="error"
+                    error
                 </div>
             )
         }else{
@@ -37,7 +46,7 @@ export default class Groups extends Component {
 
         {items.map((item) => {
       return  (
-                <CartItem item={item} itemID={item.id} quantity={item.count} />
+                <CartItem item={item}  calculateCart={this.calculateCartTotal} itemID={item.id} quantity={item.count} />
                             )
                     }
                     )} <br/>
