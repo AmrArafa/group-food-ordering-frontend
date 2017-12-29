@@ -3,13 +3,17 @@ import Item from '../../containers/ItemContainer';
 import './index.css';
 import Cart from '../../containers/CartContainer'
 
+
 export default class Items extends Component {
 	
     componentWillMount (){
+       
         this.props.getItems();
     }
 
     render(){
+        
+
     	const { items, loading, error} = this.props;
     	if(loading){
             return (
@@ -24,6 +28,8 @@ export default class Items extends Component {
             )
         }else{
     	return (
+            
+            
     		<div className='allItems'>
     	
     	{items.map((item) => {

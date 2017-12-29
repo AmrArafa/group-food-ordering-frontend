@@ -6,7 +6,7 @@ export default class Group extends Component {
     constructor(){
         super();
         this.state = {
-            visible: true
+            time_frame: ''
         }
     }
 

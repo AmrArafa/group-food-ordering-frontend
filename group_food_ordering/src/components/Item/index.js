@@ -19,11 +19,11 @@ export default class Item extends Component {
         <CardImg className= 'cardImage' top width="50px" src={item.image} alt="Card image cap" />
        <CardBody>
           <CardText>{item.name}</CardText>
-          <CardText>{item.price} EGP</CardText>
+          <CardText>{parseFloat(item.price)} EGP</CardText>
           <Button onClick={() => addItemToCart(item)}>Add to Cart </Button>
         </CardBody>
         </Card>
 
         </div>
-        	)}
+        )}
     }

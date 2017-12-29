@@ -5,11 +5,8 @@ import groups from './groups';
 
 const rootReducer = combineReducers({
     items,
-
     cart,
     groups
-    
-
 })
 
 export default rootReducer;

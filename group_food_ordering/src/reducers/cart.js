@@ -23,9 +23,10 @@ export default (currentState = INITIAL_STATE, action) => {
         //         items: [...currentState.items, action.item],
         //     };
    	    case DELETE_ITEM:
-            const newItems = currentState.items.filter(a => a !== action.item); 
-             return {...currentState, items: newItems};
 
+            const newItems = currentState.items.filter(a => a !== action.item);
+            return {...currentState, items: newItems};
+          
         default:
             return currentState;
    }

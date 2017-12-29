@@ -4,6 +4,9 @@ import './App.css';
 import { Link, Route } from 'react-router-dom';
 import ItemsPage from './pages/ItemsPage';
 import OptionsPage from './pages/OptionsPage';
+import Moment from 'react-moment';
+Moment.globalFormat = 'YYYY-MMMM-D HH:M:ss';
+// import 'moment-timezone';
 
 
 
@@ -12,12 +15,14 @@ import OptionsPage from './pages/OptionsPage';
 
 class App extends Component {
   render() {
+    const date = new Date();
+        
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Almakinah Resturant</h1>
         </header>
+        <Moment add={{ minutes: 30 }}>{date}</Moment>
 
         <Link to="/menu">Menu</Link>
        
