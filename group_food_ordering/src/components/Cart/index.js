@@ -68,7 +68,9 @@ export default class Cart extends Component {
         )}
         <p>Cart Total: {this.state.cartTotal} EGP</p>
         <p>total quantity: {this.state.quantityForItem}</p>
-        <Link onClick={() => copyItems(items)} to="/options">Confirm your Order</Link>
+        <Link onClick={() => copyItems(this.state.itemsAndQuantities)} to="/options">Confirm your Order</Link>
       </div>
   )}
 }
+
+ 

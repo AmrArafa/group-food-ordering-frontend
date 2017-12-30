@@ -27,7 +27,7 @@ export default class CartItem extends Component {
     this.setState({quantity: this.state.quantity + 1,
       price: this.state.price + currentPrice});
     this.props.calculateCart(currentPrice);
-    this.props.updateItemsAndQuantities(itemID, this.state.quantity);
+    this.props.updateItemsAndQuantities(itemID, 1);
   }
 
   decrement(itemID){
@@ -38,7 +38,7 @@ export default class CartItem extends Component {
     this.setState({quantity: this.state.quantity - 1,
       price: this.state.price - currentPrice});
     this.props.calculateCart(-currentPrice);
-    this.props.updateItemsAndQuantities(itemID, -this.state.quantity);
+    this.props.updateItemsAndQuantities(itemID, -1);
   }
 
   deleteAndUpdateCart(item){

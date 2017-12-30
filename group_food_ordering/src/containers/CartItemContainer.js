@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import CartItem from '../components/CartItem';
+import Groups from '../components/Groups';
 import {deleteItem} from '../actions/cart';
 
 
@@ -27,4 +28,4 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CartItem);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CartItem, Groups);

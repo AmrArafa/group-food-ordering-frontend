@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Group from '../Group';
 import './index.css';
-import CartItem from '../../containers/CartItemContainer';
+import CartItem from '../CartItem';
+import Cart from '../../containers/CartContainer';
 import {Button } from 'reactstrap';
 
 export default class Groups extends Component {
@@ -10,9 +11,11 @@ export default class Groups extends Component {
         super();
         this.state = {
             newGroup: '',
-            cartTotal: 0
+            cartTotal: 0,
+            itemsAndQuantities: []
         }
         this.calculateCartTotal = this.calculateCartTotal.bind(this);
+        this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
     }    
 
   calculateCartTotal(newPrice){
@@ -21,7 +24,35 @@ export default class Groups extends Component {
     });
   }
 
-  
+  updateItemsAndQuantities(itemID,quantity){
+    var newArray = this.state.itemsAndQuantities.slice();
+    if (newArray.length === 0){
+      this.setState({
+        itemsAndQuantities: [{itemID: itemID, quantity: quantity}]
+      });
+      return;
+    }
+    for (var i = 0; i < newArray.length; i++) {
+      if (newArray[i].itemID === itemID){
+        if (quantity === 0){
+          newArray.splice(i, 1);
+          break;
+        }else if (quantity < 0){
+          newArray[i].quantity -= 1;
+          break;
+        }else{
+          newArray[i].quantity += 1;
+          break;
+        }
+      }else if(i === newArray.length - 1){
+        newArray.push({itemID: itemID, quantity: quantity});
+        break;
+      }
+    }
+    this.setState({
+      itemsAndQuantities: newArray
+    });
+  }
     
     componentWillMount (){
         this.props.getGroups();
@@ -29,6 +60,7 @@ export default class Groups extends Component {
 
     render(){
       const { items, groups, loading, error, createGroup} = this.props;
+      console.log(this.props.items);
 
       if(loading){
             return (
@@ -44,12 +76,7 @@ export default class Groups extends Component {
       return (
         <div className='allGroups'>
 
-        {items.map((item) => {
-      return  (
-                <CartItem item={item}  calculateCart={this.calculateCartTotal} itemID={item.id} quantity={item.count} />
-                            )
-                    }
-                    )} <br/>
+        <Cart />
         <h3>Join a Group Order</h3>
       
       {groups.map((group) => {
@@ -73,4 +100,10 @@ export default class Groups extends Component {
 
 }
 }
-               
+
+// {items.map((item) => {
+//       return  (
+//                 <CartItem item={item}  calculateCart={this.calculateCartTotal} updateItemsAndQuantities={this.updateItemsAndQuantities} itemID={item.id} quantity={item.count} />
+//                             )
+//                     }
+//                     )} <br/>
