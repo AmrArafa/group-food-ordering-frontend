@@ -10,9 +10,11 @@ export default class Groups extends Component {
         super();
         this.state = {
             newGroup: '',
-            cartTotal: 0
+            cartTotal: 0,
+            quantityForItem: 0
         }
         this.calculateCartTotal = this.calculateCartTotal.bind(this);
+         this.claculateQuantities = this.claculateQuantities.bind(this);
     }    
 
   calculateCartTotal(newPrice){
@@ -21,7 +23,13 @@ export default class Groups extends Component {
     });
   }
 
-  
+  claculateQuantities(quantity, id){
+    this.setState({
+      quantityForItem: this.state.quantityForItem + 1,
+     
+    });
+  }
+
     
     componentWillMount (){
         this.props.getGroups();
@@ -29,6 +37,7 @@ export default class Groups extends Component {
 
     render(){
       const { items, groups, loading, error, createGroup} = this.props;
+      console.log(items);
 
       if(loading){
             return (
@@ -46,10 +55,11 @@ export default class Groups extends Component {
 
         {items.map((item) => {
       return  (
-                <CartItem item={item}  calculateCart={this.calculateCartTotal} itemID={item.id} quantity={item.count} />
+                <CartItem item={item}  calculateCart={this.calculateCartTotal} calculateQuantity={this.claculateQuantities} itemID={item.id} quantity={item.count} />
                             )
                     }
-                    )} <br/>
+
+                    )} <p>Your Order Total Price: {this.state.cartTotal} EGP</p> <br/>
         <h3>Join a Group Order</h3>
       
       {groups.map((group) => {

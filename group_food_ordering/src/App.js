@@ -23,7 +23,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to Almakinah Resturant</h1>
         </header>
-        <Moment add={{ minutes: 30 }}>{date}</Moment>
+        const = <Moment add={{ minutes: 30 }}>{date}</Moment>
 
         <Link to="/menu">Menu</Link>
         <Link to="/admin/menu">AdminMenu</Link>
@@ -36,7 +36,7 @@ class App extends Component {
         </div>
        
         
-    <Route path="/menu" component={ItemsPage} />
+   
     <Route path="/options" component={OptionsPage} />
    
 

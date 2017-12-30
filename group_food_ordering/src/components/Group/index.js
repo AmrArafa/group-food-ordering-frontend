@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';	
 import {Button } from 'reactstrap';
+import { Table } from 'reactstrap';
 
 export default class Group extends Component {
     constructor(){
@@ -14,10 +15,20 @@ export default class Group extends Component {
     render(){
         const { group, items , createOrder} = this.props;
         return (
-        <div className= 'oneGroup'>
-        <h4>Group: {group.id} </h4><br/>
-        <h5>Created by: </h5> <br/> {group.creator_first_name}  {group.creator_last_name} <br/>
-        <h5>Members: </h5>{(group.member).map((member) => {
+            <Table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Created by</th>
+            <th>Members</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>{group.creator_first_name}  {group.creator_last_name}</td>
+            <td>{(group.member).map((member) => {
       return  (
         <div>
                 {member.first_name} {member.last_name}
@@ -25,10 +36,14 @@ export default class Group extends Component {
                
                             )
                     }
-                    )} <br/>
-<Button onClick={() => createOrder(group.id)}> Join </Button>
+                    )}</td>
+            <td><Button onClick={() => createOrder(group.id)}> Join </Button></td>
+          </tr>
+        </tbody>
+      </Table>
 
 
-        </div>
+
+
         	)}
     }
