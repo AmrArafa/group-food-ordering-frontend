@@ -24,16 +24,16 @@ export default class Groups extends Component {
     });
   }
 
-  updateItemsAndQuantities(itemID,quantity){
+  updateItemsAndQuantities(item_id,quantity){
     var newArray = this.state.itemsAndQuantities.slice();
     if (newArray.length === 0){
       this.setState({
-        itemsAndQuantities: [{itemID: itemID, quantity: quantity}]
+        itemsAndQuantities: [{item_id: item_id, quantity: quantity}]
       });
       return;
     }
     for (var i = 0; i < newArray.length; i++) {
-      if (newArray[i].itemID === itemID){
+      if (newArray[i].item_id === item_id){
         if (quantity === 0){
           newArray.splice(i, 1);
           break;
@@ -45,7 +45,7 @@ export default class Groups extends Component {
           break;
         }
       }else if(i === newArray.length - 1){
-        newArray.push({itemID: itemID, quantity: quantity});
+        newArray.push({item_id: item_id, quantity: quantity});
         break;
       }
     }
@@ -54,9 +54,9 @@ export default class Groups extends Component {
     });
   }
     
-    componentWillMount (){
-        this.props.getGroups();
-    }
+  componentWillMount (){
+    this.props.getGroups();
+  }
 
     render(){
       const { items, groups, loading, error, createGroup} = this.props;
@@ -103,7 +103,7 @@ export default class Groups extends Component {
 
 // {items.map((item) => {
 //       return  (
-//                 <CartItem item={item}  calculateCart={this.calculateCartTotal} updateItemsAndQuantities={this.updateItemsAndQuantities} itemID={item.id} quantity={item.count} />
+//                 <CartItem item={item}  calculateCart={this.calculateCartTotal} updateItemsAndQuantities={this.updateItemsAndQuantities} item_id={item.id} quantity={item.count} />
 //                             )
 //                     }
 //                     )} <br/>

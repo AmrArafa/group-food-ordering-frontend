@@ -24,16 +24,16 @@ export default class Cart extends Component {
   }
 
 
-  updateItemsAndQuantities(itemID,quantity){
+  updateItemsAndQuantities(item_id,quantity){
     var newArray = this.state.itemsAndQuantities.slice();
     if (newArray.length === 0){
       this.setState({
-        itemsAndQuantities: [{itemID: itemID, quantity: quantity}]
+        itemsAndQuantities: [{item_id: item_id, quantity: quantity}]
       });
       return;
     }
     for (var i = 0; i < newArray.length; i++) {
-      if (newArray[i].itemID === itemID){
+      if (newArray[i].item_id === item_id){
         if (quantity === 0){
           newArray.splice(i, 1);
           break;
@@ -45,7 +45,7 @@ export default class Cart extends Component {
           break;
         }
       }else if(i === newArray.length - 1){
-        newArray.push({itemID: itemID, quantity: quantity});
+        newArray.push({item_id: item_id, quantity: quantity});
         break;
       }
     }
@@ -53,6 +53,16 @@ export default class Cart extends Component {
       itemsAndQuantities: newArray
     });
   }
+
+  // componentWillUnmount(){
+  // localStorage.setItem('savedState', JSON.stringify(this.state));
+  // }
+  
+  // componentWillMount(){
+  // const prevState = JSON.parse(localStorage.getItem('savedState'));
+  // this.setState(prevState);
+  // localStorage.removeItem('savedState');
+  // }
 
     
   render(){
@@ -67,10 +77,7 @@ export default class Cart extends Component {
           )}
         )}
         <p>Cart Total: {this.state.cartTotal} EGP</p>
-        <p>total quantity: {this.state.quantityForItem}</p>
         <Link onClick={() => copyItems(this.state.itemsAndQuantities)} to="/options">Confirm your Order</Link>
       </div>
   )}
 }
-
- 

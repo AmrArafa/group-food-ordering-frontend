@@ -20,17 +20,17 @@ export default class CartItem extends Component {
     this.props.updateItemsAndQuantities(item.id, this.state.quantity);
   }
 
- increment(itemID){
+  increment(item_id){
     const currentPrice = this.state.initial_price;
     
  
     this.setState({quantity: this.state.quantity + 1,
       price: this.state.price + currentPrice});
     this.props.calculateCart(currentPrice);
-    this.props.updateItemsAndQuantities(itemID, 1);
+    this.props.updateItemsAndQuantities(item_id, 1);
   }
 
-  decrement(itemID){
+  decrement(item_id){
     const currentPrice = this.state.initial_price;
     if (this.state.quantity === 1){
       return;
@@ -38,7 +38,7 @@ export default class CartItem extends Component {
     this.setState({quantity: this.state.quantity - 1,
       price: this.state.price - currentPrice});
     this.props.calculateCart(-currentPrice);
-    this.props.updateItemsAndQuantities(itemID, -1);
+    this.props.updateItemsAndQuantities(item_id, -1);
   }
 
   deleteAndUpdateCart(item){
@@ -50,6 +50,17 @@ export default class CartItem extends Component {
 
   updateCartTotal(){
     this.props.calculateCart(-this.state.price)
+  }
+
+  componentWillUnmount(){
+    console.log(this.state);
+    localStorage.setItem('savedState', JSON.stringify(this.state));
+  }
+  
+  componentWillMount(){
+    const prevState = JSON.parse(localStorage.getItem('savedState'));
+    this.setState(prevState);
+    localStorage.removeItem('savedState');
   }
 
   render(){
