@@ -9,41 +9,49 @@ export default class AdminEditItems extends Component {
               console.log('will mount', this.props)
 
        const { getItem, match: {params: {id}}} = this.props;
-         getItem(id);
+       getItem(id);
 
     }
 
    constructor(props){
         super(props);
+        // const { getItem, match: {params: {id}}} = this.props;
         console.log('PrOPs', props)
         this.state = {
             name: '',
             image: '',
-            price: 15 ,
-          }
+            price: 0 ,
+        }
           this._handleChange = this._handleChange.bind(this)
+          
     }
 
     _handleChange(e){
-      this.setState({...this.state, [e.target.name] :e.target.value})
+       this.setState({...this.state, [e.target.name] :e.target.value})
+    }
+
+    componentDidMount() {
+      console.log('in did mount');
+      console.log(this.props);
+      // this.setState({
+      //       name: this.props.item.name,
+      //       image: this.props.item.image,
+      //       price: 15 ,
+      //     })
     }
     render(){
-         this.state = {
-            name: this.props.item.name,
-            image: this.props.item.image,
-            price: 15 ,
-          }
-
+          console.log("in render");
+          console.log(this.props);
           console.log('staaate', this.state)
           const { editItem, item } = this.props;
           var itemName = this.state.name
           var itemImage = this.state.image
           var itemPrice = this.state.price
           var itemEdit = {
-          name: this.state.name,
-          image: this.state.image,
-          price: this.state.price
-        }
+            name: this.state.name,
+            image: this.state.image,
+            price: this.state.price
+          }
 
      return (
 
