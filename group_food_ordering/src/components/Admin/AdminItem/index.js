@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Card, CardImg, CardText, CardBody, 
 	CardTitle, CardSubtitle, Button } from 'reactstrap';
 import './index.css';	
 import { Link } from 'react-router-dom';
 export default class Item extends Component {
+    constructor(props) {
+      super(props);
+    }
+
     render(){
         const { item, handleDelete, sendItem } = this.props;
         
@@ -20,6 +24,15 @@ export default class Item extends Component {
         </Card>
         </div>
         	)}
-    }
 
-    // onClick={() => sendItem(item)}
+
+    }
+// console.log('iiiiiiiiiiiiiiiiiii', Item)
+// Item.propTypes = {  
+//   item: React.PropTypes.object.isRequired,
+//   hobbies: React.PropTypes.array.isRequired,
+//   onSave: React.PropTypes.func.isRequired,
+//   onChange: React.PropTypes.func.isRequired,
+//   onHobbyChange: React.PropTypes.func.isRequired
+// };
+//     // onClick={() => sendItem(item)}

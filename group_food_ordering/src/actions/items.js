@@ -90,8 +90,6 @@ export const addItemLoading = () => {
     }
 }
 export const addItem = (item) => {
-    console.log("ADD ITE<<!!!!!!")
-    console.log(item);
     const payload = Axios.post(itemsApi, 
         item
     );
