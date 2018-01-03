@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
     cart,
     groups,
     editItem
-    
 })
 
 export default rootReducer;

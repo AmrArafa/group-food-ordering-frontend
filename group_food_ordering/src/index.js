@@ -7,7 +7,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import createStore from './configureStore';
+import setAuthorizationToken from './utils/setAuthorizationToken';
+
 const store = createStore();
+
+setAuthorizationToken(localStorage.getItem('jwtToken'));
 
 ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));
 registerServiceWorker();
