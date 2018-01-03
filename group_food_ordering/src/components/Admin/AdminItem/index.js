@@ -9,7 +9,7 @@ export default class Item extends Component {
     }
 
     render(){
-        const { item, handleDelete, sendItem } = this.props;
+        const { item, handleDelete } = this.props;
         
         return (
         <div className= 'oneItem'>
@@ -23,16 +23,5 @@ export default class Item extends Component {
         </CardBody>
         </Card>
         </div>
-        	)}
-
-
-    }
-// console.log('iiiiiiiiiiiiiiiiiii', Item)
-// Item.propTypes = {  
-//   item: React.PropTypes.object.isRequired,
-//   hobbies: React.PropTypes.array.isRequired,
-//   onSave: React.PropTypes.func.isRequired,
-//   onChange: React.PropTypes.func.isRequired,
-//   onHobbyChange: React.PropTypes.func.isRequired
-// };
-//     // onClick={() => sendItem(item)}
+    )}
+}
