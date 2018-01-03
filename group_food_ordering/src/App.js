@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Route, Switch, Link } from 'react-router-dom';
+import { withRouter, Route, Switch, Link } from 'react-router-dom';
 import LogInPage from './pages/LogInPage'
 import SignUpPage from './pages/SignUpPage'
 import ItemsPage from './pages/ItemsPage';
@@ -14,17 +14,14 @@ import Users from './pages/Admin/Users';
 import Moment from 'react-moment';
 import moment from 'moment';
 
-
-
-
-
+class App extends Component {
+  render() {
+// import Moment from 'react-moment';
+// Moment.globalFormat = 'YYYY-MMMM-D HH:M:ss';
 
 class App extends Component {
   render() {
-    
-
-
-
+    // const date = new Date();
     return (
       <div className="App">
         <header className="App-header">
@@ -34,10 +31,12 @@ class App extends Component {
         <Link to="/admin/menu">AdminMenu</Link>
         <Link to="/admin/users">Users</Link>
         <LogInPage />
+
         <div className="App-container">
           <Switch>
+            <Route path="/" exact component={LogInPage} />
+            <Route path="/menu" exact component={ItemsPage} />
             <Route path="/admin/menu" exact component={AdminPage} />
-
              <Route path="/admin/users" exact component={Users} />
              <Route path="/menu" component={ItemsPage} />
             <Route path="/admin/menu/edit" component={AdminEditItem} />
@@ -46,14 +45,15 @@ class App extends Component {
           </Switch>
         </div>
        
-    <Route path="/options" exact component={OptionsPage} />
-    <Route path='/options/order' component={OrderPage}/>
-   
-
-
+        <Route path="/options" exact component={OptionsPage} />
+        <Route path='/options/order' component={OrderPage}/>            
       </div>
     );
   }
 }
 
 export default App;
+
+// <Link to="/menu">Menu</Link>
+// <Link to="/admin/menu">AdminMenu</Link>
+// <Link to="/" className="logout">Log out</Link>

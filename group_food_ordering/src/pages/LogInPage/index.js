@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './index.css'
-import { Link, Route } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Axios from 'axios';
 import setAuthorizationToken from '../../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
@@ -10,7 +10,8 @@ export default class LogIn extends Component{
     super()
     this.state = {
       email:'',
-      password:''
+      password:'',
+      redirect: false
     }
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
@@ -26,35 +27,42 @@ export default class LogIn extends Component{
       email: this.state.email,
       password: this.state.password
     })
-    .then(function (response) {
+    .then((response) => {
       console.log(response);
       const token = response.data.auth_token;
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);
       console.log(jwt.decode(token));
+      this.setState({
+        ...this.state,
+        redirect: true
+      });
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(error.response.data);
     });
   }
 
 
 
   render(){
+    if (this.state.redirect){
+      return <Redirect to="/menu" />
+    }
     return(
       <div>
         <h2>Welcome to Almakinah Restaurant!</h2>
         <h3> Please Log in :)</h3>
         <form onSubmit={this._handleSubmit} >
-          <div className="sign-up">
+          <div className="log-in">
             <label>Email:</label>
             <input type="email" name="email" onChange={this._handleChange} />
           </div>
-          <div className="sign-up">
+          <div className="log-in">
             <label>Password:</label>
             <input type="password" name="password" onChange={this._handleChange}/>
           </div>
-          <input type="submit" value="Submit"/>
+          <input type="submit" value="Log in"/>
         </form>
         <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
       </div>
