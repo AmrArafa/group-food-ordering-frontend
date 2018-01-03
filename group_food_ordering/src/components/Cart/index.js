@@ -3,7 +3,6 @@ import './index.css';
 import CartItem from '../../containers/CartItemContainer';
 import { Link, Route } from 'react-router-dom';
 import {Button } from 'reactstrap';
-import OptionsPage from '../../pages/OptionsPage';
 
 export default class Cart extends Component {
 
@@ -12,12 +11,12 @@ export default class Cart extends Component {
     this.state = {
       cartTotal: 0,
       quantityForItem: 0,
-      quantities: [],
-      ids: 0
+      itemsAndQuantities: [],
     }
     this.calculateCartTotal = this.calculateCartTotal.bind(this);
-    this.claculateQuantities = this.claculateQuantities.bind(this);
     this.getItemId = this.getItemId.bind(this);
+    this.calculateCartTotal = this.calculateCartTotal.bind(this);
+    this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
   }
 
   getItemId(id){
@@ -26,51 +25,63 @@ export default class Cart extends Component {
     });
   }
 
-
-
   calculateCartTotal(newPrice){
     this.setState({
       cartTotal: this.state.cartTotal + newPrice
     });
   }
 
-
-  claculateQuantities(id){
-  
+  updateItemsAndQuantities(item_id,quantity){
+    var newArray = this.state.itemsAndQuantities.slice();
+    if (newArray.length === 0){
       this.setState({
-      quantityForItem: this.state.quantityForItem + 1,
-      quantities: [...this.state.quantities , this.state.quantityForItem]
+        itemsAndQuantities: [{item_id: item_id, quantity: quantity}]
+      });
+      return;
+    }
+    for (var i = 0; i < newArray.length; i++) {
+      if (newArray[i].item_id === item_id){
+        if (quantity === 0){
+          newArray.splice(i, 1);
+          break;
+        }else if (quantity < 0){
+          newArray[i].quantity -= 1;
+          break;
+        }else{
+          newArray[i].quantity += 1;
+          break;
+        }
+      }else if(i === newArray.length - 1){
+        newArray.push({item_id: item_id, quantity: quantity});
+        break;
+      }
+    }
+    this.setState({
+      itemsAndQuantities: newArray
     });
   
   }
-
     
-    render(){
-        const { items, copyItems} = this.props;
-      return  ( <div className='cart'>
-        
-         <p>Your Cart</p>
+  render(){
+      const { items, copyItems} = this.props;
+      console.log(this.state.itemsAndQuantities);
+    return (
+      <div className='cart'>
+        <p>Your Cart</p>
         {items.map((item) => {
+
       return  (
-                <CartItem item={item} calculateCart={this.calculateCartTotal} calculateQuantity={this.claculateQuantities} getItemId={this.getItemId}/>
+                <CartItem item={item} calculateCart={this.calculateCartTotal} calculateQuantity={this.claculateQuantities} updateItemsAndQuantities={this.updateItemsAndQuantities} getItemId={this.getItemId}/>
                             )
                     }
                     )}
       <p>Cart Total: {this.state.cartTotal} EGP</p>
-      <p>total quantity: {this.state.quantityForItem} 
-     </p>
-     <p>ids: {this.state.ids} 
-     </p>
-      <Link onClick={() => copyItems(items)} to="/options">Confirm your Order</Link>
-
-
-
-
+        
+      <Link className={items.length === 0? 'invisible' : 'visible'} onClick={() => copyItems(items, this.state.itemsAndQuantities)} to="/options">Confirm your Order</Link>
+    
 </div>
-
-
         )
-
-
   }
 }
+
+ 

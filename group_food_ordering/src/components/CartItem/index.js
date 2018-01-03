@@ -10,31 +10,30 @@ export default class CartItem extends Component {
       quantity: 1,
       initial_price: parseFloat(item.price),
       price: parseFloat(item.price),
-      id: item.id
-      
-
     };
+    
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
     this.updateCartTotal = this.updateCartTotal.bind(this);
     this.deleteAndUpdateCart = this.deleteAndUpdateCart.bind(this);
     this.props.calculateCart(this.state.initial_price);
-    this.props.calculateQuantity(this.state.quantity);
-      this.props.getItemId(this.state.id);
-   
+    this.props.updateItemsAndQuantities(item.id, this.state.quantity);
+
   }
 
- increment(){
+ increment(item_id){
     const currentPrice = this.state.initial_price;
     
  
     this.setState({quantity: this.state.quantity + 1,
       price: this.state.price + currentPrice});
     this.props.calculateCart(currentPrice);
-    this.props.calculateQuantity(this.state.id);
+    this.props.updateItemsAndQuantities(item_id, 1);
   }
 
-  decrement(){
+ 
+
+  decrement(item_id){
     const currentPrice = this.state.initial_price;
     if (this.state.quantity === 1){
       return;
@@ -42,13 +41,14 @@ export default class CartItem extends Component {
     this.setState({quantity: this.state.quantity - 1,
       price: this.state.price - currentPrice});
     this.props.calculateCart(-currentPrice);
-    this.props.calculateQuantity(this.state.quantity);
+    this.props.updateItemsAndQuantities(item_id, -1);
   }
 
   deleteAndUpdateCart(item){
     const {deleteItem} = this.props;
     deleteItem(item);
     this.updateCartTotal();
+    this.props.updateItemsAndQuantities(item.id, 0);
   }
 
   updateCartTotal(){
@@ -64,9 +64,9 @@ export default class CartItem extends Component {
           <p className="item-price">{parseFloat(item.price)} EGP</p>
         </div>
         <div className="clearfix">
-          <button className="increment" onClick={() => this.increment()}>+</button>
+          <button className="increment" onClick={() => this.increment(item.id)}>+</button>
           <p className="quantity">{this.state.quantity}</p>
-          <button className="decrement" onClick={() => this.decrement()}>-</button>
+          <button className="decrement" onClick={() => this.decrement(item.id)}>-</button>
           <button className="remove" onClick={() => this.deleteAndUpdateCart(item)}>X</button>
           <p>Item Total: {this.state.price} EGP</p>
           <p>quantity: {this.state.quantity} </p>

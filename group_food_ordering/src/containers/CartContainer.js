@@ -14,9 +14,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        copyItems : (items) => {
+        copyItems : (items, itemsIdsAndQuantity) => {
           
-                dispatch(copyItems(items))
+                dispatch(copyItems(items, itemsIdsAndQuantity))
            }
 }
 }

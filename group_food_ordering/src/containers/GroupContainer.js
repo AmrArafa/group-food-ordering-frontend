@@ -11,9 +11,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createOrder : (group.id) => {
+        createOrder : (id, itemsIdsAndQuantity) => {
           
-                dispatch(createOrder(group.id))
+                dispatch(createOrder(id, itemsIdsAndQuantity))
            }
 }
 }

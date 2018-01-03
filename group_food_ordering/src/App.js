@@ -4,11 +4,13 @@ import './App.css';
 import { Link, Route } from 'react-router-dom';
 import ItemsPage from './pages/ItemsPage';
 import OptionsPage from './pages/OptionsPage';
+import OrderPage from './pages/OrderPage';
 import AdminPage from './pages/Admin/AdminMenu';
 import AdminEditItem from './pages/Admin/AdminEditItem';
 import AdminAddItem from './pages/Admin/AdminAddItem';
 import Moment from 'react-moment';
-Moment.globalFormat = 'YYYY-MMMM-D HH:M:ss';
+import moment from 'moment';
+
 
 
 
@@ -16,14 +18,17 @@ Moment.globalFormat = 'YYYY-MMMM-D HH:M:ss';
 
 class App extends Component {
   render() {
-    const date = new Date();
-        
+    
+
+
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to Almakinah Resturant</h1>
         </header>
-        const = <Moment add={{ minutes: 30 }}>{date}</Moment>
+       
+       
 
         <Link to="/menu">Menu</Link>
         <Link to="/admin/menu">AdminMenu</Link>
@@ -35,9 +40,8 @@ class App extends Component {
              <Route path="/admin/menu/add" component={AdminAddItem} />
         </div>
        
-        
-   
-    <Route path="/options" component={OptionsPage} />
+    <Route path="/options" exact component={OptionsPage} />
+    <Route path='/options/order' component={OrderPage}/>
    
 
 
