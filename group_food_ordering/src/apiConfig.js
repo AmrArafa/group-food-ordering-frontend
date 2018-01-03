@@ -3,3 +3,6 @@ export const rootApi = `http://localhost:3000`;
 // Items
 export const itemsApi = `${rootApi}/items`;
 export const itemApi = (id) => `${itemsApi}/${id}`;
+
+export const usersApi = `${rootApi}/users`;
+export const userApi = (id) => `${usersApi}/${id}`;
