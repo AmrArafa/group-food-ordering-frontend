@@ -13,7 +13,11 @@ export default (currentState = INITIAL_STATE, action) => {
         // Get all items
 
         case ADD_ITEM_TO_CART:
-            return {...currentState, items: [...currentState.items, action.item]};
+            if (currentState.items.includes(action.item)){
+                return currentState;
+            } else{
+                return {...currentState, items: [...currentState.items, action.item]};
+            }
 
         // case ADD_ITEM:
         //     if (currentState.items.includes(action.item)){

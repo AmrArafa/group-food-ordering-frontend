@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import setAuthorizationToken from '../utils/setAuthorizationToken';
 import { itemsApi, itemApi } from '../apiConfig';
 
 
