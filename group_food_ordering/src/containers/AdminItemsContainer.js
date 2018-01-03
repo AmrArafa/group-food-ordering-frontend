@@ -3,7 +3,6 @@ import AdminItems from '../components/Admin/AdminItems';
 import { getItemsLoading, getItems, getItemsSuccess, getItemsFailure,
         deleteItemLoading, deleteItem, deleteItemSuccess, deleteItemFailure
          } from '../actions/items';
-import { sendItemToEdit } from '../actions/sendItemToEdit';
 
 const mapStateToProps = (state) => {
     return {
@@ -38,11 +37,7 @@ const mapDispatchToProps = (dispatch) => {
                     }
                 })
             }, 1)
-        },
-        sendItem: (item) => {
-                dispatch(sendItemToEdit(item))
-           }
-
+        }
     }
 }
 

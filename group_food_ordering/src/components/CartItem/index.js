@@ -21,7 +21,8 @@ export default class CartItem extends Component {
 
   }
 
- increment(item_id){
+
+  increment(item_id){
     const currentPrice = this.state.initial_price;
     
  
@@ -30,8 +31,6 @@ export default class CartItem extends Component {
     this.props.calculateCart(currentPrice);
     this.props.updateItemsAndQuantities(item_id, 1);
   }
-
- 
 
   decrement(item_id){
     const currentPrice = this.state.initial_price;
@@ -53,6 +52,17 @@ export default class CartItem extends Component {
 
   updateCartTotal(){
     this.props.calculateCart(-this.state.price)
+  }
+
+  componentWillUnmount(){
+    console.log(this.state);
+    localStorage.setItem('savedState', JSON.stringify(this.state));
+  }
+  
+  componentWillMount(){
+    const prevState = JSON.parse(localStorage.getItem('savedState'));
+    this.setState(prevState);
+    localStorage.removeItem('savedState');
   }
 
   render(){

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './index.css';
-import AdminItem from '../AdminItem';
+import  User from '../User';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 
-export default class AdminItems extends Component {
+export default class Users extends Component {
      componentWillMount(){
-        this.props.getItems();
+        this.props.getUsers();
     }
     render(){
-        const { items, loading, error, deleteItem } = this.props;
+        const { users, loading, error, deleteUser} = this.props;
         if(loading){
             return (
                 <p>Is loading</p>
@@ -21,17 +21,22 @@ export default class AdminItems extends Component {
                 )
         }else{
             return (
-                <div className='adminItem'>
-                    <p>Menu</p>
-                    {items.map((item) => {
+                <div className='users'>
+                    <from>
+                        <div className="itemName">
+                          <label>Invitation</label>
+                          <input type="text" />
+                        </div>          
+                    </from>
+                    <p>Users</p>
+                    {users.map((user) => {
                      return  (
-                        <AdminItem item={item} 
-                        handleDelete={deleteItem}
+                        <User user={user} 
+                        handleDelete={deleteUser}
                          />
                         )
                      })
                      }
-                    <Button ><Link to="/admin/menu/add">Add New Item</Link></Button>
                  </div>
                  
                 )

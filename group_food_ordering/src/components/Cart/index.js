@@ -61,6 +61,17 @@ export default class Cart extends Component {
     });
   
   }
+
+  // componentWillUnmount(){
+  // localStorage.setItem('savedState', JSON.stringify(this.state));
+  // }
+  
+  // componentWillMount(){
+  // const prevState = JSON.parse(localStorage.getItem('savedState'));
+  // this.setState(prevState);
+  // localStorage.removeItem('savedState');
+  // }
+
     
   render(){
       const { items, copyItems} = this.props;
@@ -82,6 +93,5 @@ export default class Cart extends Component {
 </div>
         )
   }
-}
 
- 
+}

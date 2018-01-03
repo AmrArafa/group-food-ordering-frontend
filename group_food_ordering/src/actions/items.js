@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import setAuthorizationToken from '../utils/setAuthorizationToken';
 import { itemsApi, itemApi } from '../apiConfig';
 
 
@@ -131,10 +132,10 @@ export const editItemSuccess = (item) => {
         item
     }
 }
-export const editItemFailure = (data) => {
+export const editItemFailure = (error) => {
     return {
         type: EDIT_ITEM_FAILURE,
-        data
+        error
     }
 }
 
