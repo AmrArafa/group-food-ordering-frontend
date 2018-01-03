@@ -6,12 +6,14 @@ import LogInPage from './pages/LogInPage'
 import SignUpPage from './pages/SignUpPage'
 import ItemsPage from './pages/ItemsPage';
 import OptionsPage from './pages/OptionsPage';
+import OrderPage from './pages/OrderPage';
 import AdminPage from './pages/Admin/AdminMenu';
 import AdminEditItem from './pages/Admin/AdminEditItem';
 import AdminAddItem from './pages/Admin/AdminAddItem';
 import Users from './pages/Admin/Users';
 import Moment from 'react-moment';
-Moment.globalFormat = 'YYYY-MMMM-D HH:M:ss';
+import moment from 'moment';
+
 
 
 
@@ -19,13 +21,15 @@ Moment.globalFormat = 'YYYY-MMMM-D HH:M:ss';
 
 class App extends Component {
   render() {
-    const date = new Date();
+    
+
+
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Almakinah Resturant</h1>
         </header>
-
         <Link to="/menu">Menu</Link>
         <Link to="/admin/menu">AdminMenu</Link>
         <Link to="/admin/users">Users</Link>
@@ -42,7 +46,8 @@ class App extends Component {
           </Switch>
         </div>
        
-    <Route path="/options" component={OptionsPage} />
+    <Route path="/options" exact component={OptionsPage} />
+    <Route path='/options/order' component={OrderPage}/>
    
 
 

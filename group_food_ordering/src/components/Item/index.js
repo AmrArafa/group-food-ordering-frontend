@@ -4,12 +4,7 @@ import { Card, CardImg, CardText, CardBody,
 import './index.css';	
 
 export default class Item extends Component {
-    // constructor(){
-    //   super();
-    //   this.state = {
-    //     totalPrice: 0
-    //   }
-    // }
+  
     render(){
         const { item, addItemToCart } = this.props;
         return (
