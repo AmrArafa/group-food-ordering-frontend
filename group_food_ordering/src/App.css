@@ -2,24 +2,39 @@
   text-align: center;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: white;
+}
+
 /*.App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }*/
 
 .App-header {
-  background-image: url("./images/burger-sandwich-header.jpg");
+  background-image: url("./images/tomatoes.jpg");
+  background-repeat: no-repeat;
   background-color: #FFFFFF;
   height: 150px;
+  background-size: 100%;
   padding: 20px;
   color: white;
   position: relative;
-  
-
+  border-bottom: 5px solid black;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 46px;
+  text-align: left;
+  color: #ffaf49;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+  position: relative;
+  top: 20px;
 }
 
 .App-intro {

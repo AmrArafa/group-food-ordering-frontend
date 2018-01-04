@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { withRouter, Route, Switch, Link, Redirect } from 'react-router-dom';
+import { Route, Switch, Link, Redirect } from 'react-router-dom';
 import LogInPage from './pages/LogInPage'
 import SignUpPage from './pages/SignUpPage'
 import ItemsPage from './pages/ItemsPage';
@@ -12,22 +12,15 @@ import AdminEditItem from './pages/Admin/AdminEditItem';
 import AdminAddItem from './pages/Admin/AdminAddItem';
 import Users from './pages/Admin/Users';
 import AdminLogIn from './pages/Admin/AdminLogIn';
-import Moment from 'react-moment';
-import moment from 'moment';
 import logout from './utils/logout';
-
-
-// import Moment from 'react-moment';
-// Moment.globalFormat = 'YYYY-MMMM-D HH:M:ss';
 
 class App extends Component {
   render() {
-    // const date = new Date();
     if (localStorage.Admin) {
       return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Almakinah Resturant</h1>
+          <h1 className="App-title">Almakinah Restaurant</h1>
         </header>
         <Link to="/admin/menu">AdminMenu</Link>
         <Link to="/admin/users">Users</Link>

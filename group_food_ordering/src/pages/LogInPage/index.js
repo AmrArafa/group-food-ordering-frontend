@@ -51,21 +51,26 @@ export default class LogIn extends Component{
       return <Redirect to="/menu" />
     }
     return(
-      <div>
-        <h2>Welcome to Almakinah Restaurant!</h2>
-        <h3> Please Log in :)</h3>
-        <form onSubmit={this._handleSubmit} >
-          <div className="log-in">
-            <label>Email:</label>
-            <input type="email" name="email" onChange={this._handleChange} />
-          </div>
-          <div className="log-in">
-            <label>Password:</label>
-            <input type="password" name="password" onChange={this._handleChange}/>
-          </div>
-          <input type="submit" value="Log in"/>
-        </form>
-        <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+      <div className="login-page">
+        <div className="welcome-msg">
+          <p>Welcome to Almakinah Restaurant!</p>
+          <p> Please log in :)</p>
+        </div>
+        <div className="login-form">
+          <form onSubmit={this._handleSubmit} >
+            <div className="email">
+              <label>Email</label>
+              <input className="field" type="email" name="email" onChange={this._handleChange} />
+            </div>
+            <div className="password">
+              <label>Password</label>
+              <input className="field" type="password" name="password" onChange={this._handleChange}/>
+            </div>
+            <input id="login-button" type="submit" value="Log in"/>
+          </form>
+          <p>Don't have an account?</p>
+          <Link id="signup-link" to="/signup">Sign up</Link>
+        </div>
       </div>
     )
   }

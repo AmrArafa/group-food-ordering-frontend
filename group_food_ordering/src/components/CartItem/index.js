@@ -55,14 +55,7 @@ export default class CartItem extends Component {
   }
 
   componentWillUnmount(){
-    console.log(this.state);
-    localStorage.setItem('savedState', JSON.stringify(this.state));
-  }
-  
-  componentWillMount(){
-    const prevState = JSON.parse(localStorage.getItem('savedState'));
-    this.setState(prevState);
-    localStorage.removeItem('savedState');
+    localStorage.statesArray.push(this.state);
   }
 
   render(){
