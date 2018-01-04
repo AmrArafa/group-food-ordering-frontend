@@ -3,34 +3,16 @@ import './index.css';
 import Axios from 'axios';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
+import Checkout from '../Checkout';
 
 class Order extends Component {
     constructor(props){
       super(props);
       this.state = {
         order: {},
-        loadingOrder: false,
-        totalPrice: 0
-
+        loadingOrder: false
       }
     }
-
-    calcTotalPrice(){
-        var items = this.props.order.items;
-        var totalPrice = 0;
-        for (var i = 0; i < items.length; i++) {
-            totalPrice += ((items[i].price) * (items[i].quantity));
-        }
-        this.setState({
-            totalPrice: totalPrice
-           })
-        }
-
-
-componentWillMount (){
-        this.calcTotalPrice();
-    }
-
 
     render(){
         const { order } = this.props;
@@ -45,23 +27,25 @@ componentWillMount (){
                                     {item.name} <br/>
                                     Price: {item.price} <br/>
                                     Quantity: {item.quantity}<br/>
-                                    totalPrice : {this.state.totalPrice}
-                             <Button >Pay On Delivery </Button>
-                            <Button >Pay Online </Button>
-                    
                                 </div>
                             )
                         })
                     }
+
+                  Total Price:   {order.totalPrice} EGP <br/>
+                  <Button >Pay On Delivery </Button>
+                 <Checkout
+                    name={'Pay for your order'}
+                    description={'life is easy'}
+                    amount={order.totalPrice}  
+                    order={order}                                                  />    
                 </div>
                 )
             }
             else{
                 return(<div>
                         LOADING
-                    </div>
-
-                    )
+                    </div>)
             }
     }
 }
