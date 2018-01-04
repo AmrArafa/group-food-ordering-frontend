@@ -11,7 +11,7 @@ export default class Item extends Component {
         <div className= 'oneItem'>
 
         <Card>
-        <CardImg className= 'cardImage' top width="50px" src={item.image} alt="Card image cap" />
+        <CardImg className= 'cardImage' top width="50px" src={item.image_url} alt="Card image cap" />
        <CardBody>
           <CardText>{item.name}</CardText>
           <CardText>{parseFloat(item.price)} EGP</CardText>

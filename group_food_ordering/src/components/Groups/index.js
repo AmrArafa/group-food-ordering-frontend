@@ -31,13 +31,6 @@ export default class Groups extends Component {
   }
 
 
-  claculateQuantities(quantity, id){
-    this.setState({
-      quantityForItem: this.state.quantityForItem + 1,
-     
-    });
-  }
-
   updateItemsAndQuantities(item_id,quantity){
     var newArray = this.state.itemsAndQuantities.slice();
     if (newArray.length === 0){
@@ -81,9 +74,9 @@ export default class Groups extends Component {
   }
 
     
-    componentWillMount (){
-        this.props.getGroups();
-    }
+  componentWillMount (){
+    this.props.getGroups();
+  }
 
     render(){
    
@@ -136,4 +129,5 @@ export default class Groups extends Component {
 
 }
 }
+
 

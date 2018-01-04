@@ -61,7 +61,7 @@ export default class Cart extends Component {
     });
   
   }
-    
+
   render(){
       const { items, copyItems} = this.props;
       console.log(this.state.itemsAndQuantities);
@@ -82,6 +82,5 @@ export default class Cart extends Component {
 </div>
         )
   }
-}
 
- 
+}
