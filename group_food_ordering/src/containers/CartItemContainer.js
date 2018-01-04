@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import CartItem from '../components/CartItem';
+import Groups from '../components/Groups';
 import {deleteItem} from '../actions/cart';
 
 
@@ -19,7 +20,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
-    console.log(ownProps);
     return {
         // Find the user with the id passed from the url by the route
         ...stateProps,
@@ -28,4 +28,4 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CartItem);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CartItem, Groups);

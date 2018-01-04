@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import AdminAddItem from '../components/Admin/AdminAddItem';
-import { addItemLoading, addItem, addItemSuccess, addItemFailure } from '../actions/items';
+import { addItemLoading, addItem, addItemSuccess, addItemFailure } from '../actions/Admin/items';
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items.items,
-        loading: state.items.loading,
-        error: state.items.error
+        items: state.adminItems.items,
+        loading: state.adminItems.loading,
+        error: state.adminItems.error
     }
 }
 

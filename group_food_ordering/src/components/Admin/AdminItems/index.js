@@ -10,8 +10,8 @@ export default class AdminItems extends Component {
         this.props.getItems();
     }
     render(){
-        console.log("hamdaawi", this.props)
-        const { items, loading, error, deleteItem, sendItem } = this.props;
+        const { items, loading, error, deleteItem } = this.props;
+        
         if(loading){
             return (
                 <p>Is loading</p>
@@ -28,7 +28,6 @@ export default class AdminItems extends Component {
                      return  (
                         <AdminItem item={item} 
                         handleDelete={deleteItem}
-                         sendItem={sendItem}
                          />
                         )
                      })

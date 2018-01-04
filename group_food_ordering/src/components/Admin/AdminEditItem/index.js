@@ -5,45 +5,57 @@ import { Link } from 'react-router-dom';
 
 
 export default class AdminEditItems extends Component {
-    componentWillMount(){
-              console.log('will mount', this.props)
-
-       const { getItem, match: {params: {id}}} = this.props;
-         getItem(id);
-
-    }
-
-   constructor(props){
+  constructor(props){
         super(props);
-        console.log('PrOPs', props)
         this.state = {
             name: '',
-            image: '',
-            price: 15 ,
-          }
-          this._handleChange = this._handleChange.bind(this)
+            image_url: '',
+            price: ''          
+        }
+          this._handleChange = this._handleChange.bind(this),
+          this._handleNewImage = this._handleNewImage.bind(this)
+
+          
     }
+    componentWillMount(){
+       const { getItem, match: {params: {id}}} = this.props;
+       getItem(id);
+
+    }
+     componentWillReceiveProps(nextProps) {
+      if (this.props.item.id != nextProps.item.id) {
+        this.setState({...this.state, name: nextProps.item.name,
+         price: nextProps.item.price,
+          image_url: nextProps.item.image.url });
+      }
+    
+    }
+
+
+
 
     _handleChange(e){
-      this.setState({...this.state, [e.target.name] :e.target.value})
+       this.setState({...this.state, [e.target.name] :e.target.value})
     }
-    render(){
-         this.state = {
-            name: this.props.item.name,
-            image: this.props.item.image,
-            price: 15 ,
-          }
+     _handleNewImage(e){
+      this.setState({...this.state, [e.target.name] :e.target.files[0]})
+   }
 
-          console.log('staaate', this.state)
+    
+    render(){
           const { editItem, item } = this.props;
           var itemName = this.state.name
-          var itemImage = this.state.image
+          var itemImage = "http://localhost:3000"+this.state.image_url
           var itemPrice = this.state.price
-          var itemEdit = {
-          name: this.state.name,
-          image: this.state.image,
-          price: this.state.price
-        }
+          // var itemEdit = {
+          //   name: this.state.name,
+          //   image: this.state.image,
+          //   price: this.state.price
+          // }
+            let itemEdit = new FormData();
+          itemEdit.append('name', this.state.name);
+          itemEdit.append('image', this.state.image);
+          itemEdit.append('price', this.state.price);
 
      return (
 
@@ -55,8 +67,9 @@ export default class AdminEditItems extends Component {
             <input type="text" name="name" value={itemName} onChange={this._handleChange} />
           </div>
           <div className="itemName">
-            <label>Image </label>
-            <input type="text" name="image" value={itemImage} onChange={this._handleChange} />
+              <img src={itemImage} alt="Card image cap" />
+            <label htmlFor="image" id="image-label-to-click">Edit image</label>
+            <input type="file" id="image" name="image" accept="image/*" className="image-file-input" onChange={this._handleNewImage} />
           </div>
           <div className="itemName">
             <label>Price</label>

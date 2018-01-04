@@ -3,15 +3,15 @@ import AdminEditItem from '../components/Admin/AdminEditItem';
 import { editItemLoading, editItem, editItemSuccess, editItemFailure,
         getItemLoading, getItem, getItemSuccess, getItemFailure,
         getItemsLoading, getItems, getItemsSuccess, getItemsFailure,
- } from '../actions/items';
+ } from '../actions/Admin/items';
 
 const mapStateToProps = (state) => {
     return {
-        item: state.items.item,
-        items: state.items.items,
-        loading: state.items.loading,
-        error: state.items.error,
-        itemById: state.items
+        item: state.adminItems.item,
+        items: state.adminItems.items,
+        loading: state.adminItems.loading,
+        error: state.adminItems.error,
+        itemById: state.adminItems
     }
 
 }
