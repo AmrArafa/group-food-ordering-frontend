@@ -31,6 +31,7 @@ export default class LogIn extends Component{
       console.log(response);
       const token = response.data.auth_token;
       localStorage.setItem('jwtToken', token);
+      localStorage.setItem('User', true);
       setAuthorizationToken(token);
       console.log(jwt.decode(token));
       this.setState({

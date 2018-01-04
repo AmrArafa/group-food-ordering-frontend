@@ -11,6 +11,7 @@ export default class AdminItems extends Component {
     }
     render(){
         const { items, loading, error, deleteItem } = this.props;
+        
         if(loading){
             return (
                 <p>Is loading</p>
