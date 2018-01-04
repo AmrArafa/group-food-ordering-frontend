@@ -54,9 +54,9 @@ export default class CartItem extends Component {
     this.props.calculateCart(-this.state.price)
   }
 
-  componentWillUnmount(){
-    localStorage.statesArray.push(this.state);
-  }
+  // componentWillUnmount(){
+  //   localStorage.statesArray.push(this.state);
+  // }
 
   render(){
     const { item, deleteItem } = this.props;

@@ -35,12 +35,12 @@ const mapDispatchToProps = (dispatch) => {
                
         },
 
-        createGroup: (timeframe, itemsIdsAndQuantity, callback) => {
+        createGroup: (timeframe, itemsIdsAndQuantity) => {
             dispatch(createGroupLoading());
                 dispatch(createGroup(timeframe, itemsIdsAndQuantity)).then(response => {
                     if(response.payload.status < 400){
                         dispatch(createGroupSuccess(response.payload.data));
-                        callback();
+                        window.location.reload();
                     }else{
                         dispatch(createGroupFailure(response.payload.message));
                     }

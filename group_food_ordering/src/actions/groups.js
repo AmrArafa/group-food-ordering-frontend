@@ -71,9 +71,7 @@ export const createGroupLoading = () => {
 export const createGroup = (timeframe, itemsIdsAndQuantity) => {
     const payload = Axios.post('http://localhost:3000/groups', {
         group: {time_frame: timeframe,
-        creator_id : 3, 
         orders_attributes: [{
-            user_id: 3,
             order_items_attributes: itemsIdsAndQuantity
         }]
     }
@@ -104,7 +102,7 @@ export const createOrderLoading = () => {
     }
 }
 export const createOrder = (id, itemsIdsAndQuantity) => {
-    const payload = Axios.post('http://localhost:3000/users/1/orders', {
+    const payload = Axios.post('http://localhost:3000/orders', {
         order: {
             group_id : id,
             order_items_attributes: itemsIdsAndQuantity
@@ -137,7 +135,7 @@ export const createSingleOrderLoading = () => {
     }
 }
 export const createSingleOrder = (itemsIdsAndQuantity) => {
-    const payload = Axios.post('http://localhost:3000/users/1/orders', {
+    const payload = Axios.post('http://localhost:3000/orders', {
         order: {
             order_items_attributes: itemsIdsAndQuantity
         }

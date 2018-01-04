@@ -19,7 +19,7 @@ export default class Groups extends Component {
             itemsAndQuantities: []
         }
         this.calculateCartTotal = this.calculateCartTotal.bind(this);
-         this.claculateQuantities = this.claculateQuantities.bind(this);
+         // this.claculateQuantities = this.claculateQuantities.bind(this);
         this.calculateCartTotal = this.calculateCartTotal.bind(this);
         this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
     }    
