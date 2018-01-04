@@ -68,7 +68,7 @@ export default class LogIn extends Component{
             <input id="login-button" type="submit" value="Log in"/>
           </form>
           <p>Don't have an account?</p>
-          <Link id="signup-link" to="/signup">Sign Up</Link>
+          <Link id="signup-link" to="/signup">Sign up</Link>
         </div>
       </div>
     )

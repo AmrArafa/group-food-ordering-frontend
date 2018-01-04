@@ -23,6 +23,9 @@ export default class Cart extends Component {
     });
   }
 
+  // componentWillMount(){
+  //   localStorage.setItem('statesArray', []);
+  // }
 
   updateItemsAndQuantities(item_id,quantity){
     var newArray = this.state.itemsAndQuantities.slice();
@@ -54,17 +57,6 @@ export default class Cart extends Component {
     });
   }
 
-  // componentWillUnmount(){
-  // localStorage.setItem('savedState', JSON.stringify(this.state));
-  // }
-  
-  // componentWillMount(){
-  // const prevState = JSON.parse(localStorage.getItem('savedState'));
-  // this.setState(prevState);
-  // localStorage.removeItem('savedState');
-  // }
-
-    
   render(){
       const { items, copyItems} = this.props;
       console.log(this.state.itemsAndQuantities);
