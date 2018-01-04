@@ -9,16 +9,18 @@ export default class CartItem extends Component {
     this.state = {
       quantity: 1,
       initial_price: parseFloat(item.price),
-      price: parseFloat(item.price)
-    
+      price: parseFloat(item.price),
     };
+    
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
     this.updateCartTotal = this.updateCartTotal.bind(this);
     this.deleteAndUpdateCart = this.deleteAndUpdateCart.bind(this);
     this.props.calculateCart(this.state.initial_price);
     this.props.updateItemsAndQuantities(item.id, this.state.quantity);
+
   }
+
 
   increment(item_id){
     const currentPrice = this.state.initial_price;
@@ -70,6 +72,7 @@ export default class CartItem extends Component {
           <button className="decrement" onClick={() => this.decrement(item.id)}>-</button>
           <button className="remove" onClick={() => this.deleteAndUpdateCart(item)}>X</button>
           <p>Item Total: {this.state.price} EGP</p>
+          <p>quantity: {this.state.quantity} </p>
         </div>
       </div>
     )}

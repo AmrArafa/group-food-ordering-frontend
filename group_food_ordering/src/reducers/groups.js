@@ -1,7 +1,8 @@
 import {
     GET_GROUPS_LOADING, GET_GROUPS_SUCCESS, GET_GROUPS_FAILURE, 
     COPY_ITEMS, 
-    CREATE_ORDER, 
+    CREATE_ORDER_LOADING,CREATE_ORDER_SUCCESS,CREATE_ORDER_FAILURE,
+    CREATE_SINGLE_ORDER_LOADING,CREATE_SINGLE_ORDER_SUCCESS,CREATE_SINGLE_ORDER_FAILURE,
     CREATE_GROUP_LOADING,CREATE_GROUP_SUCCESS,CREATE_GROUP_FAILURE} from '../actions/groups';
 
 const INITIAL_STATE = {
@@ -10,7 +11,10 @@ const INITIAL_STATE = {
     error: null,
     items: [],
     creating: false,
-    errorCreating: null
+    errorCreating: null,
+    itemsIdsAndQuantity: [],
+    order: '',
+    cartTotal: 0
 }
 
 
@@ -25,11 +29,23 @@ export default (currentState = INITIAL_STATE, action) => {
             return {...currentState, loading: false, error: action.error};
 
         case COPY_ITEMS:
-            return {...currentState, items: action.items};
+            return {...currentState, items: action.items, itemsIdsAndQuantity: action.itemsIdsAndQuantity, cartTotal: action.cartTotal};
 
+            // create order
+        case CREATE_ORDER_LOADING:
+            return {...currentState, adding: true};
+        case CREATE_ORDER_SUCCESS:
+            return {...currentState, adding: false, order: action.order};
+        case CREATE_ORDER_FAILURE:
+            return {...currentState, adding: false, errorAdding: action.error};     
 
-        case CREATE_ORDER:
-            return {...currentState, items: action.items};  
+                // create single order
+        case CREATE_SINGLE_ORDER_LOADING:
+            return {...currentState, adding: true};
+        case CREATE_SINGLE_ORDER_SUCCESS:
+            return {...currentState, adding: false, orders: action.order};
+        case CREATE_SINGLE_ORDER_FAILURE:
+            return {...currentState, adding: false, errorAdding: action.error};         
 
         // Create group
         case CREATE_GROUP_LOADING:

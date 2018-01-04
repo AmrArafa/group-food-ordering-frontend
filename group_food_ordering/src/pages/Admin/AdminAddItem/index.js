@@ -5,6 +5,7 @@ import { Route, Link } from 'react-router-dom';
 
 export default class AdminAddItemPage extends Component {
     render (){
+    	if (localStorage.Admin) {
         return (
             <div>
                 <Link to="/" onClick={() => logout()}>Log out</Link>
@@ -12,5 +13,12 @@ export default class AdminAddItemPage extends Component {
                 <Route path="/admin/menu/add" component={AdminAddItem} />
             </div>
         )
+    }else {
+    	return(
+    			<div>
+    				<h1> you can't be here </h1>
+    			</div>
+    			)
+    }
     }
 }

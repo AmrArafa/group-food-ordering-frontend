@@ -3,7 +3,6 @@ import './index.css';
 import CartItem from '../../containers/CartItemContainer';
 import { Link, Route } from 'react-router-dom';
 import {Button } from 'reactstrap';
-import OptionsPage from '../../pages/OptionsPage';
 
 export default class Cart extends Component {
 
@@ -11,10 +10,19 @@ export default class Cart extends Component {
     super();
     this.state = {
       cartTotal: 0,
-      itemsAndQuantities: []
+      quantityForItem: 0,
+      itemsAndQuantities: [],
     }
     this.calculateCartTotal = this.calculateCartTotal.bind(this);
+    this.getItemId = this.getItemId.bind(this);
+    this.calculateCartTotal = this.calculateCartTotal.bind(this);
     this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
+  }
+
+  getItemId(id){
+    this.setState({
+      ids: [...this.state.ids , id]
+    });
   }
 
   calculateCartTotal(newPrice){
@@ -22,10 +30,6 @@ export default class Cart extends Component {
       cartTotal: this.state.cartTotal + newPrice
     });
   }
-
-  // componentWillMount(){
-  //   localStorage.setItem('statesArray', []);
-  // }
 
   updateItemsAndQuantities(item_id,quantity){
     var newArray = this.state.itemsAndQuantities.slice();
@@ -55,6 +59,7 @@ export default class Cart extends Component {
     this.setState({
       itemsAndQuantities: newArray
     });
+  
   }
 
   render(){
@@ -64,12 +69,18 @@ export default class Cart extends Component {
       <div className='cart'>
         <p>Your Cart</p>
         {items.map((item) => {
-          return (
-          <CartItem item={item} calculateCart={this.calculateCartTotal} updateItemsAndQuantities={this.updateItemsAndQuantities}/>
-          )}
-        )}
-        <p>Cart Total: {this.state.cartTotal} EGP</p>
-        <Link onClick={() => copyItems(this.state.itemsAndQuantities)} to="/options">Confirm your Order</Link>
-      </div>
-  )}
+
+      return  (
+                <CartItem item={item} calculateCart={this.calculateCartTotal} calculateQuantity={this.claculateQuantities} updateItemsAndQuantities={this.updateItemsAndQuantities} getItemId={this.getItemId}/>
+                            )
+                    }
+                    )}
+      <p>Cart Total: {this.state.cartTotal} EGP</p>
+        
+      <Link className={items.length === 0? 'invisible' : 'visible'} onClick={() => copyItems(items, this.state.itemsAndQuantities)} to="/options">Confirm your Order</Link>
+    
+</div>
+        )
+  }
+
 }

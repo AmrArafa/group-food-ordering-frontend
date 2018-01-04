@@ -2,14 +2,13 @@ import { connect } from 'react-redux';
 import AdminItems from '../components/Admin/AdminItems';
 import { getItemsLoading, getItems, getItemsSuccess, getItemsFailure,
         deleteItemLoading, deleteItem, deleteItemSuccess, deleteItemFailure
-         } from '../actions/items';
-import { sendItemToEdit } from '../actions/sendItemToEdit';
+         } from '../actions/Admin/items';
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items.items,
-        loading: state.items.loading,
-        error: state.items.error
+        items: state.adminItems.items,
+        loading: state.adminItems.loading,
+        error: state.adminItems.error
     }
 }
 
@@ -38,11 +37,7 @@ const mapDispatchToProps = (dispatch) => {
                     }
                 })
             }, 1)
-        },
-        sendItem: (item) => {
-                dispatch(sendItemToEdit(item))
-           }
-
+        }
     }
 }
 

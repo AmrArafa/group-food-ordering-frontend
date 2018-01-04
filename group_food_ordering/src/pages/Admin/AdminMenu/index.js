@@ -12,5 +12,21 @@ export default class AdminPage extends Component {
               <Route path="/admin/menu" exact component={AdminItems} />
             </div>
         )
+    	if (localStorage.Admin) {
+	        return (
+	            <div>
+	                <h2>Admin menu Page</h2>
+	                <Route path="/admin/menu" exact component={AdminItems} />
+	            </div>
+	        )
+    		
+    	}
+    	else {
+    		return(
+    			<div>
+    				<h1> you can't be here </h1>
+    			</div>
+    			)
+    	}
     }
 }
