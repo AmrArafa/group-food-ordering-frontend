@@ -6,3 +6,8 @@
 	width: 270px;
 	float: left;
 }
+
+
+.alert{
+	background: red;
+}

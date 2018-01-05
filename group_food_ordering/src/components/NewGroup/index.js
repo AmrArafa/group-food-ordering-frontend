@@ -4,8 +4,10 @@ import Axios from 'axios';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
 import Checkout from '../Checkout';
+import moment from 'moment';
 
-class Order extends Component {
+
+class NewGroup extends Component {
     constructor(props){
       super(props);
       this.state = {
@@ -14,13 +16,18 @@ class Order extends Component {
     }
 
     render(){
-        const { order } = this.props;
-            if (Object.keys(order).length !== 0) {
+        const { group } = this.props;
+        var now = moment();
+        var a = moment(now,'YYYY-MM-DD HH:mm:ss');
+        var b = moment(group.time_frame,'YYYY-MM-DD HH:mm:ss');
+        var diffMinutes = b.diff(a, 'minutes');
+
+            if (Object.keys(group).length !== 0) {
                 return (
                 <div className= 'order'>
                 <h3>Your Order</h3>
                     {
-                        order.items.map(item => {
+                        group.orders[0].items.map(item => {
                             return (
                                 <div>
                                     {item.name} <br/>
@@ -31,13 +38,25 @@ class Order extends Component {
                         })
                     }
 
-                  Total Price:   {order.totalPrice} EGP <br/>
+                  Total Price:   {group.totalPrice} EGP <br/>
+
+                  Group order created by: {group.creator_first_name}  {group.creator_last_name} <br/>
+                  Group order will be fired within: {diffMinutes} minutes <br/>
+                  Members: <br/> {(group.members).map((member) => {
+                    return  (
+                <div>
+                {member.first_name} {member.last_name}
+                </div>        
+                )
+                }
+                )}
+
                   <Button >Pay On Delivery </Button>
                  <Checkout
                     name={'Pay for your order'}
                     description={'life is easy'}
-                    amount={order.totalPrice}  
-                    order={order}                                                  />    
+                    amount={group.totalPrice}  
+                                                                     />    
                 </div>
                 )
             }
@@ -51,8 +70,8 @@ class Order extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        order: state.groups.order
+        group: state.groups.group
     }
 }
 
-export default connect(mapStateToProps)(Order);
+export default connect(mapStateToProps)(NewGroup);

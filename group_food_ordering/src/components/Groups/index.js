@@ -6,6 +6,7 @@ import Cart from '../../containers/CartContainer';
 import {Button } from 'reactstrap';
 import moment from 'moment';
 import { Link, Route } from 'react-router-dom';
+import jwt from 'jsonwebtoken';
 
 export default class Groups extends Component {
 
@@ -19,7 +20,6 @@ export default class Groups extends Component {
             itemsAndQuantities: []
         }
         this.calculateCartTotal = this.calculateCartTotal.bind(this);
-         // this.claculateQuantities = this.claculateQuantities.bind(this);
         this.calculateCartTotal = this.calculateCartTotal.bind(this);
         this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
     }    
@@ -79,8 +79,10 @@ export default class Groups extends Component {
   }
 
     render(){
-   
       const { order, items, groups, loading, error, createGroup, itemsIdsAndQuantity, createSingleOrder} = this.props;
+      const token = localStorage.getItem('jwtToken');
+      const loggedInUserIdObject = jwt.decode(token);
+      const loggedInUserId = loggedInUserIdObject.user_id;
 
       if(loading){
             return (
@@ -104,7 +106,7 @@ export default class Groups extends Component {
                             )
                     }
                     )} <br/>
-<div className='clearfix'>
+<div className={groups.length === 0 || itemsIdsAndQuantity.length === 0? 'invisible' : 'visible clearfix'}>
         <h3 >Join a Group Order</h3>
       
       {groups.map((group) => {
@@ -114,15 +116,16 @@ export default class Groups extends Component {
                     }
                     )}
 </div>
+<div className={itemsIdsAndQuantity.length === 0? 'invisible' : 'visible'}>
       <h3>Create a New Group Order</h3>
       Make your order after: 
       <input type="number" value={this.state.timeframe} onChange={this.handleNewGroup.bind(this)} step="30" required/> minutes.
-      <Button onClick={() => createGroup(this.state.formattedTime, itemsIdsAndQuantity)}>Create</Button> <br/>
-      
+       <Link onClick={() => createGroup(this.state.formattedTime, itemsIdsAndQuantity, loggedInUserId)} to='/options/newgroup'>Create</Link> <br/>
+       <h3>
         <Link onClick={() => createSingleOrder(itemsIdsAndQuantity)} to='/options/order'>Order Immediately</Link>
-      
+      </h3>
 
-
+</div>
 </div>
       )
         }

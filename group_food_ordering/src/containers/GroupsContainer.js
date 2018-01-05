@@ -3,13 +3,14 @@ import Groups from '../components/Groups';
 import {
     getGroupsLoading, getGroups, getGroupsSuccess, getGroupsFailure,
     createGroupLoading, createGroup, createGroupSuccess, createGroupFailure,
-    createOrderLoading, createOrder, createOrderSuccess, createOrderFailure
-, createSingleOrder, createSingleOrderLoading, createSingleOrderSuccess, createSingleOrderFailure
+    // createOrderLoading, createOrder, createOrderSuccess, createOrderFailure
+createSingleOrder, createSingleOrderLoading, createSingleOrderSuccess, createSingleOrderFailure
 } from '../actions/groups';
 
 const mapStateToProps = (state) => {
     return {
         groups: state.groups.groups,
+        group: state.groups.group,
         loading: state.groups.loading,
         error: state.groups.error,
         items: state.groups.items,
@@ -35,35 +36,33 @@ const mapDispatchToProps = (dispatch) => {
                
         },
 
-        createGroup: (timeframe, itemsIdsAndQuantity) => {
+        createGroup: (timeframe, itemsIdsAndQuantity, loggedInUserId) => {
             dispatch(createGroupLoading());
-                dispatch(createGroup(timeframe, itemsIdsAndQuantity)).then(response => {
+                dispatch(createGroup(timeframe, itemsIdsAndQuantity, loggedInUserId)).then(response => {
                     if(response.payload.status < 400){
                         dispatch(createGroupSuccess(response.payload.data));
-                        window.location.reload();
                     }else{
                         dispatch(createGroupFailure(response.payload.message));
                     }
                 })
         },
 
-         createOrder: (id, itemsIdsAndQuantity) => {
-             dispatch(createOrderLoading());
-                dispatch(createOrder(id, itemsIdsAndQuantity)).then(response => {
-                    if(response.payload.status < 400){
-                        dispatch(createOrderSuccess(response.payload.data));
+        //  createOrder: (id, itemsIdsAndQuantity) => {
+        //      dispatch(createOrderLoading());
+        //         dispatch(createOrder(id, itemsIdsAndQuantity)).then(response => {
+        //             if(response.payload.status < 400){
+        //                 dispatch(createOrderSuccess(response.payload.data));
                         
-                    }else{
-                        dispatch(createOrderFailure(response.payload.message));
-                    }
-                })
-        },
+        //             }else{
+        //                 dispatch(createOrderFailure(response.payload.message));
+        //             }
+        //         })
+        // },
 
            createSingleOrder: (itemsIdsAndQuantity) => {
              dispatch(createSingleOrderLoading());
                 dispatch(createSingleOrder(itemsIdsAndQuantity)).then(response => {
-                    if(response.payload.status < 400){
-                        console.log('container', response.payload.data)         
+                    if(response.payload.status < 400){       
                         dispatch(createSingleOrderSuccess(response.payload.data));
                        
                     }else{

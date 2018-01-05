@@ -3,6 +3,7 @@ import './index.css';
 import CartItem from '../../containers/CartItemContainer';
 import { Link, Route } from 'react-router-dom';
 import {Button } from 'reactstrap';
+import jwt from 'jsonwebtoken';
 
 export default class Cart extends Component {
 
@@ -26,6 +27,9 @@ export default class Cart extends Component {
   }
 
   calculateCartTotal(newPrice){
+    const token = localStorage.getItem('jwtToken');
+    const loggedInUserID = jwt.decode(token);
+    console.log(loggedInUserID.user_id);
     this.setState({
       cartTotal: this.state.cartTotal + newPrice
     });
