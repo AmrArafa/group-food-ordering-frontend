@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Group from '../components/Group';
 import {
-    createOrder, createOrderItems
+   createOrderLoading, createOrder, createOrderSuccess, createOrderFailure
 } from '../actions/groups';
 
 const mapStateToProps = (state) => {
@@ -11,17 +11,23 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createOrder : (id, itemsIdsAndQuantity) => {
-          
-                dispatch(createOrder(id, itemsIdsAndQuantity))
-           }
+            createOrder: (id, itemsIdsAndQuantity) => {
+             dispatch(createOrderLoading());
+                dispatch(createOrder(id, itemsIdsAndQuantity)).then(response => {
+                    if(response.payload.status < 400){
+                        dispatch(createOrderSuccess(response.payload.data));
+                        
+                    }else{
+                        dispatch(createOrderFailure(response.payload.message));
+                    }
+                })
+        }
 }
 }
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     
     return {
-        // Find the user with the id passed from the url by the route
         ...stateProps,
         ...dispatchProps,
         ...ownProps

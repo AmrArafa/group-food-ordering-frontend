@@ -7,6 +7,8 @@ import SignUpPage from './pages/SignUpPage'
 import ItemsPage from './pages/ItemsPage';
 import OptionsPage from './pages/OptionsPage';
 import OrderPage from './pages/OrderPage';
+import NewGroupPage from './pages/NewGroupPage';
+import JoinGroupPage from './components/JoinGroup';
 import AdminPage from './pages/Admin/AdminMenu';
 import AdminEditItem from './pages/Admin/AdminEditItem';
 import AdminAddItem from './pages/Admin/AdminAddItem';
@@ -59,7 +61,9 @@ class App extends Component {
         </div>
        
         <Route path="/options" exact component={OptionsPage} />
-        <Route path='/options/order' component={OrderPage}/>            
+        <Route path='/options/order' component={OrderPage}/> 
+        <Route path='/options/newgroup' component={NewGroupPage}/> 
+        <Route path='/options/joingroup/:id' component={JoinGroupPage}/>           
       </div>
     );
 
