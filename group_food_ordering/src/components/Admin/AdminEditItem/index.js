@@ -24,7 +24,8 @@ export default class AdminEditItems extends Component {
     }
      componentWillReceiveProps(nextProps) {
       if (this.props.item.id != nextProps.item.id) {
-        this.setState({...this.state, name: nextProps.item.name,
+        this.setState({...this.state,
+         name: nextProps.item.name,
          price: nextProps.item.price,
           image_url: nextProps.item.image.url });
       }
