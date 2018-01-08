@@ -11,8 +11,11 @@ import AdminPage from './pages/Admin/AdminMenu';
 import AdminEditItem from './pages/Admin/AdminEditItem';
 import AdminAddItem from './pages/Admin/AdminAddItem';
 import Users from './pages/Admin/Users';
+import Admins from './pages/Admin/Admins';
 import AdminLogIn from './pages/Admin/AdminLogIn';
 import logout from './utils/logout';
+import AdminRegistration from './pages/Admin/AdminRegistration';
+
 
 class App extends Component {
   render() {
@@ -31,6 +34,7 @@ class App extends Component {
             <Route path="/admin" exact component={AdminLogIn} />
             <Route path="/admin/menu" exact component={AdminPage} />
              <Route path="/admin/users" exact component={Users} />
+             <Route path="/admin/admins" exact component={Admins} />
             <Route path="/admin/menu/edit" component={AdminEditItem} />
             <Route path="/admin/menu/add" component={AdminAddItem} />
           </Switch>
@@ -71,13 +75,12 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Almakinah Resturant</h1>
         </header>
-         <p>logIn as User <Link to="/">login</Link></p>
-         <p>logIn as Admin <Link to="/admin">login</Link></p>
          <div className="App-container">
           <Switch>
             <Route path="/" exact component={LogInPage} />
             <Route path="/admin" exact component={AdminLogIn} />
             <Route path="/signup" exact component={SignUpPage} />
+            <Route path="/invitations" component={AdminRegistration} />
           </Switch>
         </div>
        
