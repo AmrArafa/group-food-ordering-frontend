@@ -2,13 +2,13 @@ import { connect } from 'react-redux';
 import Users from '../components/Admin/Users';
 import { getUsersLoading, getUsers, getUsersSuccess, getUsersFailure,
         deleteUserLoading, deleteUser, deleteUserSuccess, deleteUserFailure
-         } from '../actions/users';
+         } from '../actions/Admin/users';
 
 const mapStateToProps = (state) => {
     return {
-        users: state.users.users,
-        loading: state.users.loading,
-        error: state.users.error
+        users: state.adminUsers.users,
+        loading: state.adminUsers.loading,
+        error: state.adminUsers.error
     }
 }
 

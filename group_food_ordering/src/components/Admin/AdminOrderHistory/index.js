@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import './index.css';
-import  User from '../User';
-import { Button } from 'reactstrap';
+import './index.css';	
+import AdminOrder from '../AdminOrder';
 import { Link } from 'react-router-dom';
-
-
-export default class Users extends Component {
-     componentWillMount(){
-        this.props.getUsers();
+export default class AdminOrderHistory extends Component {
+    constructor(props) {
+      super(props);
     }
+    componentWillMount(){
+        this.props.getOrders();
+    }
+
     render(){
-        const { users, loading, error, deleteUser} = this.props;
+    	 const { orders, loading, error } = this.props;
         if(loading){
             return (
                 <p>Is loading</p>
@@ -21,12 +22,12 @@ export default class Users extends Component {
                 )
         }else{
             return (
-                <div className='users'>
-                    <p>Users</p>
-                    {users.map((user) => {
+                <div className='adminItem'>
+                    <p>Order History</p>
+                    {orders.map((order) => {
                      return  (
-                        <User user={user} 
-                        handleDelete={deleteUser}
+                        <AdminOrder order={order} 
+                        handleDelete={deleteItem}
                          />
                         )
                      })
@@ -35,7 +36,5 @@ export default class Users extends Component {
                  
                 )
         }
-    }
+    )}
 }
-
-
