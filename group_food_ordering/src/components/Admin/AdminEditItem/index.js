@@ -77,8 +77,7 @@ export default class AdminEditItems extends Component {
           </div>
         </form>
 
-
-        <Button onClick={() => editItem(item.id, itemEdit)}> <Link to="/admin/menu">Submit</Link> </Button>
+<Link onClick={() => editItem(item.id, itemEdit)} to="/admin/menu">Submit</Link>
 
        </div>
        

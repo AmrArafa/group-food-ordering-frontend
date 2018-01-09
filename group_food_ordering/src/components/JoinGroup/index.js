@@ -75,7 +75,8 @@ class JoinGroup extends Component {
                  <Checkout
                     name={'Pay for your order'}
                     description={'life is easy'}
-                    amount={order.totalPrice}  
+                    amount={order.totalPrice * 100}
+                    id = {order.id}
                                             />    
                 </div>
                 )

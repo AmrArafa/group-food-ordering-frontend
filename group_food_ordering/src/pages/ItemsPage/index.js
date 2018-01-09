@@ -9,6 +9,7 @@ export default class ItemsPage extends Component {
         return (
           <div>
             <Link to="/" onClick={() => logout()}>Log out</Link>
+            <Link to="/orderhistory">Check your orders</Link>
             <Items className="items"/>
           </div>
         )

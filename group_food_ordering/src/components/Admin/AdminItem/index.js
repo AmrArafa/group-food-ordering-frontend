@@ -18,7 +18,7 @@ export default class Item extends Component {
        <CardBody>
           <CardText>{item.name}</CardText>
           <CardText>{item.price} EGP</CardText>
-          <Button ><Link to={`/admin/menu/edit/${item.id}`}>Edit</Link></Button>
+          <Link to={`/admin/menu/edit/${item.id}`}>Edit</Link>
           <Button onClick={() => handleDelete(item.id)} > Delete </Button>
         </CardBody>
         </Card>

@@ -1,65 +1,59 @@
-import React from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 import STRIPE_PUBLISHABLE from '../../constants/stripe';
+import { Link, Redirect } from 'react-router-dom';
 
-const CURRENCY = 'EGP';
+export default class Checkout extends Component {
 
-const fromEuroToCent = amount => amount * 100;
+  constructor(){
+    super();
+    this.state = {
+      paid: false,
+    }
+  }
 
-const successPayment = (order, data) => {
-  console.log(data);
-  // const {id} = this.props.order;
+successPayment = (data) => {
+  const {id} = this.props;
   alert('Payment Successful');
-  // axios.patch(`http://localhost:3000/orders/${id}`,
-  //   {
-  //     paid: true
-  //   })
-};
+  axios.patch(`http://localhost:3000/orders/${id}`,
+    {
+      paid: true
+    })
+    .then(() => {
+       this.setState({paid: true})
+     })
+}
 
+errorPayment = (data) => {
+alert('Payment Error');
+}
 
-// const updatePayment = data => {
-//    const {id} = this.props.order;
-//    axios.patch(`http://localhost:3000/orders/${id}`,
-//     {
-//        paid: true
-//     })
-// };
-
-const errorPayment = data => {
-  
-  alert('Payment Error');
-  console.log(data);
-
-};
-
-const onToken = (amount, description, order) => token =>
+onToken = (amount, description) => token =>
 
    axios.post('http://localhost:3000/charges',
     {
       stripeToken: token.id,
-      amount: fromEuroToCent(amount),
+      amount: amount,
       description,
-      currency: CURRENCY
+      currency: 'EGP'
     })
-    .then(successPayment.bind(null, order))
-    .catch(errorPayment);
+    .then(this.successPayment)
+    .catch(this.errorPayment);
 
-const Checkout = ({ name, description, amount, order}) =>{
-  console.log(this);
-
-return(
+render(){
+  if (this.state.paid){
+      return <Redirect to="/menu" />
+    }
+  const {description, amount, name} = this.props;
+  return(
   <StripeCheckout
    name={name}
    description={description}
-   amount={fromEuroToCent(amount)}
-   token={onToken(amount, description)}
-  currency={CURRENCY}
+   amount={amount}
+   token={this.onToken(amount, description)}
+  currency={'EGP'}
     stripeKey={STRIPE_PUBLISHABLE}
-    order={order}
   />)
+  }
 }
-
-export default Checkout;
-
-
