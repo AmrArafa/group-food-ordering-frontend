@@ -17,6 +17,7 @@ import Admins from './pages/Admin/Admins';
 import AdminLogIn from './pages/Admin/AdminLogIn';
 import logout from './utils/logout';
 import AdminRegistration from './pages/Admin/AdminRegistration';
+import AdminHome from './pages/Admin/Home'
 
 
 class App extends Component {
@@ -27,13 +28,16 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Almakinah Restaurant</h1>
         </header>
-        <Link to="/admin/menu">AdminMenu</Link>
+        <Link to="/admin/menu">Menu</Link>
         <Link to="/admin/users">Users</Link>
+        <Link to="/admin/admins">Adims</Link>
+        <Link to="/admin/home">Home</Link>
         <Link to="/" onClick={() => logout()}>Log out</Link>
 
         <div className="App-container">
           <Switch>
             <Route path="/admin" exact component={AdminLogIn} />
+            <Route path="/admin/home" component={AdminHome} />
             <Route path="/admin/menu" exact component={AdminPage} />
              <Route path="/admin/users" exact component={Users} />
              <Route path="/admin/admins" exact component={Admins} />

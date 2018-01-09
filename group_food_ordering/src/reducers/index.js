@@ -6,6 +6,7 @@ import items from './items';
 import cart from './cart';
 import groups from './groups';
 import users from './users';
+import AdminDashBoard from './Admin/dashBoard'
 
 const rootReducer = combineReducers({
     items,
@@ -14,9 +15,8 @@ const rootReducer = combineReducers({
     users,
     adminItems,
     admins,
-    adminUsers
-    
-
+    adminUsers,
+    AdminDashBoard
 })
 
 export default rootReducer;

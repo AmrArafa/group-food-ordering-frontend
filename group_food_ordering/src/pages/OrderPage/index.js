@@ -6,9 +6,7 @@ import { Link, Route } from 'react-router-dom';
 export default class OrderPage extends Component {
     render (){
         return (
-            <div>
-           
-               
+            <div>              
                 <Order />
             </div>
         )
