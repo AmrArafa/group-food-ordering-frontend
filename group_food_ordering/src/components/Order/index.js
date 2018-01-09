@@ -15,6 +15,8 @@ class Order extends Component {
 
     render(){
         const { order } = this.props;
+        const price = order.totalPrice * 100
+
             if (Object.keys(order).length !== 0) {
                 return (
                 <div className= 'order'>
@@ -36,8 +38,8 @@ class Order extends Component {
                  <Checkout
                     name={'Pay for your order'}
                     description={'life is easy'}
-                    amount={order.totalPrice}  
-                    order={order}                                                  />    
+                    amount={price}
+                    id={order.id}                                                  />    
                 </div>
                 )
             }

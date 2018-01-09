@@ -6,7 +6,9 @@ import { Link, Route } from 'react-router-dom';
 export default class ItemsPage extends Component {
     render (){
         return (
-          <div>
+          <div>        
+            <Link to="/orderhistory">Check your orders</Link>
+
             <Items className="items"/>
           </div>
         )

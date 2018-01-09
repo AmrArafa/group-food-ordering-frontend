@@ -15,16 +15,16 @@ export default class Cart extends Component {
       itemsAndQuantities: [],
     }
     this.calculateCartTotal = this.calculateCartTotal.bind(this);
-    this.getItemId = this.getItemId.bind(this);
+    // this.getItemId = this.getItemId.bind(this);
     this.calculateCartTotal = this.calculateCartTotal.bind(this);
     this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
   }
 
-  getItemId(id){
-    this.setState({
-      ids: [...this.state.ids , id]
-    });
-  }
+  // getItemId(id){
+  //   this.setState({
+  //     ids: [...this.state.ids , id]
+  //   });
+  // }
 
   calculateCartTotal(newPrice){
     const token = localStorage.getItem('jwtToken');

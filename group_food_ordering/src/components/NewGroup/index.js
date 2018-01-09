@@ -55,7 +55,8 @@ class NewGroup extends Component {
                  <Checkout
                     name={'Pay for your order'}
                     description={'life is easy'}
-                    amount={group.totalPrice}  
+                    amount={group.totalPrice} 
+                    id={group.orders[0].id}  
                                                                      />    
                 </div>
                 )
