@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
         admin: state.admins.admin,
         admins: state.admins.admins,
         loading: state.admins.loading,
-        error: state.admins.error,
+        error: state.admins.error
     }
 
 }

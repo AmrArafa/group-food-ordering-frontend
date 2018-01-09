@@ -9,6 +9,9 @@ export const itemApi = (id) => `${itemsApi}/${id}`;
 export const usersApi = `${rootApi}/users`;
 export const userApi = (id) => `${usersApi}/${id}`;
 
+export const AdminOrders = `${AdminRoot}/orders`;
+export const AdminOrder = (id) => `${AdminOrders}/${id}`;
+
 export const AdminitemsApi = `${AdminRoot}/items`;
 export const AdminitemApi = (id) => `${AdminitemsApi}/${id}`;
 
