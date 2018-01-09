@@ -22,12 +22,6 @@ export default class Users extends Component {
         }else{
             return (
                 <div className='users'>
-                    <from>
-                        <div className="itemName">
-                          <label>Invitation</label>
-                          <input type="text" />
-                        </div>          
-                    </from>
                     <p>Users</p>
                     {users.map((user) => {
                      return  (

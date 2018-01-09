@@ -9,7 +9,6 @@ export default class Admin extends Component {
 
     render(){
         const { admin, handleDelete } = this.props;
-        console.log('ADMIN', admin)
         return (
         <div className= 'oneItem'>
           

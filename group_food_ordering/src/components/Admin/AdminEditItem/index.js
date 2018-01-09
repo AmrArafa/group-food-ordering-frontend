@@ -53,7 +53,7 @@ export default class AdminEditItems extends Component {
           //   image: this.state.image,
           //   price: this.state.price
           // }
-            let itemEdit = new FormData();
+          let itemEdit = new FormData();
           itemEdit.append('name', this.state.name);
           itemEdit.append('image', this.state.image);
           itemEdit.append('price', this.state.price);
