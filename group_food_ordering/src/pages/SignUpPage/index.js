@@ -40,7 +40,8 @@ export default class SignUp extends Component{
       });
     })
     .catch(function (error) {
-      console.log(error);
+      alert(error.response.data.join('\n'));
+      console.log(error.response.data);
     });
   }
 

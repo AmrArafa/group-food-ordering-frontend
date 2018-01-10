@@ -40,6 +40,7 @@ export default class LogIn extends Component{
       });
     })
     .catch(function (error) {
+      alert(error.response.data.message);
       console.log(error.response.data);
     });
   }

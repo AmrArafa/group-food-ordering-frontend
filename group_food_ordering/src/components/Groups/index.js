@@ -17,11 +17,12 @@ export default class Groups extends Component {
             formattedTime: '',
             cartTotal: 0,
             quantityForItem: 0,
-            itemsAndQuantities: []
+            itemsAndQuantities: [],
+            cartArray: []
         }
         this.calculateCartTotal = this.calculateCartTotal.bind(this);
-        this.calculateCartTotal = this.calculateCartTotal.bind(this);
         this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
+        this.updateCartArray = this.updateCartArray.bind(this);
     }    
 
   calculateCartTotal(newPrice){
@@ -30,6 +31,35 @@ export default class Groups extends Component {
     });
   }
 
+  updateCartArray(itemName, itemPrice, quantity){
+    var newArray = this.state.cartArray.slice();
+    if (newArray.length === 0){
+      this.setState({
+        cartArray: [{name: itemName, price: itemPrice, quantity: quantity}]
+      });
+      return;
+    }
+    for (var i = 0; i < newArray.length; i++){
+      if (newArray[i].name === itemName){
+        if (quantity === 0){
+          newArray.splice(i, 1);
+          break;
+        }else if (quantity < 0){
+          newArray[i].quantity -= 1;
+          break;
+        }else{
+          newArray[i].quantity += 1;
+          break;
+        }
+      }else if(i === newArray.length - 1){
+        newArray.push({name: itemName, price: itemPrice, quantity: quantity});
+        break;
+      }
+    }
+    this.setState({
+      cartArray: newArray
+    });
+  }
 
   updateItemsAndQuantities(item_id,quantity){
     var newArray = this.state.itemsAndQuantities.slice();
@@ -76,6 +106,10 @@ export default class Groups extends Component {
     
   componentWillMount (){
     this.props.getGroups();
+    this.setState({
+      ...this.state,
+      cartArray: JSON.parse(localStorage.cartArray)
+    });
   }
 
     render(){
@@ -86,7 +120,7 @@ export default class Groups extends Component {
 
       if(loading){
             return (
-                <div>Is loading</div>
+                <div>Loading...</div>
             )
         }else if(error){
             return (
@@ -96,13 +130,21 @@ export default class Groups extends Component {
             )
         }else{
       return (
-        
-        <div className='allGroups '>
+        <div>
+          {JSON.parse(localStorage.cartArray).map((item) => {
+            return (
+              <div className="clearfix">
+                <p className="name-price">{item.name} {item.price}</p>
+                <p className="quantity">{item.quantity}</p>
+              </div>
+            )
+          })}
+        <div className='allGroups'>
 
 
         {items.map((item) => {
       return  (
-                <CartItem item={item}  calculateCart={this.calculateCartTotal} updateItemsAndQuantities={this.updateItemsAndQuantities} itemID={item.id} quantity={item.count} />
+                <CartItem item={item}  calculateCart={this.calculateCartTotal} updateItemsAndQuantities={this.updateItemsAndQuantities} itemID={item.id} quantity={item.count} updateCartArray={this.updateCartArray} />
                             )
                     }
                     )} <br/>
