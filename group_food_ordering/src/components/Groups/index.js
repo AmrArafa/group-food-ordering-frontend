@@ -139,15 +139,11 @@ export default class Groups extends Component {
               </div>
             )
           })}
+          <p>Cart total: {localStorage.cartTotal} EGP</p>
         <div className='allGroups'>
 
 
-        {items.map((item) => {
-      return  (
-                <CartItem item={item}  calculateCart={this.calculateCartTotal} updateItemsAndQuantities={this.updateItemsAndQuantities} itemID={item.id} quantity={item.count} updateCartArray={this.updateCartArray} />
-                            )
-                    }
-                    )} <br/>
+        
 <div className={groups.length === 0 || itemsIdsAndQuantity.length === 0? 'invisible' : 'visible clearfix'}>
         <h3 >Join a Group Order</h3>
       
@@ -177,3 +173,9 @@ export default class Groups extends Component {
 }
 
 
+// {items.map((item) => {
+//       return  (
+//                 <CartItem item={item}  calculateCart={this.calculateCartTotal} updateItemsAndQuantities={this.updateItemsAndQuantities} itemID={item.id} quantity={item.count} updateCartArray={this.updateCartArray} />
+//                             )
+//                     }
+//                     )} <br/>
