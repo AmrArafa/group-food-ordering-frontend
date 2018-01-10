@@ -21,7 +21,7 @@ export default class Item extends Component {
         var b = moment(order.time_frame,'YYYY-MM-DD HH:mm:ss');
         var diffMinutes = b.diff(a, 'minutes');
 
-        if (diffMinutes > 0) {
+        if (diffMinutes >= 0) {
         this.setState({
         order: 'current'
       })

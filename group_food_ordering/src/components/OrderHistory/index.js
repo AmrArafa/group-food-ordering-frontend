@@ -16,25 +16,6 @@ export default class OrderHistory extends Component {
       }
     }
 
-    deleteUnpaidOrders(){
-        const {orders} = this.state;
-        orders.map((order) => {
-            if (order.time_frame !== undefined){
-            var now = moment();
-            var a = moment(now,'YYYY-MM-DD HH:mm:ss');
-            var b = moment(order.time_frame,'YYYY-MM-DD HH:mm:ss');
-            var diffMinutes = b.diff(a, 'minutes');
-
-            if (diffMinutes <= 0 && order.paid == false) {
-                Axios.delete(`http://localhost:3000/orders/${order.id}`);
-            }
-
-        }
-    }
-        )
-
-    }
-
     cancelOrder(order, id){
         var newOrders = [...this.state.orders]
         if (newOrders.indexOf(order) != -1) {
