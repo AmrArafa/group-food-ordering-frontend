@@ -16,17 +16,9 @@ export default class Cart extends Component {
       cartArray: []
     }
     this.calculateCartTotal = this.calculateCartTotal.bind(this);
-    // this.getItemId = this.getItemId.bind(this);
-    this.calculateCartTotal = this.calculateCartTotal.bind(this);
     this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
     this.updateCartArray = this.updateCartArray.bind(this);
   }
-
-  // getItemId(id){
-  //   this.setState({
-  //     ids: [...this.state.ids , id]
-  //   });
-  // }
 
   calculateCartTotal(newPrice){
     const token = localStorage.getItem('jwtToken');
@@ -97,13 +89,9 @@ export default class Cart extends Component {
     });
   }
 
-  // componentWillMount(){
-  //   let a = [];
-  //   localStorage.setItem('cartItems', JSON.stringify(a));
-  // }
-
   componentWillUnmount(){
     localStorage.setItem('cartArray', JSON.stringify(this.state.cartArray));
+    localStorage.setItem('cartTotal', this.state.cartTotal);
   }
 
   render(){

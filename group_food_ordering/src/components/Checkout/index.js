@@ -18,7 +18,7 @@ successPayment = (data) => {
   alert('Payment Successful');
   axios.patch(`http://localhost:3000/orders/${id}`,
     {
-      paid: true
+      paid_online: true
     })
     .then(() => {
        this.setState({paid: true})

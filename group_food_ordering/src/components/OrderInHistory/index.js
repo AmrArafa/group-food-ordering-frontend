@@ -71,11 +71,11 @@ export default class Item extends Component {
                   Total Price:   {order.totalPrice} EGP <br/>
                   Ordered at: {orderTime} <br/>
                   {order.time_frame} <br/>
-                  {order.paid? 'true' :'false'} <br/>
+                  {order.paid_online? 'true' :'false'} <br/>
                   <h6 className={this.state.order === 'current'? 'visible' : 'invisible'}> Order will be fired within {diffMinutes} minutes. </h6>
                   <Button className={this.state.order === 'current'? 'visible' : 'invisible'} onClick={() => cancelOrder(order, order.id)}>Cancel Order</Button><br/>
                   {
-                    order.paid
+                    order.paid_online
                     ? 
                     console.log('none')
                     : 
