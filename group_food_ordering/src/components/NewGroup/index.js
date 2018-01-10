@@ -1,21 +1,38 @@
 import React, { Component } from 'react';
 import './index.css';	
-import Axios from 'axios';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
 import Checkout from '../Checkout';
 import moment from 'moment';
+import { Link, Redirect } from 'react-router-dom';
 
 
 class NewGroup extends Component {
     constructor(props){
       super(props);
       this.state = {
-        order: {}
+        order: {},
+        paid: false
       }
     }
 
+    willPayOnDelivery(){
+        const { id } = this.props.group.orders[0];
+        axios.patch(`http://localhost:3000/orders/${id}`,
+    {
+      will_pay_on_delivery: true
+    })
+    .then(() => {
+        alert('Thank you for completing the process.');
+       this.setState({paid: true})
+     })
+    }
+
     render(){
+         if (this.state.paid){
+      return <Redirect to="/menu" />
+        }
         const { group } = this.props;
         var now = moment();
         var a = moment(now,'YYYY-MM-DD HH:mm:ss');
@@ -51,11 +68,11 @@ class NewGroup extends Component {
                 }
                 )}
 
-                  <Button >Pay On Delivery </Button>
+                  <Button onClick={() => this.willPayOnDelivery()}>Pay On Delivery </Button>
                  <Checkout
                     name={'Pay for your order'}
                     description={'life is easy'}
-                    amount={group.totalPrice} 
+                    amount={group.totalPrice * 100} 
                     id={group.orders[0].id}  
                                                                      />    
                 </div>

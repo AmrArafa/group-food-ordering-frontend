@@ -3,6 +3,7 @@ import moment from 'moment';
 import './index.css'; 
 import { Button } from 'reactstrap';
 import Checkout from '../Checkout';
+import axios from 'axios';
 
 export default class Item extends Component {
   constructor(props){
@@ -12,6 +13,17 @@ export default class Item extends Component {
       }
     }
 
+       willPayOnDelivery(){
+        const { id } = this.props.order;
+        axios.patch(`http://localhost:3000/orders/${id}`,
+    {
+      will_pay_on_delivery: true
+    })
+    .then(() => {
+        alert('Thank you for completing the process. Your order will be delivered within 45 min.');
+       window.location.reload();
+     })
+    }
 
     checkCurrentOrder(){
       const { order } = this.props;
@@ -70,17 +82,17 @@ export default class Item extends Component {
 
                   Total Price:   {order.totalPrice} EGP <br/>
                   Ordered at: {orderTime} <br/>
-                  {order.time_frame} <br/>
-                  {order.paid? 'true' :'false'} <br/>
-                  <h6 className={this.state.order === 'current'? 'visible' : 'invisible'}> Order will be fired within {diffMinutes} minutes. </h6>
+              
+                  
+                  <h6 className={this.state.order === 'current'? 'visible' : 'invisible'}> Your group order will be fired within {diffMinutes} minutes. </h6>
                   <Button className={this.state.order === 'current'? 'visible' : 'invisible'} onClick={() => cancelOrder(order, order.id)}>Cancel Order</Button><br/>
                   {
-                    order.paid
+                    order.paid_online || order.will_pay_on_delivery
                     ? 
                     console.log('none')
                     : 
                     <div>
-                    <Button >Pay On Delivery </Button>
+                    <Button onClick={() => this.willPayOnDelivery()}>Pay On Delivery </Button>
                      <Checkout 
                     name={'Pay for your order'}
                     description={'life is easy'}

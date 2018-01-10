@@ -4,16 +4,29 @@ import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
 import Checkout from '../Checkout';
 import moment from 'moment';
+import { Link, Redirect } from 'react-router-dom';
 
 
 class JoinGroup extends Component {
     constructor(props){
       super(props);
       this.state = {
-        group: ''
+        group: '',
+        paid: false
       }
     }
 
+    willPayOnDelivery(){
+        const { id } = this.props.order;
+        Axios.patch(`http://localhost:3000/orders/${id}`,
+    {
+      will_pay_on_delivery: true
+    })
+    .then(() => {
+        alert('Thank you for completing the process.')
+       this.setState({paid: true})
+     })
+    }
 
     fetchGroup() {
         const {id} = this.props.match.params;
@@ -34,6 +47,9 @@ class JoinGroup extends Component {
     }
 
     render(){
+         if (this.state.paid){
+      return <Redirect to="/menu" />
+        }
         const {group} = this.state;
         const {order} = this.props;
 
@@ -71,7 +87,7 @@ class JoinGroup extends Component {
                 }
                 )}
 
-                  <Button >Pay On Delivery </Button>
+                  <Button onClick={() => this.willPayOnDelivery()}>Pay On Delivery </Button>
                  <Checkout
                     name={'Pay for your order'}
                     description={'life is easy'}

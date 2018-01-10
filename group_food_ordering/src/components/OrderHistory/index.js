@@ -44,7 +44,6 @@ export default class OrderHistory extends Component {
     }
     componentWillMount() {
         this.fetchOrders();
-        this.deleteUnpaidOrders();
     }
 
     render(){
