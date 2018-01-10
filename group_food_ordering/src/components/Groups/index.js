@@ -169,6 +169,7 @@ export default class Groups extends Component {
 
 </div>
 </div>
+</div>
       )
         }
 
