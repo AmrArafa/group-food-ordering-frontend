@@ -9,13 +9,14 @@ class Order extends Component {
     constructor(props){
       super(props);
       this.state = {
-        order: {},
-        loadingOrder: false
+        order: {}
       }
     }
 
     render(){
         const { order } = this.props;
+        const price = order.totalPrice * 100
+
             if (Object.keys(order).length !== 0) {
                 return (
                 <div className= 'order'>
@@ -25,7 +26,7 @@ class Order extends Component {
                             return (
                                 <div>
                                     {item.name} <br/>
-                                    Price: {item.price} <br/>
+                                    Price: {item.price} EGP<br/>
                                     Quantity: {item.quantity}<br/>
                                 </div>
                             )
@@ -37,8 +38,8 @@ class Order extends Component {
                  <Checkout
                     name={'Pay for your order'}
                     description={'life is easy'}
-                    amount={order.totalPrice}  
-                    order={order}                                                  />    
+                    amount={price}
+                    id={order.id}                                                  />    
                 </div>
                 )
             }

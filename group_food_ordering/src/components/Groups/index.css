@@ -11,3 +11,7 @@
 .increment, .quantity, .decrement {
   float: right;
 }
+
+.invisible{
+	display: none;
+}

@@ -68,10 +68,11 @@ export const createGroupLoading = () => {
         type: CREATE_GROUP_LOADING
     }
 }
-export const createGroup = (timeframe, itemsIdsAndQuantity) => {
+export const createGroup = (timeframe, itemsIdsAndQuantity, loggedInUserId) => {
     const payload = Axios.post('http://localhost:3000/groups', {
         group: {time_frame: timeframe,
         orders_attributes: [{
+            user_id: loggedInUserId,
             order_items_attributes: itemsIdsAndQuantity
         }]
     }
@@ -158,21 +159,3 @@ export const createSingleOrderFailure = (error) => {
         error
     }
 }
-
-
-// export const createOrderItems = (items) => {
-//     items.forEach((item)=>{
-//         const payload = Axios.post('http://localhost:8888/user/id/order/id/order_items', {
-//         quantity: item.count,
-//         item_id: item.id,
-//         order_id: payload.data.id
-//     });
-
-//     return {
-//         type: CREATE_ORDER_ITEMS,
-//         payload
-//     }
-
-//     })
-    
-// }

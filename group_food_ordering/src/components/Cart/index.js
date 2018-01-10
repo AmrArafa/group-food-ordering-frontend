@@ -3,6 +3,7 @@ import './index.css';
 import CartItem from '../../containers/CartItemContainer';
 import { Link, Route } from 'react-router-dom';
 import {Button } from 'reactstrap';
+import jwt from 'jsonwebtoken';
 
 export default class Cart extends Component {
 
@@ -15,19 +16,22 @@ export default class Cart extends Component {
       cartArray: []
     }
     this.calculateCartTotal = this.calculateCartTotal.bind(this);
-    this.getItemId = this.getItemId.bind(this);
+    // this.getItemId = this.getItemId.bind(this);
     this.calculateCartTotal = this.calculateCartTotal.bind(this);
     this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
     this.updateCartArray = this.updateCartArray.bind(this);
   }
 
-  getItemId(id){
-    this.setState({
-      ids: [...this.state.ids , id]
-    });
-  }
+  // getItemId(id){
+  //   this.setState({
+  //     ids: [...this.state.ids , id]
+  //   });
+  // }
 
   calculateCartTotal(newPrice){
+    const token = localStorage.getItem('jwtToken');
+    const loggedInUserID = jwt.decode(token);
+    console.log(loggedInUserID.user_id);
     this.setState({
       cartTotal: this.state.cartTotal + newPrice
     });

@@ -24,7 +24,8 @@ export default class AdminEditItems extends Component {
     }
      componentWillReceiveProps(nextProps) {
       if (this.props.item.id != nextProps.item.id) {
-        this.setState({...this.state, name: nextProps.item.name,
+        this.setState({...this.state,
+         name: nextProps.item.name,
          price: nextProps.item.price,
           image_url: nextProps.item.image.url });
       }
@@ -52,7 +53,7 @@ export default class AdminEditItems extends Component {
           //   image: this.state.image,
           //   price: this.state.price
           // }
-            let itemEdit = new FormData();
+          let itemEdit = new FormData();
           itemEdit.append('name', this.state.name);
           itemEdit.append('image', this.state.image);
           itemEdit.append('price', this.state.price);
@@ -77,8 +78,7 @@ export default class AdminEditItems extends Component {
           </div>
         </form>
 
-
-        <Button onClick={() => editItem(item.id, itemEdit)}> <Link to="/admin/menu">Submit</Link> </Button>
+<Link onClick={() => editItem(item.id, itemEdit)} to="/admin/menu">Submit</Link>
 
        </div>
        

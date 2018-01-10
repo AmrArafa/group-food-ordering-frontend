@@ -50,7 +50,7 @@ export default class LogIn extends Component{
 
   render(){
     if (this.state.redirect){
-      return <Redirect to="/admin/menu" />
+      return <Redirect to="/admin/home" />
     }
     return(
       <div>

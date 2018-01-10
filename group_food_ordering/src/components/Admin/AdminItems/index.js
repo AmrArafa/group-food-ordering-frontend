@@ -32,7 +32,7 @@ export default class AdminItems extends Component {
                         )
                      })
                      }
-                    <Button ><Link to="/admin/menu/add">Add New Item</Link></Button>
+                    <Link to="/admin/menu/add">Add New Item</Link>
                  </div>
                  
                 )
