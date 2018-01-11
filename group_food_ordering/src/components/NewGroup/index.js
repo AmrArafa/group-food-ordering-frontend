@@ -42,33 +42,48 @@ class NewGroup extends Component {
             if (Object.keys(group).length !== 0) {
                 return (
                 <div className= 'order'>
-                <h3>Your Order</h3>
+                <h3>Order Summary</h3>
                     {
                         group.orders[0].items.map(item => {
                             return (
-                                <div>
-                                    {item.name} <br/>
-                                    Price: {item.price} EGP<br/>
-                                    Quantity: {item.quantity}<br/>
+                                 <div className='clearfix'>
+                                <div className='left '>
+                                    <p>{item.name}</p>
+                                    <p className='quantity'>{item.quantity}</p>
+                                </div>    
+                                      <p className='right '>EGP {item.price} </p>
+                                    
                                 </div>
                             )
                         })
                     }
-
-                  Total Price:   {group.totalPrice} EGP <br/>
-
-                  Group order created by: {group.creator_first_name}  {group.creator_last_name} <br/>
-                  Group order will be fired within: {diffMinutes} minutes <br/>
-                  Members: <br/> {(group.members).map((member) => {
+                         ------------------------------------------------------------------------------------------------------
+                  <div className='clearfix'>
+                  <p className='string'>Total</p><p className='total'>  EGP {group.totalPrice}  </p>
+                  </div>
+                   <div className='clearfix'>
+                   <div className ='creator'>
+                  <h4>Group Order Creator </h4>
+                  <p>{group.creator_first_name}  {group.creator_last_name}  </p>
+                  </div>
+                  <div className='members'>
+                   <h4> Members </h4>
+                     {(group.members).map((member) => {
                     return  (
                 <div>
-                {member.first_name} {member.last_name}
+                <ul>
+               <li>{member.first_name} {member.last_name}</li>
+                </ul>
                 </div>        
                 )
                 }
                 )}
+                </div>
+                </div>
+                  <p className='text2'>Group order will be fired within {diffMinutes} minutes </p>
+                
 
-                  <Button onClick={() => this.willPayOnDelivery()}>Pay On Delivery </Button>
+                  <button className='delivery' onClick={() => this.willPayOnDelivery()}>Pay On Delivery </button>
                  <Checkout
                     name={'Pay for your order'}
                     description={'life is easy'}

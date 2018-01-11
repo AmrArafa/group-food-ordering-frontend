@@ -134,6 +134,7 @@ export default class Groups extends Component {
           {JSON.parse(localStorage.cartArray).map((item) => {
             return (
               <div className="clearfix">
+                <h3>Order Summary</h3>
                 <p className="name-price">{item.name} {item.price}</p>
                 <p className="quantity">{item.quantity}</p>
               </div>

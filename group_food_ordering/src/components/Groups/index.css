@@ -3,14 +3,11 @@
   display: table;
   clear: both;
 }
-
+/*
 .name-price {
   float: left;
-}
+}*/
 
-.increment, .quantity, .decrement {
-  float: right;
-}
 
 .invisible{
 	display: none;

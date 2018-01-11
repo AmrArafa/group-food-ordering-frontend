@@ -5,6 +5,7 @@ import { Button } from 'reactstrap';
 import Checkout from '../Checkout';
 import moment from 'moment';
 import { Link, Redirect } from 'react-router-dom';
+import './index.css';   
 
 
 class JoinGroup extends Component {
@@ -65,29 +66,43 @@ class JoinGroup extends Component {
                     {
                         order.items.map(item => {
                             return (
-                                <div>
-                                    {item.name} <br/>
-                                    Price: {item.price} EGP<br/>
-                                    Quantity: {item.quantity}<br/>
+                                  <div className='clearfix'>
+                                <div className='left '>
+                                    <p>{item.name}</p>
+                                    <p className='quantity'>{item.quantity}</p>
+                                </div>    
+                                      <p className='right '>EGP {item.price} </p>
+                                    
                                 </div>
                             )
                         })
                     }
+  ------------------------------------------------------------------------------------------------------
+                  <div className='clearfix'>
+                  <p className='string'>Total</p><p className='total'>  EGP {order.totalPrice}  </p>
+                  </div>
 
-                  Total Price:   {order.totalPrice} EGP <br/>
-
-                  Group order created by: {group.creator_first_name}  {group.creator_last_name} <br/>
-                  Group order will be fired within: {diffMinutes} minutes <br/>
-                  Members: <br/> {(group.members).map((member) => {
+                 <div className='clearfix'>
+                   <div className ='creator'>
+                  <h4>Group Order Creator </h4>
+                  <p>{group.creator_first_name}  {group.creator_last_name}  </p>
+                  </div>
+                  <div className='members'>
+                   <h4> Members </h4>
+                     {(group.members).map((member) => {
                     return  (
                 <div>
-                {member.user_first_name} {member.user_last_name}
+                <ul>
+               <li>{member.user_first_name} {member.user_last_name}</li>
+                </ul>
                 </div>        
                 )
                 }
                 )}
-
-                  <Button onClick={() => this.willPayOnDelivery()}>Pay On Delivery </Button>
+                </div>
+                </div>
+                <p className='text2'>Group order will be fired within {diffMinutes} minutes </p>
+                  <button className='delivery' onClick={() => this.willPayOnDelivery()}>Pay On Delivery </button>
                  <Checkout
                     name={'Pay for your order'}
                     description={'life is easy'}
