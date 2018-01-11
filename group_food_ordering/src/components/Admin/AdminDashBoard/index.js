@@ -22,9 +22,7 @@ export default class AdminDashBoard extends Component{
 
     render(){
     	const { dashboard, loadingDashBoard } = this.props;
-          console.log('THIS IS DASHBOARD')
-          console.log(dashboard)
-          console.log(this.props)
+          
          if ( dashboard != null ){
           var mostItemImg = `http://localhost:3000/${dashboard.mostItem.item.image.url}`
           var lessItemImg = `http://localhost:3000/${dashboard.lessItem.item.image.url}`

@@ -37,42 +37,8 @@ export default class AdminOrder extends Component {
     this.setState({ collapse: !this.state.collapse });
   }
 
-    checkCurrentOrder(){
-      const { order } = this.props;
-      if (order.time_frame !== undefined){
-        var now = moment();
-        var a = moment(now,'YYYY-MM-DD HH:mm:ss');
-        var b = moment(order.time_frame,'YYYY-MM-DD HH:mm:ss');
-        var diffMinutes = b.diff(a, 'minutes');
-
-        if (diffMinutes > 0) {
-        this.setState({
-        order: 'current'
-      })
-        } else {
-        this.setState({
-        order: 'previous'
-      });
-        }
-      }
-      else{
-        this.setState({
-        order: 'previous'
-      })
-      }
-
-    }
-
-    componentWillMount() {
-        this.checkCurrentOrder();
-    }
-  
-    render(){
+  render(){
       const { order, deliveredOrder,  paidOrder } = this.props;
-        var now = moment();
-        var momentNow = moment(now,'YYYY-MM-DD HH:mm:ss');
-        var momentOrder = moment(order.time_frame,'YYYY-MM-DD HH:mm:ss');
-        var diffMinutes = momentOrder.diff(momentNow, 'minutes');
         const date = this.props.order.created_at;
         var orderTime = moment(date).format('YYYY-MM-DD HH:mm:ss');
           if (Object.keys(order).length !== 0) {
@@ -88,7 +54,7 @@ export default class AdminOrder extends Component {
                             :
                             <p>Order has been delivered</p>
                           }
-                          {order.will_pay_on_delivery? 
+                          {order.will_pay_on_delivery === true && order.paid_online === false && order.paid_on_delivery ? 
                             <Button onClick={() => paidOrder(order.id)}> Order Paid</Button>
                             :
                             <p>Order paid</p> 
