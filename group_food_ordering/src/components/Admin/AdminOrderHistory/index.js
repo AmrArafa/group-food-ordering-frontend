@@ -20,15 +20,15 @@ export default class OrderHistory extends Component {
         var new_orders = orders.map((order) => {
             if (order.id === id){
                 order.paid_on_delivery = true;
-                order.will_pay_on_delivery = false;
              // this.setState({orders: {...orders, order}})
             }
+            return order
             // else{
             //     this.setState({orders: orders})
             // }
         })
         this.setState({orders: new_orders});
-        Axios.patch(adminOrder(id), {"paid_on_delivery": true, "will_pay_on_delivery": false});
+        Axios.patch(adminOrder(id), {"paid_on_delivery": true});
     }
     deliveredOrder(id){
         var orders = [...this.state.orders]
