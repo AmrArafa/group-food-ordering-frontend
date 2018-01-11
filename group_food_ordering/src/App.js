@@ -29,29 +29,40 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Almakinah Restaurant</h1>
+          <nav>
+            <ul>
+              <li><Link to="/admin/menu">Menu</Link></li>
+              <li><Link to="/admin/users">Users</Link></li>
+              <li><Link to="/admin/admins">Adims</Link></li>
+              <li><Link to="/admin/home">Home</Link></li>
+              <li><Link to="/admin/orders">Order History</Link></li>
+            </ul>
+          </nav>
+          <Link className="logout" to="/" onClick={() => logout()}>Log out</Link>
         </header>
-        <Link to="/admin/menu">Menu</Link>
-        <Link to="/admin/users">Users</Link>
-        <Link to="/admin/admins">Adims</Link>
-        <Link to="/admin/home">Home</Link>
-        <Link to="/admin/orders">Order History</Link>
-        <Link to="/" onClick={() => logout()}>Log out</Link>
-
         <div className="App-container">
           <Switch>
             <Route path="/admin" exact component={AdminLogIn} />
             <Route path="/admin/home" component={AdminHome} />
             <Route path="/admin/menu" exact component={AdminPage} />
-             <Route path="/admin/users" exact component={Users} />
-             <Route path="/admin/admins" exact component={Admins} />
+            <Route path="/admin/users" exact component={Users} />
+            <Route path="/admin/admins" exact component={Admins} />
             <Route path="/admin/menu/edit" component={AdminEditItem} />
             <Route path="/admin/menu/add" component={AdminAddItem} />
             <Route path="/admin/orders" component={AdminOrderHistory} />
           </Switch>
         </div>
-       
         <Route path="/options" exact component={OptionsPage} />
-        <Route path='/options/order' component={OrderPage}/>            
+        <Route path='/options/order' component={OrderPage}/>
+        <footer>
+          <div className="footer clearfix">
+            <p>&copy; Almakinah Restaurant</p>
+            <div id="footer-p">
+              <p><a href="#">Terms of Use</a></p>
+              <p><a href="#">Privacy Policy</a></p>
+            </div>
+          </div>
+        </footer>
       </div>
     );
 
@@ -60,9 +71,14 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Almakinah Resturant</h1>
+          <nav>
+            <ul>
+              <li><Link to="/menu">Menu</Link></li>
+              <li><Link to="/orderhistory">Check your orders</Link></li>
+            </ul>
+          </nav>
+          <Link className="logout" to="/" onClick={() => logout()}>Log out</Link>
         </header>
-        <Link to="/menu">Menu</Link>
-        <Link to="/" onClick={() => logout()}>Log out</Link>
         
         <div className="App-container">
           <Switch>
@@ -71,11 +87,20 @@ class App extends Component {
             <Route path="/signup" component={SignUpPage} />
           </Switch>
         </div>
-       <Route path='/orderhistory' component={OrderHistory}/> 
+        <Route path='/orderhistory' component={OrderHistory}/> 
         <Route path="/options" exact component={OptionsPage} />
         <Route path='/options/order' component={OrderPage}/> 
         <Route path='/options/newgroup' component={NewGroupPage}/> 
-        <Route path='/options/joingroup/:id' component={JoinGroupPage}/>           
+        <Route path='/options/joingroup/:id' component={JoinGroupPage}/>
+        <footer>
+          <div className="footer clearfix">
+            <p>&copy; Almakinah Restaurant</p>
+            <div id="footer-p">
+              <p><a href="#">Terms of Use</a></p>
+              <p><a href="#">Privacy Policy</a></p>
+            </div>
+          </div>
+        </footer>
       </div>
     );
 
@@ -95,8 +120,16 @@ class App extends Component {
             <Route path="/invitations" component={AdminRegistration} />
           </Switch>
         </div>
-       
-      </div>
+        <footer>
+          <div className="footer clearfix">
+            <p>&copy; Almakinah Restaurant</p>
+            <div id="footer-p">
+              <p><a href="#">Terms of Use</a></p>
+              <p><a href="#">Privacy Policy</a></p>
+            </div>
+          </div>
+        </footer>
+        </div>
          )
      }
     

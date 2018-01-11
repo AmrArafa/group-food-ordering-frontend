@@ -1,6 +1,6 @@
-.App {
+/*.App {
   text-align: center;
-}
+}*/
 
 * {
   box-sizing: border-box;
@@ -8,6 +8,8 @@
 
 html {
   background-color: white;
+  margin: 0;
+  padding: 0;
 }
 
 /*.App-logo {
@@ -21,10 +23,53 @@ html {
   background-color: #FFFFFF;
   height: 150px;
   background-size: 100%;
-  padding: 20px;
   color: white;
   position: relative;
-  border-bottom: 5px solid black;
+  margin-bottom: 2%;
+}
+
+.App-header nav li {
+  display: inline;
+  text-decoration: none;
+  padding: 4px;
+}
+
+.App-header nav ul {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border-radius: 0px 5px 0px 0px;
+}
+
+.App-header nav {
+  position: absolute;
+  bottom: 0;
+}
+
+.App-header nav a {
+  text-decoration: none;
+  color: #b22121;
+  /*border: 2px solid #b22121;*/
+  padding: 5px;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.App-header nav li + li {
+  border-left: 2px solid #b22121;
+}
+
+.App-header .logout {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  color: #b22121;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  padding: 0 0.5%;
+  text-decoration: none;
+  border-radius: 5px 0px 0px 0px;
 }
 
 .App-title {
@@ -34,15 +79,16 @@ html {
   font-family: 'Montserrat', sans-serif;
   font-weight: bolder;
   position: relative;
-  top: 20px;
+  top: 25%;
+  padding-left: 3%;
 }
 
-.App-intro {
+/*.App-intro {
   font-size: large;
-}
+}*/
 
 .items {
-  width: 80%;
+  
 }
 
 @keyframes App-logo-spin {
@@ -54,4 +100,40 @@ html {
   content: "";
   display: table;
   clear: both;
+}
+
+.footer {
+  margin: 0 auto;
+  border-top: 2px solid #b22121;
+  padding: 15px 0;
+}
+
+#footer-p {
+  float: right;
+}
+
+.footer p {
+  display: inline;
+  font-size: 9px;
+  color: #737373;
+}
+
+.footer > p {
+  padding-left: 0.8%;
+}
+
+footer a {
+  text-decoration: none;
+  color: #737373;
+}
+
+#footer-p > p {
+  padding-right: 10px; 
+}
+
+footer {
+  margin-top: 3%;
+  position: relative;
+  z-index: 0;
+  font-family: 'Montserrat', sans-serif;
 }
