@@ -172,3 +172,4 @@ export default class Groups extends Component {
         }
 
 }
+}

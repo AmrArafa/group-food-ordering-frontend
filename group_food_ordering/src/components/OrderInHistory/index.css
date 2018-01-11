@@ -15,8 +15,6 @@
 	text-align: center;
 	margin: auto;
 	margin-bottom: 20px;
-	/*border-radius: 10px;*/
-	/*border: solid 1px red;*/
 }
 
 .left{
@@ -31,6 +29,7 @@
 	color: #ff6008;
 	margin-right: 15px;
 	text-align: right;
+	margin-top: 15px;
 }
 
 .quantity{
@@ -42,7 +41,6 @@
 
 .total{
 	float: right;
-	margin-top: -30px;
 	font-weight: bold;
 	display: inline-block;
 	color: #ff6008;

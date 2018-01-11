@@ -77,7 +77,6 @@ export default class AdminOrder extends Component {
                                     <p>{item.name}</p> 
                                     <p>Price: {item.price} EGP</p> 
                                     <p>Quantity: {item.quantity}</p>
-                                 <h6 className={this.state.order === 'current'? 'visible' : 'invisible'}> Order will be fired within {diffMinutes} minutes. </h6>
                                  </div>
                                 )
                                 })
