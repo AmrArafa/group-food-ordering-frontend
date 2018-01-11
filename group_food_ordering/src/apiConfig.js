@@ -33,3 +33,7 @@ export const totalSold = `${AdminRoot}/totalsold`;
 export const totalSoldLastMonth = `${AdminRoot}/soldlastmonth`;
 export const totalSoldLastDay = `${AdminRoot}/soldlastday`;
 export const totalSoldLastHour = `${AdminRoot}/soldlasthour`;
+export const AdminDashBoard = `${AdminRoot}/dashboard`;
+
+export const adminOrders = `${AdminRoot}/orders`;
+export const adminOrder = (id) => `${adminOrders}/${id}`;

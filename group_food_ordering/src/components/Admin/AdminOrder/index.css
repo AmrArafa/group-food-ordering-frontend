@@ -1,0 +1,30 @@
+p {
+	padding: 0px;
+	margin: 0px;
+}
+.order_name{
+	float: left;
+}
+.order_deliver{
+	float: right;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix:before {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.orderH{
+	width: 70%;
+	margin: auto;
+}

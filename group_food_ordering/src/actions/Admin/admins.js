@@ -148,7 +148,7 @@ export const editAdminLoading = (id) => {
     }
 }
 export const editAdmin = (token, admin) => {
-    const payload = Axios.post(adddAdmin(token), admin);
+    const payload = Axios.patch(adddAdmin(token), admin);
     console.log('aaaaaaaaaaaaaaaaaaaaa', admin)
     return {
         type: EDIT_ADMIN,
