@@ -62,14 +62,14 @@ form {
   background-color: #ffaf49;
 }
 
-p {
+.login-form p {
   padding-top: 5%;
 }
 
 .welcome-msg {
   float: left;
   width: 60%;
-  padding-top: 25px;
+  padding-top: 5%;
 }
 
 .login-form {

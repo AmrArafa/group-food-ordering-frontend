@@ -4,12 +4,21 @@
   clear: both;
 }
 
-.name-price {
+.summary {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.summary-name, .summary-price, .summary-quantity {
   float: left;
 }
 
-.increment, .quantity, .decrement {
-  float: right;
+.summary-name {
+  width: 70%;
+}
+
+.summary-price, .summary-quantity {
+  width: 15%;
 }
 
 .invisible{
