@@ -131,16 +131,17 @@ export default class Groups extends Component {
         }else{
       return (
         <div>
+          <p>Order Summary</p>
           {JSON.parse(localStorage.cartArray).map((item) => {
             return (
-              <div className="clearfix">
-                <h3>Order Summary</h3>
-                <p className="name-price">{item.name} {item.price}</p>
-                <p className="quantity">{item.quantity}</p>
+              <div className="summary clearfix">
+                <p className="summary-name">{item.name}</p>
+                <p className="summary-price">{item.price}</p>
+                <p className="summary-quantity">{item.quantity}</p>
               </div>
             )
           })}
-          <p>Cart total: {localStorage.cartTotal} EGP</p>
+          <p>Total: {localStorage.cartTotal} EGP</p>
         <div className='allGroups'>
 
 
@@ -170,5 +171,4 @@ export default class Groups extends Component {
       )
         }
 
-}
 }

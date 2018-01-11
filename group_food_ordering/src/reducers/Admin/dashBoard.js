@@ -6,7 +6,8 @@ GET_LESS_USER_LOADING, GET_LESS_USER_SUCCESS, GET_LESS_USER_FAILURE,
 GET_TOTAL_SOLD_LOADING, GET_TOTAL_SOLD_SUCCESS, GET_TOTAL_SOLD_FAILURE,
 GET_TOTAL_SOLD_LAST_MONTH_LOADING, GET_TOTAL_SOLD_LAST_MONTH_SUCCESS, GET_TOTAL_SOLD_LAST_MONTH_FAILURE,
 GET_TOTAL_SOLD_LAST_DAY_LOADING, GET_TOTAL_SOLD_LAST_DAY_SUCCESS, GET_TOTAL_SOLD_LAST_DAY_FAILURE,
-GET_TOTAL_SOLD_LAST_HOUR_LOADING, GET_TOTAL_SOLD_LAST_HOUR_SUCCESS, GET_TOTAL_SOLD_LAST_HOUR_FAILURE
+GET_TOTAL_SOLD_LAST_HOUR_LOADING, GET_TOTAL_SOLD_LAST_HOUR_SUCCESS, GET_TOTAL_SOLD_LAST_HOUR_FAILURE,
+GET_DASH_BOARD_LOADING, GET_DASH_BOARD_SUCCESS, GET_DASH_BOARD_FAILURE
 
 } from '../../actions/Admin/dashBoard';
 
@@ -27,13 +28,22 @@ const INITIAL_STATE = {
     loadingTotalMonth: false,
     loadingTotalDay: false,
     loadingTotalHour: false,
-    error: null
+    loadingDashBoard: false,
+    error: null,
+    dashboard: null
     
 }
 
 
 export default (currentState = INITIAL_STATE, action) => {
     switch (action.type) {
+        // Get Dash Board
+        case GET_DASH_BOARD_LOADING:
+            return {...currentState, loadingDashBoard: true};
+        case GET_DASH_BOARD_SUCCESS:
+            return {...currentState, loadingDashBoard: false, dashboard: action.dashboard};
+        case GET_DASH_BOARD_FAILURE:
+            return {...currentState, loadingDashBoard: false, error: action.error};
         // Get Most Item
         case GET_MOST_ITEM_LOADING:
             return {...currentState, loadingMostItem: true};

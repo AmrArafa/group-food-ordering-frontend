@@ -9,6 +9,23 @@
 }*/
 
 
+.summary {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.summary-name, .summary-price, .summary-quantity {
+  float: left;
+}
+
+.summary-name {
+  width: 70%;
+}
+
+.summary-price, .summary-quantity {
+  width: 15%;
+}
+
 .invisible{
 	display: none;
 }

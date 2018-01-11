@@ -76,7 +76,7 @@ export default class CartItem extends Component {
           <p className="quantity">{this.state.quantity}</p>
           <button className="decrement" onClick={() => this.decrement(item.id, item.name, item.price)}>-</button>
           <button className="remove" onClick={() => this.deleteAndUpdateCart(item)}>X</button>
-          <p>Item Total: {this.state.price} EGP</p>
+          <p className="item-total">Item Total: {this.state.price} EGP</p>
         </div>
       </div>
     )}

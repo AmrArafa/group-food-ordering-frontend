@@ -52,10 +52,10 @@ export default class LogIn extends Component{
       return <Redirect to="/menu" />
     }
     return(
-      <div className="login-page">
+      <div className="login-page clearfix">
         <div className="welcome-msg">
           <p>Welcome to Almakinah Restaurant!</p>
-          <p> Please log in :)</p>
+          <p> Please log in &#9786;</p>
         </div>
         <div className="login-form">
           <form onSubmit={this._handleSubmit} >

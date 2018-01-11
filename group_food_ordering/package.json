@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.0.3",
+    "antd": "^3.1.1",
     "axios": "^0.17.1",
     "bootstrap": "^4.0.0-beta.2",
     "json-server": "^0.12.1",
