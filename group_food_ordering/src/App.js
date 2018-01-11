@@ -19,6 +19,7 @@ import AdminLogIn from './pages/Admin/AdminLogIn';
 import logout from './utils/logout';
 import AdminRegistration from './pages/Admin/AdminRegistration';
 import AdminHome from './pages/Admin/Home'
+import AdminOrderHistory from './pages/Admin/AdminOrderHistory'
 
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
         <Link to="/admin/users">Users</Link>
         <Link to="/admin/admins">Adims</Link>
         <Link to="/admin/home">Home</Link>
+        <Link to="/admin/orders">Order History</Link>
         <Link to="/" onClick={() => logout()}>Log out</Link>
 
         <div className="App-container">
@@ -44,6 +46,7 @@ class App extends Component {
              <Route path="/admin/admins" exact component={Admins} />
             <Route path="/admin/menu/edit" component={AdminEditItem} />
             <Route path="/admin/menu/add" component={AdminAddItem} />
+            <Route path="/admin/orders" component={AdminOrderHistory} />
           </Switch>
         </div>
        

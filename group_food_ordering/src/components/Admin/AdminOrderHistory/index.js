@@ -1,40 +1,80 @@
 import React, { Component } from 'react';
-import './index.css';	
+import Axios from 'axios';
+import { connect } from 'react-redux';
+import { Button } from 'reactstrap';
+import moment from 'moment';
 import AdminOrder from '../AdminOrder';
-import { Link } from 'react-router-dom';
-export default class AdminOrderHistory extends Component {
-    constructor(props) {
+import { adminOrders, adminOrder } from '../../../apiConfig'
+
+
+
+export default class OrderHistory extends Component {
+    constructor(props){
       super(props);
+      this.state = {
+        orders: []
+      }
     }
-    componentWillMount(){
-        this.props.getOrders();
+   paidOrder(id){
+        var orders = [...this.state.orders]
+        var new_orders = orders.map((order) => {
+            if (order.id === id){
+                order.paid_on_delivery = true;
+                order.will_pay_on_delivery = false;
+             // this.setState({orders: {...orders, order}})
+            }
+            // else{
+            //     this.setState({orders: orders})
+            // }
+        })
+        this.setState({orders: new_orders});
+        Axios.patch(adminOrder(id), {"paid_on_delivery": true, "will_pay_on_delivery": false});
+    }
+    deliveredOrder(id){
+        var orders = [...this.state.orders]
+        var new_orders = orders.map((order) => {
+            if (order.id === id){
+                order.delivered = true
+            //this.setState({orders: {...orders, order}})
+            }
+            return order
+            // else{
+            //     this.setState({orders: orders})
+            // }
+        })
+        this.setState({orders: new_orders});
+        Axios.patch(adminOrder(id), {"delivered": true});
     }
 
+    getOrders() {
+        Axios.get(adminOrders)
+            .then((response) => {
+                this.setState({ orders: response.data });
+                
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+    componentWillMount() {
+        this.getOrders();
+    }
     render(){
-    	 const { orders, loading, error } = this.props;
-        if(loading){
+        const {orders} = this.state;
+        return (
+            <div>
+       { 
+        orders.map((order) => {
             return (
-                <p>Is loading</p>
-                )            
-        }else if(error){
-            return (
-                <p>{error}</p>
-                )
-        }else{
-            return (
-                <div className='adminItem'>
-                    <p>Order History</p>
-                    {orders.map((order) => {
-                     return  (
-                        <AdminOrder order={order} 
-                        handleDelete={deleteItem}
-                         />
-                        )
-                     })
-                     }
-                 </div>
-                 
-                )
+                <div>
+                <AdminOrder order={order} paidOrder={this.paidOrder.bind(this)} deliveredOrder={this.deliveredOrder.bind(this)} />
+                </div>
+                    )
+                }
+            )
         }
-    )}
+        </div>
+        )
+    }
 }
+        

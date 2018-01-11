@@ -8,11 +8,13 @@ import {
     getTotalSoldLoading, getTotalSold, getTotalSoldSuccess, getTotalSoldFailure,
     getTotalSoldLastMonthLoading, getTotalSoldLastMonth, getTotalSoldLastMonthSuccess, getTotalSoldLastMonthFailure,
     getTotalSoldLastDayLoading, getTotalSoldLastDay, getTotalSoldLastDaySuccess, getTotalSoldLastDayFailure,
-    getTotalSoldLastHourLoading, getTotalSoldLastHour, getTotalSoldLastHourSuccess, getTotalSoldLastHourFailure
+    getTotalSoldLastHourLoading, getTotalSoldLastHour, getTotalSoldLastHourSuccess, getTotalSoldLastHourFailure,
+    getDashBoardLoading, getDashBoard, getDashBoardSuccess, getDashBoardFailure
     } from '../actions/Admin/dashBoard';
 
 const mapStateToProps = (state) => {
     return {
+        dashboard: state.AdminDashBoard.dashboard,
         mostItem: state.AdminDashBoard.mostItem,
         lessItem: state.AdminDashBoard.lessItem,
         mostUser: state.AdminDashBoard.mostUser,
@@ -21,20 +23,33 @@ const mapStateToProps = (state) => {
         totalSoldLastMonth: state.AdminDashBoard.totalSoldLastMonth,
         totalSoldLastDay: state.AdminDashBoard.totalSoldLastDay,
         totalSoldLastHour: state.AdminDashBoard.totalSoldLastHour,
-        error: state.adminUsers.error,
-        loadingMostItem: state.adminUsers.loadingMostItem,
-        loadingLessItem: state.adminUsers.loadingLessItem,
-        loadingMostUser: state.adminUsers.loadingMostUser,
-        loadinglessUser: state.adminUsers.loadinglessUser,
-        loadingTotalSold: state.adminUsers.loadingTotalSold,
-        loadingTotalMonth: state.adminUsers.loadingTotalMonth,
-        loadingTotalDay: state.adminUsers.loadingTotalDay,
-        loadingTotalHour: state.adminUsers.loadingTotalHour,
+        error: state.AdminDashBoard.error,
+        loadingMostItem: state.AdminDashBoard.loadingMostItem,
+        loadingLessItem: state.AdminDashBoard.loadingLessItem,
+        loadingMostUser: state.AdminDashBoard.loadingMostUser,
+        loadinglessUser: state.AdminDashBoard.loadinglessUser,
+        loadingTotalSold: state.AdminDashBoard.loadingTotalSold,
+        loadingTotalMonth: state.AdminDashBoard.loadingTotalMonth,
+        loadingTotalDay: state.AdminDashBoard.loadingTotalDay,
+        loadingTotalHour: state.AdminDashBoard.loadingTotalHour,
+        loadingDashBoard: state.AdminDashBoard.loadingDashBoard
         }
     }
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        getDashBoard: () => {
+            dispatch(getDashBoardLoading());
+            setTimeout(() => {
+                dispatch(getDashBoard()).then(response => {
+                    if(response.payload.status < 400){
+                        dispatch(getDashBoardSuccess(response.payload.data));
+                    }else{
+                        dispatch(getDashBoardFailure(response.payload.message));
+                    }
+                })
+            }, 1)
+        },
         getMostItem: () => {
             dispatch(getMostItemLoading());
             setTimeout(() => {

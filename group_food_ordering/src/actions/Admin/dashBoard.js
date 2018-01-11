@@ -1,6 +1,11 @@
 import Axios from 'axios';
 import { mostItem, lessItem, mostUser, lessUser, totalSold,
- totalSoldLastMonth, totalSoldLastDay, totalSoldLastHour } from '../../apiConfig';
+ totalSoldLastMonth, totalSoldLastDay, totalSoldLastHour, AdminDashBoard } from '../../apiConfig';
+
+export const GET_DASH_BOARD_LOADING = 'GET_DASH_BOARD_LOADING';
+export const GET_DASH_BOARD = 'GET_DASH_BOARD';
+export const GET_DASH_BOARD_SUCCESS = 'GET_DASH_BOARD_SUCCESS';
+export const GET_DASH_BOARD_FAILURE = 'GET_DASH_BOARD_FAILURE';
 
 export const GET_MOST_ITEM_LOADING = 'GET_MOST_ITEM_LOADING';
 export const GET_MOST_ITEM = 'GET_MOST_ITEM';
@@ -41,7 +46,31 @@ export const GET_TOTAL_SOLD_LAST_HOUR_LOADING = 'GET_TOTAL_SOLD_LAST_HOUR_LOADIN
 export const GET_TOTAL_SOLD_LAST_HOUR = 'GET_TOTAL_SOLD_LAST_HOUR';
 export const GET_TOTAL_SOLD_LAST_HOUR_SUCCESS = 'GET_TOTAL_SOLD_LAST_HOUR_SUCCESS';
 export const GET_TOTAL_SOLD_LAST_HOUR_FAILURE = 'GET_TOTAL_SOLD_LAST_HOUR_FAILURE';
-
+// GET Dash Board 
+export const getDashBoardLoading = () => {
+    return {
+        type: GET_DASH_BOARD_LOADING
+    }
+}
+export const getDashBoard = () => {
+    const payload = Axios.get(AdminDashBoard);
+    return {
+        type: GET_DASH_BOARD,
+        payload
+    }
+}
+export const getDashBoardSuccess = (dashboard) => {
+    return {
+        type: GET_DASH_BOARD_SUCCESS,
+        dashboard
+    }
+}
+export const getDashBoardFailure = (error) => {
+    return {
+        type: GET_DASH_BOARD_FAILURE,
+        error
+    }
+}
 //GET MOST ITEM
 export const getMostItemLoading = () => {
     return {

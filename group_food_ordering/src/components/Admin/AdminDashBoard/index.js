@@ -1,44 +1,94 @@
 import React, { Component } from 'react';
 import './index.css';
+import { Card, Button, CardImg, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { Spin } from 'antd';
 
 export default class AdminDashBoard extends Component{
 	constructor(){
       super();
     }
      componentWillMount(){
-     	const { getLessItem, getLessUser, getMostItem, getMostUser, getTotalSold, 
-     		getTotalSoldLastDay, getTotalSoldLastHour, getTotalSoldLastMonth } = this.props;
-     		getLessItem()
-			  getLessUser()
-			  getMostItem()
-			  getMostUser()
-			  getTotalSold()
-			  getTotalSoldLastDay()
-			  getTotalSoldLastHour()
-			  getTotalSoldLastMonth()		     	
+     	const { getDashBoard } = this.props;
+        getDashBoard()
+        //getLessItem()
+			  // getLessUser()
+			  // getMostItem()
+			  // getMostUser()
+			  // getTotalSold()
+			  // getTotalSoldLastDay()
+			  // getTotalSoldLastHour()
+			  // getTotalSoldLastMonth()		     	
     }
 
     render(){
-    	const { mostItem, lessItem, mostUser, lessUser, 
-    		totalSold, totalSoldLastMonth, totalSoldLastDay, totalSoldLastHour
-      } = this.props;
-        console.log(this.props.loading)
-         if(mostItem && lessItem && mostUser && lessUser && totalSold && totalSoldLastHour && totalSoldLastMonth &&totalSoldLastDay){
-        	return(
-        		<div>
-        		<p className="p"> Most Item {mostItem.item.name} Quantity: {mostItem.quantity}</p>
-                <p className="p"> Less Item {lessItem.item.name} Quantity: {lessItem.quantity}</p>
-                <p className="p"> Most User {mostUser.user.first_name} {mostUser.user.last_name} Orders Count: {mostUser.orderCount}</p>
-                <p className="p"> Less User {lessUser.user.first_name} {lessUser.user.last_name} Orders Count: {lessUser.orderCount}</p>
-                <p className="p">total Sold:{totalSold} </p>
-                <p className="p">total Sold Last Month: {totalSoldLastMonth} </p>
-                <p className="p">total Sold Last Day: {totalSoldLastDay} </p>
-                <p className="p">total Sold Last Hour: {totalSoldLastHour} </p>
-        		</div>
+    	const { dashboard, loadingDashBoard } = this.props;
+          console.log('THIS IS DASHBOARD')
+          console.log(dashboard)
+          console.log(this.props)
+         if ( dashboard != null ){
+          var mostItemImg = `http://localhost:3000/${dashboard.mostItem.item.image.url}`
+          var lessItemImg = `http://localhost:3000/${dashboard.lessItem.item.image.url}`
+          return(
+            <div>
+              <Row>
+              <Col sm="3">
+                <Card body inverse color="warning" className="dashBordCard" >
+                  <CardTitle>Most Item</CardTitle>
+                  <CardText>{dashboard.mostItem.item.name}</CardText>
+                  <CardText>Quantity: {dashboard.mostItem.quantity}</CardText>
+                </Card>
+              </Col>
+              <Col sm="3">
+                <Card body inverse color="warning" className="dashBordCard">
+                  <CardTitle>Less Item</CardTitle>
+                  <CardText>{dashboard.lessItem.item.name}</CardText>
+                  <CardText>Quantity: {dashboard.lessItem.quantity}</CardText>
+                </Card>
+              </Col>
+              <Col sm="3">
+                <Card body inverse color="warning" className="dashBordCard">
+                  <CardTitle>Most User</CardTitle>
+                  <CardText>{dashboard.mostUser.user.first_name} {dashboard.mostUser.user.last_name}</CardText>
+                  <CardText>Orders Count: {dashboard.mostUser.orderCount}</CardText>
+                </Card>
+              </Col>
+              <Col sm="3">
+                <Card body inverse color="warning" className="dashBordCard">
+                  <CardTitle>Less User</CardTitle>
+                  <CardText>{dashboard.lessUser.user.first_name} {dashboard.lessUser.user.last_name}</CardText>
+                  <CardText>Orders Count: {dashboard.lessUser.orderCount}</CardText>
+                </Card>
+              </Col>
+              <Col sm="3">
+                <Card body inverse color="warning" className="dashBordCard">
+                  <CardTitle>total Sold</CardTitle>
+                  <CardText>{dashboard.totalSold}</CardText>
+                </Card>
+              </Col>
+              <Col sm="3">
+                <Card body inverse color="warning" className="dashBordCard">
+                  <CardTitle>total Sold Last Month</CardTitle>
+                  <CardText>{dashboard.totalLastMonth}</CardText>
+                </Card>
+              </Col>
+              <Col sm="3">
+                <Card body inverse color="warning" className="dashBordCard">
+                  <CardTitle>total Sold Last Day</CardTitle>
+                  <CardText>{dashboard.tatalLastday}</CardText>
+                </Card>
+              </Col>
+              <Col sm="3">
+                <Card body inverse color="warning" className="dashBordCard">
+                  <CardTitle>total Sold Last Hour</CardTitle>
+                  <CardText>{dashboard.tatalLasthour}</CardText>
+                </Card>
+              </Col>
+            </Row>
+        	</div>
         	)
         }else{
             return (
-                <p>loading</p>
+                <Spin />
             )
         }
       }
