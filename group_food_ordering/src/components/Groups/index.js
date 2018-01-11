@@ -172,12 +172,3 @@ export default class Groups extends Component {
         }
 
 }
-}
-
-
-// {items.map((item) => {
-//       return  (
-//                 <CartItem item={item}  calculateCart={this.calculateCartTotal} updateItemsAndQuantities={this.updateItemsAndQuantities} itemID={item.id} quantity={item.count} updateCartArray={this.updateCartArray} />
-//                             )
-//                     }
-//                     )} <br/>

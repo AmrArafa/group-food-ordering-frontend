@@ -3,6 +3,11 @@
   display: table;
   clear: both;
 }
+/*
+.name-price {
+  float: left;
+}*/
+
 
 .summary {
   width: 50%;
