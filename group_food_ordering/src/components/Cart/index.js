@@ -100,17 +100,18 @@ export default class Cart extends Component {
       console.log(this.state.cartArray);
     return (
       <div className='cart'>
-        <p>Your Cart</p>
+        <p id="cart-title">Your Cart</p>
+        <div className="cart-items">
         {items.map((item) => {
-
       return  (
                 <CartItem item={item} calculateCart={this.calculateCartTotal} calculateQuantity={this.claculateQuantities} updateItemsAndQuantities={this.updateItemsAndQuantities} updateCartArray={this.updateCartArray} getItemId={this.getItemId}/>
                             )
                     }
                     )}
+        </div>
       <p>Cart Total: {this.state.cartTotal} EGP</p>
         
-      <Link className={items.length === 0? 'invisible' : 'visible'} onClick={() => copyItems(items, this.state.itemsAndQuantities)} to="/options">Confirm your Order</Link>
+      <Link className={items.length === 0? 'invisible' : 'confirm-order'} onClick={() => copyItems(items, this.state.itemsAndQuantities)} to="/options">Confirm your Order</Link>
     
 </div>
         )

@@ -30,7 +30,7 @@ export default class Items extends Component {
     	return (
             
             
-    		<div className='allItems'>
+    		<div className='allItems clearfix'>
     	
     	{items.map((item) => {
       return  (
