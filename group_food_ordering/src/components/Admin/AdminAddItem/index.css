@@ -1,0 +1,33 @@
+#addItemForm{
+	padding: 10px;
+	color: #af1e1e;
+}
+#addItemButton {
+	text-decoration: none;
+	background-color: #ffaf49;
+	color: #b22121;
+	border-radius: 5px;
+	padding: 5px;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+	height: 40px;
+}
+#addItemButton:hover {
+		color: #b22121;
+	text-decoration: none;
+}
+.addItemButton {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.admin-title{
+	font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    color: #ffaf49;
+    text-align: center;
+    font-weight: bold;
+}

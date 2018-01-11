@@ -7,7 +7,6 @@ export default class AdminAddItemPage extends Component {
     	if (localStorage.Admin) {
         return (
             <div>
-                <h2>Admin add item Page</h2>
                 <Route path="/admin/menu/add" component={AdminAddItem} />
             </div>
         )

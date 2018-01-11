@@ -53,7 +53,7 @@ export default class LogIn extends Component{
       return <Redirect to="/admin/home" />
     }
     return(
-      <div className="login-page">
+      <div className="login-page clearfix">
       <div className="welcome-msg">
         <h2>Welcome to Almakinah Restaurant!</h2>
         <h3> Admin Please Log in :)</h3>

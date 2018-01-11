@@ -62,18 +62,18 @@ export default class OrderHistory extends Component {
     render(){
         const {orders} = this.state;
         return (
-            <div>
-       { 
-        orders.map((order) => {
-            return (
-                <div>
-                <AdminOrder order={order} paidOrder={this.paidOrder.bind(this)} deliveredOrder={this.deliveredOrder.bind(this)} />
-                </div>
+            <div className="clearfix">
+               { 
+                orders.map((order) => {
+                    return (
+                        <div>
+                        <AdminOrder order={order} paidOrder={this.paidOrder.bind(this)} deliveredOrder={this.deliveredOrder.bind(this)} />
+                        </div>
+                            )
+                        }
                     )
                 }
-            )
-        }
-        </div>
+            </div>
         )
     }
 }
