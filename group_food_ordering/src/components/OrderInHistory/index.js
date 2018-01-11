@@ -71,7 +71,7 @@ export default class OrderInHistory extends Component {
                     {
                         order.items.map(item => {
                             return (
-                                <div className='clearfix'>
+                                <div className='clearfix right-left'>
                     
                                  <div className='left '>
                                    <p>{item.name}</p>
