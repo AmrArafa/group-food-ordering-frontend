@@ -19,10 +19,10 @@ export default class Groups extends Component {
             quantityForItem: 0,
             itemsAndQuantities: [],
             cartArray: []
-        }
-        this.calculateCartTotal = this.calculateCartTotal.bind(this);
-        this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
-        this.updateCartArray = this.updateCartArray.bind(this);
+          }
+            this.calculateCartTotal = this.calculateCartTotal.bind(this);
+            this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
+            this.updateCartArray = this.updateCartArray.bind(this);
     }    
 
   calculateCartTotal(newPrice){
@@ -171,4 +171,5 @@ export default class Groups extends Component {
       )
         }
 
+}
 }

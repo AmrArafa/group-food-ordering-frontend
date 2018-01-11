@@ -15,7 +15,7 @@ export default class Item extends Component {
        <CardBody>
           <CardText>{item.name}</CardText>
           <CardText>{parseFloat(item.price)} EGP</CardText>
-          <button onClick={() => addItemToCart(item)}>Add to Cart </button>
+          <button className= "card-button" onClick={() => addItemToCart(item)}>Add to Cart </button>
         </CardBody>
         </Card>
 

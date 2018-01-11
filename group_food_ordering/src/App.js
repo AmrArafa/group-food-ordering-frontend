@@ -33,7 +33,7 @@ class App extends Component {
             <ul>
               <li><Link to="/admin/menu">Menu</Link></li>
               <li><Link to="/admin/users">Users</Link></li>
-              <li><Link to="/admin/admins">Adims</Link></li>
+              <li><Link to="/admin/admins">Admins</Link></li>
               <li><Link to="/admin/home">Home</Link></li>
               <li><Link to="/admin/orders">Order History</Link></li>
             </ul>

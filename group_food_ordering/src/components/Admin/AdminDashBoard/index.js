@@ -24,10 +24,8 @@ export default class AdminDashBoard extends Component{
     	const { dashboard, loadingDashBoard } = this.props;
           
          if ( dashboard != null ){
-          var mostItemImg = `http://localhost:3000/${dashboard.mostItem.item.image.url}`
-          var lessItemImg = `http://localhost:3000/${dashboard.lessItem.item.image.url}`
-          return(
-            <div>
+           return(
+            <div className="clearfix">
               <Row>
               <Col sm="3">
                 <Card body inverse color="warning" className="dashBordCard" >
