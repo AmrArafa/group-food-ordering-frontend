@@ -141,7 +141,7 @@ export default class Groups extends Component {
               </div>
             )
           })}
-          <p>Total: {localStorage.cartTotal} EGP</p>
+          <p className="summary-total">Total: {localStorage.cartTotal} EGP</p>
         <div className='allGroups'>
 
 

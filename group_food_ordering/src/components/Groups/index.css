@@ -4,12 +4,16 @@
   clear: both;
 }
 
+.invisible{
+  display: none;
+}
+
 .summary {
   width: 50%;
   margin: 0 auto;
 }
 
-.summary-name, .summary-price, .summary-quantity {
+.summary-name, .summary-price, .summary-quantity, .summary-total {
   float: left;
 }
 
@@ -21,6 +25,7 @@
   width: 15%;
 }
 
-.invisible{
-	display: none;
+.summary-total {
+  width: 50%;
+  margin: 0 auto;
 }
