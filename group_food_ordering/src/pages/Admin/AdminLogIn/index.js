@@ -29,12 +29,10 @@ export default class LogIn extends Component{
       password: this.state.password
     })
     .then((response) => {
-      console.log(response);
       const token = response.data.auth_token;
       localStorage.setItem('jwtToken', token);
       localStorage.setItem('Admin', true);
       setAuthorizationToken(token);
-      console.log(jwt.decode(token));
       this.setState({
         ...this.state,
         redirect: true

@@ -19,7 +19,7 @@ export const AdminusersApi = `${AdminRoot}/users`;
 export const AdminuserApi = (id) => `${AdminusersApi}/${id}`;
 
 export const adminsApi = `${AdminRoot}/admins`;
-export const adminApi = (id) => `${adminsApi}/${id}`;
+export const adminApi = (id) => `${adminsApi}/admin/${id}`;
 
 export const adminInvitations = `${AdminRoot}/invitations`;
 export const getAdminInvitaions = (token) => `${AdminRoot}/admins/${token}`;
@@ -37,3 +37,4 @@ export const AdminDashBoard = `${AdminRoot}/dashboard`;
 
 export const adminOrders = `${AdminRoot}/orders`;
 export const adminOrder = (id) => `${adminOrders}/${id}`;
+export const adminOrderFilter = (created_at) => `${adminOrders}/filter/${created_at}`

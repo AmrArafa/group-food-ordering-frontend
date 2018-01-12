@@ -11,6 +11,9 @@ import {
     getTotalSoldLastHourLoading, getTotalSoldLastHour, getTotalSoldLastHourSuccess, getTotalSoldLastHourFailure,
     getDashBoardLoading, getDashBoard, getDashBoardSuccess, getDashBoardFailure
     } from '../actions/Admin/dashBoard';
+import {
+    getAdminLoading, getAdmin, getAdminSuccess, getAdminFailure
+} from '../actions/Admin/admins';
 
 const mapStateToProps = (state) => {
     return {
@@ -32,7 +35,8 @@ const mapStateToProps = (state) => {
         loadingTotalMonth: state.AdminDashBoard.loadingTotalMonth,
         loadingTotalDay: state.AdminDashBoard.loadingTotalDay,
         loadingTotalHour: state.AdminDashBoard.loadingTotalHour,
-        loadingDashBoard: state.AdminDashBoard.loadingDashBoard
+        loadingDashBoard: state.AdminDashBoard.loadingDashBoard,
+        Admin: state.admins.admin
         }
     }
 
@@ -46,6 +50,18 @@ const mapDispatchToProps = (dispatch) => {
                         dispatch(getDashBoardSuccess(response.payload.data));
                     }else{
                         dispatch(getDashBoardFailure(response.payload.message));
+                    }
+                })
+            }, 1)
+        },
+        getAdmin: (id) => {
+            dispatch(getAdminLoading());
+            setTimeout(() => {
+                dispatch(getAdmin(id)).then(response => {
+                    if(response.payload.status < 400){
+                        dispatch(getAdminSuccess(response.payload.data));
+                    }else{
+                        dispatch(getAdminFailure(response.payload.message));
                     }
                 })
             }, 1)

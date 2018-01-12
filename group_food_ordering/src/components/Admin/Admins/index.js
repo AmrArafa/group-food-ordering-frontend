@@ -23,7 +23,7 @@ export default class Admins extends Component {
     submit(id){
       confirmAlert({
         title: 'Delete Admin',                        // Title dialog
-        message: 'Are you sure to do this.',               // Message dialog
+        message: 'Are you sure to Delete this Admin?.',               // Message dialog
         confirmLabel: 'Confirm',                           // Text button confirm
         cancelLabel: 'Cancel',                             // Text button cancel
         onConfirm: () =>(this.props.deleteAdmin(id)),    // Action after Confirm
@@ -70,11 +70,11 @@ export default class Admins extends Component {
                       <Label for="Invitation" sm={1} color="red">Invitation </Label>
                       <Col sm={6}>
                         <Input type="text" name="email" id="Invitation" value={this.state.email} placeholder="Put E-mail For New Admin" onChange={this._handleChange} />
-                        <div className="add-admin-button-div">
-                          <Button className="add-admin-button" onClick={() => addAdmin(admin)}>Submit</Button>
+                      </Col>
+                        <div className="add-admin-button-div .col-3">
+                          <Button  className="add-admin-button " onClick={() => addAdmin(admin)}>Submit</Button>
                         </div>
                         <p>{this.state.success}</p>
-                      </Col>
                     </FormGroup>
                   </Form>
                   
