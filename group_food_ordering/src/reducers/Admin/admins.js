@@ -51,26 +51,26 @@ export default (currentState = INITIAL_STATE, action) => {
         // Edit single admin
         case EDIT_ADMIN_LOADING:
             var newAdmins = currentState.admins.map(admin => {
-                if (admin.id == action.id) admin.loading = true;
+                if (admin.id === action.id) admin.loading = true;
                 return admin;
             })
             return {...currentState, admins: newAdmins}
         case EDIT_ADMIN_SUCCESS:
             var newAdmins = currentState.admins.map(admin => {
-                if (admin.id == action.admin.id) {admin = action.admin}
+                if (admin.id === action.admin.id) {admin = action.admin}
                 return admin;
             })
             return {...currentState, admins: newAdmins}
         case EDIT_ADMIN_FAILURE:
             var newAdmins = currentState.admins.map(admin => {
-                if (admin.id == action.id) {admin.loading = false; admin.error = action.error}
+                if (admin.id === action.id) {admin.loading = false; admin.error = action.error}
                 return admin;
             })
             return {...currentState, admins: newAdmins}
         // Delete single admin
         case DELETE_ADMIN_LOADING:
             var newAdmins = currentState.admins.map(admin => {
-                if (admin.id == action.id) admin.loading = true;
+                if (admin.id === action.id) admin.loading = true;
                 return admin;
             })
             return {...currentState, admins: newAdmins}
@@ -81,7 +81,7 @@ export default (currentState = INITIAL_STATE, action) => {
             return {...currentState, admins: newAdmins}
         case DELETE_ADMIN_FAILURE:
             var newAdmins = currentState.admins.map(admin => {
-                if (admin.id == action.id) {admin.loading = false; admin.error = action.error}
+                if (admin.id === action.id) {admin.loading = false; admin.error = action.error}
                 return admin;
             })
             return {...currentState, admins: newAdmins}

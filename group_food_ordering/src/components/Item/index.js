@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, 
-	CardTitle, CardSubtitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody } from 'reactstrap';
 import './index.css';	
 
 export default class Item extends Component {

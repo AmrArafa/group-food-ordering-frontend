@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { connect } from 'react-redux';
-import { Button } from 'reactstrap';
-import moment from 'moment';
 import OrderInHistory from '../OrderInHistory';
 import jwt from 'jsonwebtoken';
 
@@ -18,7 +15,7 @@ export default class OrderHistory extends Component {
 
     cancelOrder(order, id){
         var newOrders = [...this.state.orders]
-        if (newOrders.indexOf(order) != -1) {
+        if (newOrders.indexOf(order) !== -1) {
             newOrders.splice(newOrders.indexOf(order), 1)
             this.setState({ orders: newOrders })
         }

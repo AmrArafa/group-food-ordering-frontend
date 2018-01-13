@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 // import './index.css'
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Axios from 'axios';
 import setAuthorizationToken from '../../../utils/setAuthorizationToken';
 import { AdminLogin } from '../../../apiConfig';
-import jwt from 'jsonwebtoken';
 
 export default class LogIn extends Component{
   constructor(){
@@ -29,12 +28,10 @@ export default class LogIn extends Component{
       password: this.state.password
     })
     .then((response) => {
-      console.log(response);
       const token = response.data.auth_token;
       localStorage.setItem('jwtToken', token);
       localStorage.setItem('Admin', true);
       setAuthorizationToken(token);
-      console.log(jwt.decode(token));
       this.setState({
         ...this.state,
         redirect: true
@@ -54,23 +51,23 @@ export default class LogIn extends Component{
     }
     return(
       <div className="login-page clearfix">
-      <div className="welcome-msg">
-        <h2>Welcome to Almakinah Restaurant!</h2>
-        <h3> Admin Please Log in :)</h3>
-      </div>
-      <div >
-        <form onSubmit={this._handleSubmit} >
-          <div className="email">
-            <label>Email:</label>
-            <input className="field" type="email" name="email" onChange={this._handleChange} />
-          </div>
-          <div className="password">
-            <label>Password:</label>
-            <input className="field" type="password" name="password" onChange={this._handleChange}/>
-          </div>
-          <input id="login-button" type="submit" value="Log in"/>
-        </form>
-      </div>
+        <div className="welcome-msg">
+          <h2>Welcome to Almakinah Restaurant!</h2>
+          <h3> Admin Please Log in &#9786;</h3>
+        </div>
+      <div className="login-form">
+          <form onSubmit={this._handleSubmit} >
+            <div className="email">
+              <label>Email</label>
+              <input className="field" type="email" name="email" onChange={this._handleChange} />
+            </div>
+            <div className="password">
+              <label>Password</label>
+              <input className="field" type="password" name="password" onChange={this._handleChange}/>
+            </div>
+            <input id="login-button" type="submit" value="Log in"/>
+          </form>
+        </div>
       </div>
     )
   }

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
 import CartItem from '../../containers/CartItemContainer';
-import { Link, Route } from 'react-router-dom';
-import {Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 
 export default class Cart extends Component {
@@ -96,25 +95,29 @@ export default class Cart extends Component {
 
   render(){
       const { items, copyItems} = this.props;
-      // console.log(this.state.itemsAndQuantities);
       console.log(this.state.cartArray);
     return (
       <div className='cart'>
         <p id="cart-title">Your Cart</p>
         <div className="cart-items">
         {items.map((item) => {
-      return  (
-                <CartItem item={item} calculateCart={this.calculateCartTotal} calculateQuantity={this.claculateQuantities} updateItemsAndQuantities={this.updateItemsAndQuantities} updateCartArray={this.updateCartArray} getItemId={this.getItemId}/>
-                            )
-                    }
-                    )}
+          return  (
+                <CartItem item={item} 
+                  calculateCart={this.calculateCartTotal} 
+                  calculateQuantity={this.claculateQuantities}
+                  updateItemsAndQuantities={this.updateItemsAndQuantities}
+                  updateCartArray={this.updateCartArray} 
+                  getItemId={this.getItemId}/>
+              )
+          })
+        }
         </div>
-      <p>Cart Total: {this.state.cartTotal} EGP</p>
+        <p>Cart Total: {this.state.cartTotal} EGP</p>
         
-      <Link className={items.length === 0? 'invisible' : 'confirm-order'} onClick={() => copyItems(items, this.state.itemsAndQuantities)} to="/options">Confirm your Order</Link>
+        <Link className={items.length === 0? 'invisible' : 'confirm-order'} onClick={() => copyItems(items, this.state.itemsAndQuantities)} to="/options">Confirm your Order</Link>
     
-</div>
-        )
+    </div>
+    )
   }
 
 }

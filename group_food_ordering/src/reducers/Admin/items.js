@@ -43,26 +43,26 @@ export default (currentState = INITIAL_STATE, action) => {
         // Edit single item
         case EDIT_ITEM_LOADING:
             var newItems = currentState.items.map(item => {
-                if (item.id == action.id) item.loading = true;
+                if (item.id === action.id) item.loading = true;
                 return item;
             })
             return {...currentState, items: newItems}
         case EDIT_ITEM_SUCCESS:
             var newItems = currentState.items.map(item => {
-                if (item.id == action.item.id) {item = action.item}
+                if (item.id === action.item.id) {item = action.item}
                 return item;
             })
             return {...currentState, items: newItems}
         case EDIT_ITEM_FAILURE:
             var newItems = currentState.items.map(item => {
-                if (item.id == action.id) {item.loading = false; item.error = action.error}
+                if (item.id === action.id) {item.loading = false; item.error = action.error}
                 return item;
             })
             return {...currentState, items: newItems}
         // Delete single item
         case DELETE_ITEM_LOADING:
             var newItems = currentState.items.map(item => {
-                if (item.id == action.id) item.loading = true;
+                if (item.id === action.id) item.loading = true;
                 return item;
             })
             return {...currentState, items: newItems}
@@ -73,7 +73,7 @@ export default (currentState = INITIAL_STATE, action) => {
             return {...currentState, items: newItems}
         case DELETE_ITEM_FAILURE:
             var newItems = currentState.items.map(item => {
-                if (item.id == action.id) {item.loading = false; item.error = action.error}
+                if (item.id === action.id) {item.loading = false; item.error = action.error}
                 return item;
             })
             return {...currentState, items: newItems}

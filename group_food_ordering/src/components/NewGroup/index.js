@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import './index.css';	
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Button } from 'reactstrap';
 import Checkout from '../Checkout';
 import moment from 'moment';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 class NewGroup extends Component {

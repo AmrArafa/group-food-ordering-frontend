@@ -1,17 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, 
-	CardTitle, CardSubtitle, Button } from 'reactstrap';
-import { confirmAlert } from 'react-confirm-alert'; 
+	  Button } from 'reactstrap';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import './index.css';	
 import { Link } from 'react-router-dom';
 
 
 export default class Item extends Component {
-    constructor(props) {
-      super(props);
-    }
-
     render(){
         const { item, handleDelete } = this.props;
         

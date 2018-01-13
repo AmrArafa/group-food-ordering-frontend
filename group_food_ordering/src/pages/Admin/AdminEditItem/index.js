@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AdminEditItems from '../../../containers/AdminEditItemContainer';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 export default class AdminEditItemPage extends Component {
     render (){

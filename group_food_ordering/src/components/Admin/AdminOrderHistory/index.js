@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { connect } from 'react-redux';
-import { Button } from 'reactstrap';
-import moment from 'moment';
+import { FormGroup, Label, Input } from 'reactstrap';
 import AdminOrder from '../AdminOrder';
-import { adminOrders, adminOrder } from '../../../apiConfig'
+import { adminOrders, adminOrder, adminOrderFilter } from '../../../apiConfig'
+import './index.css'; 
 
 
 
 export default class OrderHistory extends Component {
     constructor(props){
       super(props);
-      this.state = {
-        orders: []
-      }
+          this.state = {
+            orders: [],
+            created_at: ''
+          },
+          this._handleChange = this._handleChange.bind(this)
+    }
+     _handleChange(e){
+      this.getOrdersFilter(e.target.value)
     }
    paidOrder(id){
         var orders = [...this.state.orders]
         var new_orders = orders.map((order) => {
             if (order.id === id){
                 order.paid_on_delivery = true;
-             // this.setState({orders: {...orders, order}})
             }
             return order
-            // else{
-            //     this.setState({orders: orders})
-            // }
         })
         this.setState({orders: new_orders});
         Axios.patch(adminOrder(id), {"paid_on_delivery": true});
@@ -35,17 +35,21 @@ export default class OrderHistory extends Component {
         var new_orders = orders.map((order) => {
             if (order.id === id){
                 order.delivered = true
-            //this.setState({orders: {...orders, order}})
             }
             return order
-            // else{
-            //     this.setState({orders: orders})
-            // }
         })
         this.setState({orders: new_orders});
         Axios.patch(adminOrder(id), {"delivered": true});
     }
-
+    getOrdersFilter(created_at) {
+        Axios.get(adminOrderFilter(created_at))
+            .then((response) => {
+                this.setState({ orders: response.data});
+            })
+            .catch(function(error){
+                console.log(error);
+            });
+    }
     getOrders() {
         Axios.get(adminOrders)
             .then((response) => {
@@ -60,9 +64,19 @@ export default class OrderHistory extends Component {
         this.getOrders();
     }
     render(){
-        const {orders} = this.state;
+        const {orders } = this.state;
         return (
             <div className="clearfix">
+                    <FormGroup id="filer"  className="col-3"  >
+                        <Label for="orderFilter" >Filter</Label>
+                        <Input type="select" name="created_at" id="orderFilter"  onChange={this._handleChange}>
+                            <option>All</option>
+                            <option>Last Hour</option>
+                            <option>Last Day</option>
+                            <option>Last Week</option>
+                            <option>Last Month</option>
+                        </Input>
+                    </FormGroup>
                { 
                 orders.map((order) => {
                     return (
