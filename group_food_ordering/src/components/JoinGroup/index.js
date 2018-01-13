@@ -3,9 +3,9 @@ import Axios from 'axios';
 import { connect } from 'react-redux';
 import Checkout from '../Checkout';
 import moment from 'moment';
+import './index.css';  
+import { oneOrder, oneGroup } from '../../apiConfig'; 
 import { Redirect } from 'react-router-dom';
-import './index.css';   
-
 
 class JoinGroup extends Component {
     constructor(props){
@@ -18,7 +18,7 @@ class JoinGroup extends Component {
 
     willPayOnDelivery(){
         const { id } = this.props.order;
-        Axios.patch(`http://localhost:3000/orders/${id}`,
+        Axios.patch(oneOrder(id),
     {
       will_pay_on_delivery: true
     })
@@ -31,7 +31,7 @@ class JoinGroup extends Component {
     fetchGroup() {
         const {id} = this.props.match.params;
          setTimeout(() => {
-        Axios.get(`http://localhost:3000/groups/${id}`)
+        Axios.get(oneGroup(id))
             .then((response) => {
                 this.setState({ group: response.data });
                 

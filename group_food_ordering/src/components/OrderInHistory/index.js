@@ -3,6 +3,8 @@ import moment from 'moment';
 import './index.css'; 
 import Checkout from '../Checkout';
 import axios from 'axios';
+import {oneOrder} from '../../apiConfig'; 
+
 
 export default class OrderInHistory extends Component {
   constructor(props){
@@ -14,7 +16,7 @@ export default class OrderInHistory extends Component {
 
        willPayOnDelivery(){
         const { id } = this.props.order;
-        axios.patch(`http://localhost:3000/orders/${id}`,
+        axios.patch(oneOrder(id),
     {
       will_pay_on_delivery: true
     })
@@ -90,7 +92,12 @@ export default class OrderInHistory extends Component {
               
                   
                   <p className={this.state.order === 'current'? 'visible text' : 'invisible'}> Your group order will be fired within {diffMinutes} minutes</p>
-                  <button className={this.state.order === 'current'? 'visible cancel' : 'invisible'} onClick={() => cancelOrder(order, order.id)}>Cancel Order</button><br/>
+                  <button className={this.state.order === 'current'? 'visible cancel' : 'invisible'} onClick={() => cancelOrder(order, order.id)}>Cancel Order</button>
+                  {order.group_id == null ?
+                  <button className={!order.paid_online && !order.will_pay_on_delivery ? 'visible' : 'invisible'} onClick={() => cancelOrder(order, order.id)}>Cancel Order</button>
+                  :
+                  console.log('hi')
+                   }
                   {
                     order.paid_online || order.will_pay_on_delivery
                     ? 

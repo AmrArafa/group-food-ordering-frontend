@@ -57,12 +57,6 @@ export default class CartItem extends Component {
     this.props.calculateCart(-this.state.price)
   }
 
-  // componentWillUnmount(){
-  //   let a = JSON.parse(localStorage.getItem('cartItems'));
-  //   a.push(this.state);
-  //   localStorage.setItem('cartItems', JSON.stringify(a));
-  // }
-
   render(){
     const { item } = this.props;
     return (
