@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import Checkout from '../Checkout';
 import {oneOrder} from '../../apiConfig'; 
 import { Redirect } from 'react-router-dom';
+import { Modal } from 'antd';
+import 'antd/lib/modal/style/index.css';
 
 
 class Order extends Component {
@@ -13,9 +15,16 @@ class Order extends Component {
       this.state = {
         order: {},
         paid: false
-      }
+      }  
+      this.success = this.success.bind(this)
     }
 
+    success(){
+        Modal.success({
+          title: 'Thank you',
+          content: 'Thank you for completing the process. Your order will be delivered within 45 min.',
+        });
+    }
     willPayOnDelivery(){
         const { id } = this.props.order;
         axios.patch(oneOrder(id),
@@ -23,7 +32,7 @@ class Order extends Component {
       will_pay_on_delivery: true
     })
     .then(() => {
-        alert('Thank you for completing the process. Your order will be delivered within 45 min.')
+       this.success();
        this.setState({paid: true})
      })
     }
