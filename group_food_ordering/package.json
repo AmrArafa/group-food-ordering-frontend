@@ -16,6 +16,7 @@
     "pui-react-notifications": "^8.3.3",
     "rc-menu": "^6.2.4",
     "react": "^16.2.0",
+    "react-countdown-clock": "^2.1.0",
     "react-confirm-alert": "^1.0.8",
     "react-dom": "^16.2.0",
     "react-moment": "^0.6.8",

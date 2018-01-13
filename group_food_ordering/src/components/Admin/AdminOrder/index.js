@@ -82,8 +82,7 @@ export default class AdminOrder extends Component {
                                   })
                               }
                                <p>Ordered at: {orderTime} </p> 
-                               <p>Total Order Price:   {order.totalPrice} EGP</p>                                     
-
+                               <p>Total Order Price:   {order.totalPrice} EGP</p>                                    
                             </CardBody>
                           </Card>
                         </Collapse>

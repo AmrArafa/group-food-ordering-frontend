@@ -11,6 +11,7 @@ import createStore from './configureStore';
 import setAuthorizationToken from './utils/setAuthorizationToken';
 
 const store = createStore();
+window.store = store;
 
 setAuthorizationToken(localStorage.getItem('jwtToken'));
 

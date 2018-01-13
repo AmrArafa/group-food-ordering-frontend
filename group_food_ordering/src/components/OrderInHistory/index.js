@@ -3,8 +3,8 @@ import moment from 'moment';
 import './index.css'; 
 import Checkout from '../Checkout';
 import axios from 'axios';
+import ReactCountdownClock from 'react-countdown-clock';
 import {oneOrder} from '../../apiConfig'; 
-
 
 export default class OrderInHistory extends Component {
   constructor(props){
@@ -72,9 +72,8 @@ export default class OrderInHistory extends Component {
                     {
                         order.items.map(item => {
                             return (
-                                <div className='clearfix right-left'>
-                    
-                                 <div className='left '>
+                                <div className='history-item clearfix'>
+                                 <div className='left'>
                                    <p>{item.name}</p>
                                    
                                    <p className='quantity'>{item.quantity}</p>
@@ -84,14 +83,17 @@ export default class OrderInHistory extends Component {
                             )
                         })
                     }
-                    ------------------------------------------------------------------------------------------------------
 <div className='clearfix'>
-                  <p className='string'>Total</p><p className='total'>  EGP {order.totalPrice}  </p>
+                  <p className='string'>Total</p>
+                  <p className='total'>EGP {order.totalPrice}</p>
                   </div>
                   <p className='string2'>Date of Order</p> <p className='date'>{orderTime} </p>
-              
-                  
-                  <p className={this.state.order === 'current'? 'visible text' : 'invisible'}> Your group order will be fired within {diffMinutes} minutes</p>
+                  <p className={this.state.order === 'current'? 'visible text' : 'invisible'}> Your group order will be fired within:</p>
+                  <ReactCountdownClock
+                  seconds={diffMinutes * 60}
+                  color="#ffaf49"
+                  size={200}
+                  />
                   <button className={this.state.order === 'current'? 'visible cancel' : 'invisible'} onClick={() => cancelOrder(order, order.id)}>Cancel Order</button>
                   {order.group_id == null ?
                   <button className={!order.paid_online && !order.will_pay_on_delivery ? 'visible' : 'invisible'} onClick={() => cancelOrder(order, order.id)}>Cancel Order</button>

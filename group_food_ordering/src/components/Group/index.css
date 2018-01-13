@@ -2,12 +2,33 @@
 	display: none;
 }*/
 
-.groupCard{
-	width: 270px;
+.group-card {
+	width: 33%;
 	float: left;
+  margin: 0 1%;
 }
 
+.react-countdown-clock {
+  text-align: center;
+  width: 100%;
+}
 
-.alert{
+.alert {
 	background: red;
+}
+
+#join-group-button {
+  text-decoration: none;
+  color: #ffaf49;
+  border: 2px solid #ffaf49;
+  border-radius: 5px;
+  width: 25%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 2%;
+  font-weight: bold;
+}
+
+.card-subtitle {
+  margin-bottom: 2%;
 }

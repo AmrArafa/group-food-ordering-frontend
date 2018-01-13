@@ -16,7 +16,9 @@ const mapStateToProps = (state) => {
         creating: state.groups.creating,
         errorCreating: state.groups.errorCreating,
         itemsIdsAndQuantity: state.groups.itemsIdsAndQuantity,
-        order: state.groups.order
+        order: state.groups.order,
+        quantities: state.cart.quantities,
+        total: state.cart.total
     }
 }
 

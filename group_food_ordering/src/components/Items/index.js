@@ -12,13 +12,23 @@ export default class Items extends Component {
     }
 
     render(){
-        
-
-    	const { items, loading, error} = this.props;
-    	if(loading){
+        const { items, loading, error} = this.props;
+    	if(items.length > 0){
             return (
-                <div>Is loading</div>
-            )
+            
+            
+                <div className='allItems clearfix'>
+        
+                    {items.map((item) => {
+                      return  (
+                        <Item item={item} />
+                        )
+                    }
+                    )}
+                    <Cart />
+                </div>
+        )
+
         }else if(error){
             return (
                 <div>
@@ -27,20 +37,9 @@ export default class Items extends Component {
                 </div>
             )
         }else{
-    	return (
-            
-            
-    		<div className='allItems clearfix'>
-    	
-    	{items.map((item) => {
-      return  (
-                <Item item={item} />
-                            )
-                    }
-                    )}
-        <Cart />
-</div>
-    	)
+            return (
+                <div>Is loading</div>
+            )
     	
     }
 }

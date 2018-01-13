@@ -9,7 +9,7 @@ import users from './users';
 import AdminDashBoard from './Admin/dashBoard'
 import AdminOrders from './Admin/orders'
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     items,
     cart,
     groups,
@@ -19,6 +19,14 @@ const rootReducer = combineReducers({
     adminUsers,
     AdminDashBoard,
     AdminOrders
-})
+});
+
+const rootReducer = (state, action) => {
+  if (action.type === 'USER_LOG_OUT') {
+    state = undefined;
+  }
+
+  return appReducer(state, action);
+}
 
 export default rootReducer;
