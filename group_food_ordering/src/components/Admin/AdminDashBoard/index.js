@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import './index.css';
-import { Card, Button, CardImg, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { Card, CardTitle, CardText, Row, Col } from 'reactstrap';
 import { Spin } from 'antd';
 import jwt from 'jsonwebtoken';
 
 export default class AdminDashBoard extends Component{
-	constructor(){
-      super();
-    }
-     componentWillMount(){
+	  componentWillMount(){
      	const { getDashBoard, getAdmin } = this.props;
       const token = localStorage.getItem('jwtToken');
       const loggedInUserID = jwt.decode(token);
@@ -25,19 +22,19 @@ export default class AdminDashBoard extends Component{
 			  // getTotalSoldLastMonth()		     	
     }
      componentWillReceiveProps(nextProps) {
-      if (this.props.Admin.id != nextProps.Admin.id) {
+      if (this.props.Admin.id !== nextProps.Admin.id) {
      localStorage.setItem('AdminLastName', nextProps.Admin.last_name);
       }
       
      }
 
     render(){
-    	const { dashboard, loadingDashBoard } = this.props;
+    	const { dashboard } = this.props;
           
          if (( dashboard != null  ) && (localStorage.getItem('AdminLastName') != null)){
            return(
             <div className="clearfix">
-            <h2> Welcome Back Mr. {localStorage.getItem('AdminLastName')} </h2>
+            <h2 className="welcome-admin"> Welcome Back Mr. {localStorage.getItem('AdminLastName')} </h2>
               <Row>
               <Col sm="3">
                 <Card body inverse color="success" className="dashBordCard" >

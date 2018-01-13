@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { connect } from 'react-redux';
-import { Button, Form, FormGroup, Label, Input, FormText, Col } from 'reactstrap';
-import moment from 'moment';
+import { FormGroup, Label, Input } from 'reactstrap';
 import AdminOrder from '../AdminOrder';
 import { adminOrders, adminOrder, adminOrderFilter } from '../../../apiConfig'
 import './index.css'; 
@@ -26,12 +24,8 @@ export default class OrderHistory extends Component {
         var new_orders = orders.map((order) => {
             if (order.id === id){
                 order.paid_on_delivery = true;
-             // this.setState({orders: {...orders, order}})
             }
             return order
-            // else{
-            //     this.setState({orders: orders})
-            // }
         })
         this.setState({orders: new_orders});
         Axios.patch(adminOrder(id), {"paid_on_delivery": true});
@@ -41,12 +35,8 @@ export default class OrderHistory extends Component {
         var new_orders = orders.map((order) => {
             if (order.id === id){
                 order.delivered = true
-            //this.setState({orders: {...orders, order}})
             }
             return order
-            // else{
-            //     this.setState({orders: orders})
-            // }
         })
         this.setState({orders: new_orders});
         Axios.patch(adminOrder(id), {"delivered": true});

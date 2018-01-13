@@ -38,3 +38,5 @@ export const AdminDashBoard = `${AdminRoot}/dashboard`;
 export const adminOrders = `${AdminRoot}/orders`;
 export const adminOrder = (id) => `${adminOrders}/${id}`;
 export const adminOrderFilter = (created_at) => `${adminOrders}/filter/${created_at}`
+
+export const userLogin = `http://localhost:3000/login.json`

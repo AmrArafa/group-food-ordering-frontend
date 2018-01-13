@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
 import  User from '../User';
-import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
@@ -12,16 +11,16 @@ export default class Users extends Component {
     }
     submit(id){
     confirmAlert({
-      title: 'Delete User',                        // Title dialog
-      message: 'Are you sure to do this.',               // Message dialog
-      confirmLabel: 'Confirm',                           // Text button confirm
-      cancelLabel: 'Cancel',                             // Text button cancel
-      onConfirm: () =>(this.props.deleteUser(id)),    // Action after Confirm
-      onCancel: () => alert('Delete Canceld'),      // Action after Cancel
-    })
+      title: 'Delete User',                       
+      message: 'Are you sure to do this.',            
+      confirmLabel: 'Confirm',                         
+      cancelLabel: 'Cancel',                           
+      onConfirm: () =>(this.props.deleteUser(id)),    
+      onCancel: () => alert('Delete Canceld'),      
+      })
     };
     render(){
-        const { users, loading, error, deleteUser} = this.props;
+        const { users, loading, error} = this.props;
         if(loading){
             return (
                 <p>Is loading</p>

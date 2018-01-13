@@ -1,12 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Col , Card, Button, CardTitle, CardText } from 'reactstrap';
 import './index.css';	
-import { Link } from 'react-router-dom';
 export default class Admin extends Component {
-    constructor(props) {
-      super(props);
-    }
-
     render(){
         const { admin, handleDelete } = this.props;
         return (

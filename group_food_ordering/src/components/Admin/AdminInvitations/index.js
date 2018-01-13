@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import {  Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './index.css'; 
 
@@ -23,7 +23,7 @@ export default class AdminInvitations extends Component {
 
     }
      componentWillReceiveProps(nextProps) {
-      if (this.props.admin.invitation_token != nextProps.admin.invitation_token) {
+      if (this.props.admin.invitation_token !== nextProps.admin.invitation_token) {
         this.setState({...this.state, 
           first_name: nextProps.admin.first_name,
           last_name: nextProps.admin.last_name,
@@ -50,12 +50,7 @@ export default class AdminInvitations extends Component {
           var adminEmail = this.state.email
           var adminPassword =this.state.password
           var adminPassword_confrmation =  this.state.password_confirmation
-          // var itemEdit = {
-          //   name: this.state.name,
-          //   image: this.state.image,
-          //   price: this.state.price
-          // }
-            var addAdmin = {admin: {
+          var addAdmin = {admin: {
               first_name: this.state.first_name,
               last_name: this.state.last_name,
               email: this.state.email,

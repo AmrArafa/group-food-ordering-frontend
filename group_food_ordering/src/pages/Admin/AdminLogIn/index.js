@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 // import './index.css'
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Axios from 'axios';
 import setAuthorizationToken from '../../../utils/setAuthorizationToken';
 import { AdminLogin } from '../../../apiConfig';
-import jwt from 'jsonwebtoken';
 
 export default class LogIn extends Component{
   constructor(){

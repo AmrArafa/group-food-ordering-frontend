@@ -1,13 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Col , Card, Button, CardTitle, CardText } from 'reactstrap';
 import './index.css';	
-import { Link } from 'react-router-dom';
 export default class User extends Component {
-    constructor(props) {
-      super(props);
-    }
-
-    render(){
+     render(){
         const { user, handleDelete } = this.props;
         return (
         <div className= 'oneAdmin clearfix'>

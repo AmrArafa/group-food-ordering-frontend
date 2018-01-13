@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AdminInvitations from '../../../containers/AdminInvitationsContainer';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 export default class AdminRegistration extends Component {
     render (){
