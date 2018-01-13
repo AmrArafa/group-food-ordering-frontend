@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import Group from '../../containers/GroupContainer';
 import './index.css';
+import CartItem from '../CartItem';
+import Cart from '../../containers/CartContainer';
+import {Button } from 'reactstrap';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
+import history from '../../history';
 
 export default class Groups extends Component {
 
@@ -12,51 +16,10 @@ export default class Groups extends Component {
         this.state = {
             timeframe: '',
             formattedTime: '',
-            cartTotal: 0,
-            quantityForItem: 0,
-            itemsAndQuantities: [],
-            cartArray: []
-          }
-            this.calculateCartTotal = this.calculateCartTotal.bind(this);
-            this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
-            this.updateCartArray = this.updateCartArray.bind(this);
-    }    
-
-  calculateCartTotal(newPrice){
-    this.setState({
-      cartTotal: this.state.cartTotal + newPrice
-    });
-  }
-
-  updateCartArray(itemName, itemPrice, quantity){
-    var newArray = this.state.cartArray.slice();
-    if (newArray.length === 0){
-      this.setState({
-        cartArray: [{name: itemName, price: itemPrice, quantity: quantity}]
-      });
-      return;
-    }
-    for (var i = 0; i < newArray.length; i++){
-      if (newArray[i].name === itemName){
-        if (quantity === 0){
-          newArray.splice(i, 1);
-          break;
-        }else if (quantity < 0){
-          newArray[i].quantity -= 1;
-          break;
-        }else{
-          newArray[i].quantity += 1;
-          break;
+            itemsAndQuantities: []
         }
-      }else if(i === newArray.length - 1){
-        newArray.push({name: itemName, price: itemPrice, quantity: quantity});
-        break;
-      }
+        this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
     }
-    this.setState({
-      cartArray: newArray
-    });
-  }
 
   updateItemsAndQuantities(item_id,quantity){
     var newArray = this.state.itemsAndQuantities.slice();
@@ -101,16 +64,17 @@ export default class Groups extends Component {
   }
 
     
-  componentWillMount (){
+  componentWillMount(){
     this.props.getGroups();
-    this.setState({
-      ...this.state,
-      cartArray: JSON.parse(localStorage.cartArray)
-    });
+  }
+
+  createGroup(time, itemsAndQuantities, loggedInUserId) {
+    this.props.createGroup(time, itemsAndQuantities, loggedInUserId);
+    history.push('/options/newgroup');
   }
 
     render(){
-      const { groups, loading, error, createGroup, itemsIdsAndQuantity, createSingleOrder} = this.props;
+      const { order, items, quantities, total, groups, loading, error, createGroup, itemsIdsAndQuantity, createSingleOrder} = this.props;
       const token = localStorage.getItem('jwtToken');
       const loggedInUserIdObject = jwt.decode(token);
       const loggedInUserId = loggedInUserIdObject.user_id;
@@ -127,23 +91,29 @@ export default class Groups extends Component {
             )
         }else{
       return (
-        <div>
-          <p>Order Summary</p>
-          {JSON.parse(localStorage.cartArray).map((item) => {
+        <div className="options">
+          <p className="summary-title">Order Summary</p>
+          <div className="title clearfix">
+            <p className="item-title">Item</p>
+            <p className="price-title">Price</p>
+            <p className="quantity-title">Quantity</p>
+          </div>
+          {items.map((item, index) => {
             return (
               <div className="summary clearfix">
-                <p className="summary-name">{item.name}</p>
+                <p className="summary-item">{item.name}</p>
                 <p className="summary-price">{item.price}</p>
-                <p className="summary-quantity">{item.quantity}</p>
+                <p className="summary-quantity">{quantities[index]}</p>
               </div>
             )
           })}
-          <p className="summary-total">Total: {localStorage.cartTotal} EGP</p>
+          <p className="summary-total">Total: EGP {total}</p>
+          <p className="user-message">If you need to edit your order, click on the "Menu" link above and edit your cart</p>
         <div className='allGroups'>
 
 
         
-<div className={groups.length === 0 || itemsIdsAndQuantity.length === 0? 'invisible' : 'visible clearfix'}>
+<div className={groups.length === 0 || itemsIdsAndQuantity.length === 0? 'invisible' : 'visible clearfix join-group-area'}>
         <h3 >Join a Group Order</h3>
       
       {groups.map((group) => {
@@ -154,19 +124,24 @@ export default class Groups extends Component {
                     )}
 </div>
 <div className={itemsIdsAndQuantity.length === 0? 'invisible' : 'visible'}>
+        <div className="create-group-area clearfix">
+        <div className="create-group clearfix">
       <h3>Create a New Group Order</h3>
-      Make your order after: 
-      <input type="number" value={this.state.timeframe} onChange={this.handleNewGroup.bind(this)} step="30" required/> minutes.
-       <Link onClick={() => createGroup(this.state.formattedTime, itemsIdsAndQuantity, loggedInUserId)} to='/options/newgroup'>Create</Link> <br/>
+      <div className="form-group">
+       <p className="form">Make your order after</p> 
+      <form onSubmit={() => this.createGroup(this.state.formattedTime, itemsIdsAndQuantity, loggedInUserId)}>
+        <input  className="form" type="number" value={this.state.timeframe} onChange={this.handleNewGroup.bind(this)} required/>
+          <p className="form"> minutes.</p>
+         <button type="submit">Create</button>
+       </form>
+      </div>
+        </div>
        <h3>
-        <Link onClick={() => createSingleOrder(itemsIdsAndQuantity)} to='/options/order'>Order Immediately</Link>
+        <Link id="order-immediately-button" onClick={() => createSingleOrder(itemsIdsAndQuantity)} to='/options/order'>Order Immediately</Link>
+      </div>
       </h3>
-
 </div>
 </div>
 </div>
-      )
-        }
-
-}
-}
+  )}
+}}

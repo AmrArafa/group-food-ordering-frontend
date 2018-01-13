@@ -39,6 +39,7 @@ class Order extends Component {
 
 
     render(){
+      debugger;
         if (this.state.paid){
       return <Redirect to="/menu" />
         }

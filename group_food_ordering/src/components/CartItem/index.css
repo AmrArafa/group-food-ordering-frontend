@@ -11,7 +11,7 @@
   width: 21%;
 }
 
-.increment, .quantity, .decrement {
+.increment, .quantity1, .decrement {
   float: right;
 }
 
@@ -19,7 +19,7 @@
   width: 25px;
 }
 
-.quantity {
+.quantity1 {
   padding: 5px;
 }
 
