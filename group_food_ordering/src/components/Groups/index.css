@@ -8,29 +8,141 @@
   float: left;
 }*/
 
-
 .invisible{
   display: none;
 }
 
-.summary {
-  width: 50%;
-  margin: 0 auto;
+.options {
+  font-family: 'Montserrat', sans-serif;
 }
 
-.summary-name, .summary-price, .summary-quantity, .summary-total {
+.options .summary-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.title {
+  font-weight: bold;
+  color: #b22121;
+}
+
+.summary, .title {
+  width: 50%;
+  margin: 0 auto;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.summary-item,
+.summary-price,
+.summary-quantity,
+.item-title,
+.price-title,
+.quantity-title {
   float: left;
 }
 
-.summary-name {
+.summary-item, .item-title {
   width: 70%;
 }
 
-.summary-price, .summary-quantity {
+.summary-price,
+.summary-quantity,
+.price-title,
+.quantity-title {
   width: 15%;
 }
 
+.summary-quantity, .quantity-title {
+  text-align: center;
+}
+
 .summary-total {
-  width: 50%;
+  width: 29%;
+  text-align: right;
   margin: 0 auto;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.user-message {
+  text-align: center;
+  font-weight: bold;
+  color: #b22121;
+  margin-top: 5%;
+}
+
+.options h3 {
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.join-group-area {
+  border: 1px solid #c6c6c6;
+  border-radius: 5px;
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 5%;
+  padding: 2%;
+}
+
+.create-group-area {
+  border: 1px solid #c6c6c6;
+  border-radius: 5px;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 5%;
+  padding: 2%;
+}
+
+.create-group {
+  width: 100%;
+  text-align: center;
+}
+
+.create-group h3 {
+  margin-top: 0;
+}
+
+.form-group {
+  width: 71%;
+  text-align: center;
+  display: inline-block;
+  margin-top: 5%;
+}
+
+.create-group .form {
+  float: left;
+  margin-right: 1%;
+}
+
+.create-group input {
+  width: 50px;
+  border: 1px solid #b22121;
+  border-radius: 5px;
+}
+
+#create-group-button {
+  text-decoration: none;
+  color: #b22121;
+  border: 1px solid #b22121;
+  padding: 4px;
+  border-radius: 5px;
+  font-size: 20px;
+  background-color: #ffaf49;
+  position: relative;
+  left: 42%;
+}
+
+#order-immediately-button {
+  text-decoration: none;
+  color: #b22121;
+  border: 1px solid #b22121;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #ffaf49;
+}
+
+.visible h3 {
+  margin-top: 5%;
 }

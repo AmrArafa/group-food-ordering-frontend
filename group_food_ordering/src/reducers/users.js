@@ -76,8 +76,6 @@ export default (currentState = INITIAL_STATE, action) => {
                 return user;
             })
             return {...currentState, users: newUsers}
-
-
    	   default:
             return currentState;
    }

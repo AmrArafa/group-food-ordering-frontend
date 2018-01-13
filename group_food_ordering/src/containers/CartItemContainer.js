@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import CartItem from '../components/CartItem';
 import Groups from '../components/Groups';
-import {deleteItem} from '../actions/cart';
+import {deleteItemFromCart, incrementQuantity, decrementQuantity} from '../actions/cart';
 
 
 
@@ -13,9 +13,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         deleteItem : (item) => {
-          
-                dispatch(deleteItem(item))
-           }
+            dispatch(deleteItemFromCart(item))
+        },
+        incrementQuantity: (item) => {
+            dispatch(incrementQuantity(item))
+        },
+        decrementQuantity: (item) => {
+            dispatch(decrementQuantity(item))
+        }
 }
 }
 

@@ -4,6 +4,7 @@ import { Card, Button, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
 import { Link, Route } from 'react-router-dom';
+import ReactCountdownClock from 'react-countdown-clock';
 
 export default class Group extends Component {
     constructor(){
@@ -30,10 +31,15 @@ export default class Group extends Component {
 
         return (
 
-             <Card className='groupCard' body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-        <CardTitle>Created by: {group.creator_first_name}  {group.creator_last_name}</CardTitle>
-        <CardSubtitle>Group order will be fired within: {diffMinutes} minutes.</CardSubtitle>
-        <CardText>Members <br/> {(group.members).map((member) => {
+             <Card className='group-card' body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
+        <CardTitle>Created by: {group.creator_first_name} {group.creator_last_name}</CardTitle>
+        <CardSubtitle>Group order will be fired within:</CardSubtitle>
+        <ReactCountdownClock
+            seconds={diffMinutes * 60}
+            color="#ffaf49"
+            size={140}
+        />
+        <CardText>Members: <br/> {(group.members).map((member) => {
       return  (
         <div>
                 {member.first_name} {member.last_name}
@@ -46,7 +52,7 @@ export default class Group extends Component {
     {
             ids.includes(loggedInUserId)
         ? <p className='alert'> You are already a member</p>
-        : <Link onClick={() => createOrder(group.id, itemsIdsAndQuantity)} to={`/options/joingroup/${group.id}`}> Join</Link>
+        : <Link id="join-group-button" onClick={() => createOrder(group.id, itemsIdsAndQuantity)} to={`/options/joingroup/${group.id}`}> Join</Link>
     }
       </Card>
         	)}

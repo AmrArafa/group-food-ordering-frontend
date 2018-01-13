@@ -116,3 +116,7 @@
 	cursor: pointer;
 	border-radius: 5px;
 }
+
+.history-item {
+	border-bottom: 1px solid black;
+}

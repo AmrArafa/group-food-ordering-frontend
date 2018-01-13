@@ -5,78 +5,47 @@ export default class CartItem extends Component {
 
   constructor(props){
     super(props);
-    const {item, calculateCart} = this.props;
-    this.state = {
-      quantity: 1,
-      initial_price: parseFloat(item.price),
-      price: parseFloat(item.price)
-    };
+    const {item, quantity} = this.props;
     
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
-    this.updateCartTotal = this.updateCartTotal.bind(this);
     this.deleteAndUpdateCart = this.deleteAndUpdateCart.bind(this);
-    this.props.calculateCart(this.state.initial_price);
-    this.props.updateItemsAndQuantities(item.id, this.state.quantity);
-    this.props.updateCartArray(item.name, item.price, this.state.quantity);
+    this.props.updateItemsAndQuantities(item.id, quantity);
   }
 
 
-  increment(item_id, itemName, itemPrice){
-    const currentPrice = this.state.initial_price;
-    
- 
-    this.setState({quantity: this.state.quantity + 1,
-      price: this.state.price + currentPrice});
-    this.props.calculateCart(currentPrice);
-    this.props.updateItemsAndQuantities(item_id, 1);
-    this.props.updateCartArray(itemName, itemPrice, 1);
+  increment(item){
+    const {incrementQuantity} = this.props;
+    incrementQuantity(item);
+    this.props.updateItemsAndQuantities(item.id, 1);
   }
 
-  decrement(item_id, itemName, itemPrice){
-    const currentPrice = this.state.initial_price;
-    if (this.state.quantity === 1){
-      return;
-    }
-    this.setState({quantity: this.state.quantity - 1,
-      price: this.state.price - currentPrice});
-    this.props.calculateCart(-currentPrice);
-    this.props.updateItemsAndQuantities(item_id, -1);
-    this.props.updateCartArray(itemName, itemPrice, -1);
+  decrement(item, quantity){
+    const {decrementQuantity} = this.props;
+    decrementQuantity(item);
+    this.props.updateItemsAndQuantities(item.id, -1);
   }
 
-  deleteAndUpdateCart(item){
+  deleteAndUpdateCart(item, quantity){
     const {deleteItem} = this.props;
-    deleteItem(item);
-    this.updateCartTotal();
     this.props.updateItemsAndQuantities(item.id, 0);
-    this.props.updateCartArray(item.name, item.price, 0);
+    deleteItem(item);
   }
-
-  updateCartTotal(){
-    this.props.calculateCart(-this.state.price)
-  }
-
-  // componentWillUnmount(){
-  //   let a = JSON.parse(localStorage.getItem('cartItems'));
-  //   a.push(this.state);
-  //   localStorage.setItem('cartItems', JSON.stringify(a));
-  // }
 
   render(){
-    const { item, deleteItem } = this.props;
+    const { item, quantity, deleteItem, incrementQuantity, decrementQuantity } = this.props;
     return (
       <div className="cartItem">
         <div className="clearfix">
           <p className="item-name">{item.name}</p> 
-          <p className="item-price">{parseFloat(item.price)} EGP</p>
+          <p className="item-price">EGP {parseFloat(item.price)}</p>
         </div>
         <div className="clearfix">
-          <button className="increment" onClick={() => this.increment(item.id, item.name, item.price)}>+</button>
-          <p className="quantity">{this.state.quantity}</p>
-          <button className="decrement" onClick={() => this.decrement(item.id, item.name, item.price)}>-</button>
-          <button className="remove" onClick={() => this.deleteAndUpdateCart(item)}>X</button>
-          <p className="item-total">Item Total: {this.state.price} EGP</p>
+          <button className="increment" onClick={() => this.increment(item)}>+</button>
+          <p className="quantity1">{quantity}</p>
+          <button className="decrement" onClick={() => this.decrement(item, quantity)}>-</button>
+          <button className="remove" onClick={() => this.deleteAndUpdateCart(item, quantity)}>X</button>
+          <p className="item-total">Item Total: EGP {parseFloat(item.price) * quantity}</p>
         </div>
       </div>
     )}
