@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Group from '../../containers/GroupContainer';
 import './index.css';
+import CartItem from '../CartItem';
 import Cart from '../../containers/CartContainer';
 import {Button } from 'reactstrap';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
+import history from '../../history';
 
 export default class Groups extends Component {
 
@@ -66,6 +68,11 @@ export default class Groups extends Component {
     this.props.getGroups();
   }
 
+  createGroup(time, itemsAndQuantities, loggedInUserId) {
+    this.props.createGroup(time, itemsAndQuantities, loggedInUserId);
+    history.push('/options/newgroup');
+  }
+
     render(){
       const { order, items, quantities, total, groups, loading, error, createGroup, itemsIdsAndQuantity, createSingleOrder} = this.props;
       const token = localStorage.getItem('jwtToken');
@@ -117,19 +124,21 @@ export default class Groups extends Component {
                     )}
 </div>
 <div className={itemsIdsAndQuantity.length === 0? 'invisible' : 'visible'}>
-      <div className="create-group-area clearfix">
+        <div className="create-group-area clearfix">
         <div className="create-group clearfix">
-          <h3>Create a New Group Order</h3>
-          <div className="form-group">
-            <p className="form">Make your order after</p> 
-            <input className="form" type="number" value={this.state.timeframe} onChange={this.handleNewGroup.bind(this)} step="30" required/>
-            <p className="form"> minutes.</p>
-          </div>
-        </div>
-      <Link id="create-group-button" onClick={() => createGroup(this.state.formattedTime, itemsIdsAndQuantity, loggedInUserId)} to='/options/newgroup'>Create</Link>
+      <h3>Create a New Group Order</h3>
+      <div className="form-group">
+       <p className="form">Make your order after</p> 
+      <form onSubmit={() => this.createGroup(this.state.formattedTime, itemsIdsAndQuantity, loggedInUserId)}>
+        <input  className="form" type="number" value={this.state.timeframe} onChange={this.handleNewGroup.bind(this)} required/>
+          <p className="form"> minutes.</p>
+         <button type="submit">Create</button>
+       </form>
       </div>
-      <h3>
+        </div>
+       <h3>
         <Link id="order-immediately-button" onClick={() => createSingleOrder(itemsIdsAndQuantity)} to='/options/order'>Order Immediately</Link>
+      </div>
       </h3>
 </div>
 </div>
