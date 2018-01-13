@@ -32,19 +32,19 @@ export default (currentState = INITIAL_STATE, action) => {
              // Edit single order
         case EDIT_ORDER_LOADING:
             var newOrders = currentState.orders.map(order => {
-                if (order.id == action.id) order.loading = true;
+                if (order.id === action.id) order.loading = true;
                 return order;
             })
             return {...currentState, orders: newOrders}
         case EDIT_ORDER_SUCCESS:
             var newOrders = currentState.orders.map(order => {
-                if (order.id == action.order.id) {order = action.order}
+                if (order.id === action.order.id) {order = action.order}
                 return order;
             })
             return {...currentState, orders: newOrders}
         case EDIT_ORDER_FAILURE:
             var newOrders = currentState.orders.map(order => {
-                if (order.id == action.id) {order.loading = false; order.error = action.error}
+                if (order.id === action.id) {order.loading = false; order.error = action.error}
                 return order;
             })
             return {...currentState, orders: newOrders}

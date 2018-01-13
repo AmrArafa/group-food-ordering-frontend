@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 import STRIPE_PUBLISHABLE from '../../constants/stripe';
-import { Link, Redirect } from 'react-router-dom';
 import { oneOrder, charges } from '../../apiConfig';
+import { Redirect } from 'react-router-dom';
 
 export default class Checkout extends Component {
 

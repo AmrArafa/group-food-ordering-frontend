@@ -44,24 +44,24 @@ export default class AdminOrder extends Component {
           if (Object.keys(order).length !== 0) {
                 return (
                     <div className="clearfix orderH" >
-                        <div className="order_name">
-                          <p>Order no.: {order.id}</p>
-                          <p>Order By : {order.creator_f} {order.creator_l}</p>
-                        </div>
-                        <div className="order_deliver">
+                        <div id='adminOrder'>
+                          <h2 className='id'>{order.id}</h2>
+                           <p>Order By : {order.creator_f} {order.creator_l}</p>
+                           <div className="">
                           {!order.delivered? 
                             <Button onClick={() => deliveredOrder(order.id)}> Order delivered</Button>
                             :
                             <p>Order has been delivered</p>
                           }
-                          {order.will_pay_on_delivery === true && order.paid_online === false && order.paid_on_delivery ? 
+                          { order.paid_online === false && order.paid_on_delivery === false ? 
                             <Button onClick={() => paidOrder(order.id)}> Order Paid</Button>
                             :
                             <p>Order paid</p> 
                           }
                         </div> 
+                        <p>Total Price:   {order.totalPrice} EGP</p>
+                                                
                         <div className="details">        
-                        <p>Total Price:   {order.totalPrice} EGP</p>                        
                         <Collapse
                           isOpen={this.state.collapse}
                           onEntering={this.onEntering}
@@ -71,21 +71,24 @@ export default class AdminOrder extends Component {
                           >
                           <Card>
                             <CardBody>
-                            {order.items.map(item => {
-                              return (
-                                <div>
-                                    <p>{item.name}</p> 
-                                    <p>Price: {item.price} EGP</p> 
-                                    <p>Quantity: {item.quantity}</p>
-                                 </div>
-                                )
-                                })
-                            }
-                         <p>Ordered at: {orderTime} </p>                                      
+                              {order.items.map(item => {
+                                return (
+                                  <div>
+                                      <p>{item.name}</p> 
+                                      <p>Quantity: {item.quantity}</p>
+                                      <p>Price: {item.price} EGP</p> 
+                                   </div>
+                                  )
+                                  })
+                              }
+                               <p>Ordered at: {orderTime} </p> 
+                               <p>Total Order Price:   {order.totalPrice} EGP</p>                                     
+
                             </CardBody>
                           </Card>
                         </Collapse>
                         <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Show {this.state.status}</Button>
+                        </div>
                         </div>
                      </div>
                   )

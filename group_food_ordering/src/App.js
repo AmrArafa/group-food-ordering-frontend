@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Route, Switch, Link, Redirect } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import LogInPage from './pages/LogInPage'
 import SignUpPage from './pages/SignUpPage'
 import ItemsPage from './pages/ItemsPage';
@@ -23,12 +22,9 @@ import AdminOrderHistory from './pages/Admin/AdminOrderHistory'
 import {cable} from './components/Notifications';
 import Axios from 'axios';
 import jwt from 'jsonwebtoken';
+import {userNotifications} from './apiConfig';
 var Notifications = require('pui-react-notifications').Notifications;
-var AlertNotifications = require('pui-react-notifications').AlertNotifications;
 var NotificationItem = require('pui-react-notifications').NotificationItem;
-var Icon = require('pui-react-iconography').Icon;
-var Flag = require('pui-react-media').Flag;
-var Label = require('pui-react-labels').Label;
 
 class App extends Component {
   constructor(props){
@@ -40,12 +36,22 @@ class App extends Component {
     }
 
     componentWillMount(){
-      const token = localStorage.getItem('jwtToken');
+      if (localStorage.User) {
+        const token = localStorage.getItem('jwtToken');
         const loggedInUserIdObject = jwt.decode(token);
         const loggedInUserId = loggedInUserIdObject.user_id;
         const id = loggedInUserId;
 
-        cable.subscriptions.create({
+        Axios.get(userNotifications(id))
+            .then((response) => {
+                this.setState({ messages: response.data });
+                
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+
+            cable.subscriptions.create({
             channel: 'NotificationsChannel'
         }, {
             connected: (data) =>{
@@ -57,15 +63,8 @@ class App extends Component {
                 })
             }
         })
-
-        Axios.get(`http://localhost:3000/notifications?user_id=${id}`)
-            .then((response) => {
-                this.setState({ messages: response.data });
-                
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
+      }
+        
     }
 
   render() {
@@ -77,11 +76,11 @@ class App extends Component {
           <h1 className="App-title">Almakinah Restaurant</h1>
           <nav>
             <ul>
-              <li><Link to="/admin/menu">Menu</Link></li>
-              <li><Link to="/admin/users">Users</Link></li>
-              <li><Link to="/admin/admins">Adims</Link></li>
               <li><Link to="/admin/home">Home</Link></li>
+              <li><Link to="/admin/menu">Menu</Link></li>
               <li><Link to="/admin/orders">Order History</Link></li>
+              <li><Link to="/admin/users">Users</Link></li>
+              <li><Link to="/admin/admins">Admins</Link></li>
             </ul>
           </nav>
           
@@ -199,16 +198,7 @@ class App extends Component {
         </div>
          )
      }
-    
   }
 }
 
-
 export default App;
-
-// <Link to="/menu">Menu</Link>
-// <Link to="/admin/menu">AdminMenu</Link>
-// <Link to="/" className="logout">Log out</Link>
-
-/*<button onClick={this._addNotification}>Add notification</button>
-        {/*<NotificationSystem ref="notificationSystem" />*/

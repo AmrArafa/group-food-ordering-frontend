@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Groups from '../../containers/GroupsContainer';
 import './index.css';	
-import { Link, Route } from 'react-router-dom';
+import {  Route } from 'react-router-dom';
 
 export default class OptionsPage extends Component {
     render (){

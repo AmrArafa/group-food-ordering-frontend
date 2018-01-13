@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { connect } from 'react-redux';
-import { Button } from 'reactstrap';
 import Checkout from '../Checkout';
 import moment from 'moment';
-import { Link, Redirect } from 'react-router-dom';
 import './index.css';  
 import { oneOrder, oneGroup } from '../../apiConfig'; 
-
+import { Redirect } from 'react-router-dom';
 
 class JoinGroup extends Component {
     constructor(props){

@@ -8,7 +8,6 @@ export default class AdminPage extends Component {
     	if (localStorage.Admin) {
         return (
             <div>
-                <h2> Admins list </h2>
                 <Route path="/admin/admins" exact component={Admins} />
             </div>
         )

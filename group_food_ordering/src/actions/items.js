@@ -1,5 +1,4 @@
 import Axios from 'axios';
-import setAuthorizationToken from '../utils/setAuthorizationToken';
 import { itemsApi, itemApi } from '../apiConfig';
 
 
@@ -64,4 +63,5 @@ export const getItemFailure = (error) => {
         type: GET_ITEM_FAILURE,
         error
     }
+
 }

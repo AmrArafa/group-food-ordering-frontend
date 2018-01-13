@@ -5,7 +5,7 @@ export default class CartItem extends Component {
 
   constructor(props){
     super(props);
-    const {item, calculateCart} = this.props;
+    const {item } = this.props;
     this.state = {
       quantity: 1,
       initial_price: parseFloat(item.price),
@@ -58,7 +58,7 @@ export default class CartItem extends Component {
   }
 
   render(){
-    const { item, deleteItem } = this.props;
+    const { item } = this.props;
     return (
       <div className="cartItem">
         <div className="clearfix">

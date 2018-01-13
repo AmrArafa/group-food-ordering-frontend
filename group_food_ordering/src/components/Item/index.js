@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, 
-	CardTitle, CardSubtitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody } from 'reactstrap';
 import './index.css';	
 
 export default class Item extends Component {
@@ -15,7 +14,7 @@ export default class Item extends Component {
        <CardBody>
           <CardText>{item.name}</CardText>
           <CardText>{parseFloat(item.price)} EGP</CardText>
-          <button onClick={() => addItemToCart(item)}>Add to Cart </button>
+          <button className= "card-button" onClick={() => addItemToCart(item)}>Add to Cart </button>
         </CardBody>
         </Card>
 

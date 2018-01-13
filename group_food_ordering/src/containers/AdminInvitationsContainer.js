@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
 import AdminInvitations from '../components/Admin/AdminInvitations';
 import { editAdminLoading, editAdmin, editAdminSuccess, editAdminFailure,
-        getAdminLoading, getAdmin, getAdminSuccess, getAdminFailure,
-        getAdminsLoading, getAdmins, getAdminsSuccess, getAdminsFailure,
-        getAdminByTokenLoading, getAdminByToken, getAdminByTokenSuccess, getAdminByTokenFailure
+         getAdminByTokenLoading, getAdminByToken, getAdminByTokenSuccess, getAdminByTokenFailure
  } from '../actions/Admin/admins';
 
 const mapStateToProps = (state) => {
@@ -51,7 +49,7 @@ const mapDispatchToProps = (dispatch) => {
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     return {
         // Find the user with the id passed from the url by the route
-         admin: stateProps.admins.find(admin => admin.adminBytoken == ownProps.match.params.token),
+         admin: stateProps.admins.find(admin => admin.adminBytoken === ownProps.match.params.token),
         ...stateProps,
         ...dispatchProps,
         ...ownProps

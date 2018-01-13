@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch) => {
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     return {
         // Find the user with the id passed from the url by the route
-         item: stateProps.items.find(item => item.itemById == ownProps.match.params.id),
+         item: stateProps.items.find(item => item.itemById === ownProps.match.params.id),
         ...stateProps,
         ...dispatchProps,
         ...ownProps

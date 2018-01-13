@@ -1,0 +1,8 @@
+#filer {
+	display: block;
+	margin: 10px auto;
+	text-align: center;
+}
+#filer-label {
+	display: inline-block;
+}
