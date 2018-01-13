@@ -19,7 +19,7 @@ export const AdminusersApi = `${AdminRoot}/users`;
 export const AdminuserApi = (id) => `${AdminusersApi}/${id}`;
 
 export const adminsApi = `${AdminRoot}/admins`;
-export const adminApi = (id) => `${adminsApi}/${id}`;
+export const adminApi = (id) => `${adminsApi}/admin/${id}`;
 
 export const adminInvitations = `${AdminRoot}/invitations`;
 export const getAdminInvitaions = (token) => `${AdminRoot}/admins/${token}`;
@@ -38,6 +38,7 @@ export const AdminDashBoard = `${AdminRoot}/dashboard`;
 export const adminOrders = `${AdminRoot}/orders`;
 export const adminOrder = (id) => `${adminOrders}/${id}`;
 
+
 export const groups = `${rootApi}/groups`;
 export const orders = `${rootApi}/orders`;
 export const oneOrder = (id) => `${orders}/${id}`;
@@ -48,4 +49,9 @@ export const actionCable = (token) => `${rootApi}/cable?token=${token}`;
 
 export const oneOrderInHistory = (id) => `${orders}?user_id=${id}`;
 
+
+
+export const adminOrderFilter = (created_at) => `${adminOrders}/filter/${created_at}`
+
+export const userLogin = `http://localhost:3000/login.json`
 

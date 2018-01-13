@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Route, Switch, Link, Redirect } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import LogInPage from './pages/LogInPage'
 import SignUpPage from './pages/SignUpPage'
 import ItemsPage from './pages/ItemsPage';
@@ -77,11 +76,11 @@ class App extends Component {
           <h1 className="App-title">Almakinah Restaurant</h1>
           <nav>
             <ul>
-              <li><Link to="/admin/menu">Menu</Link></li>
-              <li><Link to="/admin/users">Users</Link></li>
-              <li><Link to="/admin/admins">Adims</Link></li>
               <li><Link to="/admin/home">Home</Link></li>
+              <li><Link to="/admin/menu">Menu</Link></li>
               <li><Link to="/admin/orders">Order History</Link></li>
+              <li><Link to="/admin/users">Users</Link></li>
+              <li><Link to="/admin/admins">Admins</Link></li>
             </ul>
           </nav>
           

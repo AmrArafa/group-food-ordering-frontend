@@ -7,8 +7,7 @@ export default class AdminPage extends Component {
     render (){
         return (
             <div>
-                <h2> Welcome </h2>
-                <Route path="/admin/home" component={DashBoard} />
+           	  <Route path="/admin/home" component={DashBoard} />
             </div>
         )
     }

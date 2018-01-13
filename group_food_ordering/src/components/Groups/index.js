@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import Group from '../../containers/GroupContainer';
 import './index.css';
-import CartItem from '../CartItem';
-import Cart from '../../containers/CartContainer';
-import {Button } from 'reactstrap';
 import moment from 'moment';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 
 export default class Groups extends Component {
@@ -19,10 +16,10 @@ export default class Groups extends Component {
             quantityForItem: 0,
             itemsAndQuantities: [],
             cartArray: []
-        }
-        this.calculateCartTotal = this.calculateCartTotal.bind(this);
-        this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
-        this.updateCartArray = this.updateCartArray.bind(this);
+          }
+            this.calculateCartTotal = this.calculateCartTotal.bind(this);
+            this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
+            this.updateCartArray = this.updateCartArray.bind(this);
     }    
 
   calculateCartTotal(newPrice){
@@ -113,7 +110,7 @@ export default class Groups extends Component {
   }
 
     render(){
-      const { order, items, groups, loading, error, createGroup, itemsIdsAndQuantity, createSingleOrder} = this.props;
+      const { groups, loading, error, createGroup, itemsIdsAndQuantity, createSingleOrder} = this.props;
       const token = localStorage.getItem('jwtToken');
       const loggedInUserIdObject = jwt.decode(token);
       const loggedInUserId = loggedInUserIdObject.user_id;

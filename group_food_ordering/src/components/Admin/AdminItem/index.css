@@ -1,0 +1,64 @@
+.EditItem{
+	display: inline-block;
+	text-decoration: none;
+	background-color: #ffaf49;
+	color: #b22121;
+	border-radius: 5px;
+    position: absolute;
+    bottom: 5%;
+    padding: 5px;
+	left: 30%;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+}
+.EditItem:hover {
+	color: #b22121;
+	text-decoration: none;
+}
+
+#itemButton{
+	font-family: 'Montserrat', sans-serif;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #ffaf49;
+    border: 0;
+    position: absolute;
+    left: 43%;
+    bottom: 5%;
+    color: #b22121;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.addItem{
+	text-decoration: none;
+	background-color: #ffaf49;
+	color: #b22121;
+	border-radius: 5px;
+	padding: 5px;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+	height: 40px;
+    }
+.addItem:hover {
+	color: #b22121;
+	text-decoration: none;
+}
+.divItem {
+	text-align: center;
+
+}
+.admin-menu {
+	font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    color: #ffaf49;
+    text-align: center;
+    font-weight: bold;
+}
