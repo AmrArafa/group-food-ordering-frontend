@@ -53,7 +53,7 @@ export default class AdminOrder extends Component {
                             :
                             <p>Order has been delivered</p>
                           }
-                          {order.will_pay_on_delivery === true && order.paid_online === false && order.paid_on_delivery === false ? 
+                          {(order.paid_online === false && order.paid_on_delivery === false)  ? 
                             <Button onClick={() => paidOrder(order.id)}> Order Paid</Button>
                             :
                             <p>Order paid</p> 

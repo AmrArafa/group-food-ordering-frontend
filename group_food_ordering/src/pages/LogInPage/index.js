@@ -29,12 +29,11 @@ export default class LogIn extends Component{
       password: this.state.password
     })
     .then((response) => {
-      console.log(response);
       const token = response.data.auth_token;
       localStorage.setItem('jwtToken', token);
       localStorage.setItem('User', true);
+      localStorage.setItem('UserFirstName', response.data.first_name );
       setAuthorizationToken(token);
-      console.log(jwt.decode(token));
       this.setState({
         ...this.state,
         redirect: true
@@ -42,7 +41,6 @@ export default class LogIn extends Component{
     })
     .catch(function (error) {
       alert(error.response.data.message);
-      console.log(error.response.data);
     });
   }
 
