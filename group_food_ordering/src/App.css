@@ -137,3 +137,20 @@ footer {
   z-index: 0;
   font-family: 'Montserrat', sans-serif;
 }
+
+.notification{
+max-width: 300px;
+  position: absolute;
+top: 60px;
+right: -278px;
+background-color: white;
+}
+
+header .dropdown .icon .icon-notifications {
+    fill: #b22121;
+}
+
+header .notification .dropdown-toggle::after {
+    color: #b22121;
+    font-size: 10px;
+}

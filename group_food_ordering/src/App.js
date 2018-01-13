@@ -20,10 +20,56 @@ import logout from './utils/logout';
 import AdminRegistration from './pages/Admin/AdminRegistration';
 import AdminHome from './pages/Admin/Home'
 import AdminOrderHistory from './pages/Admin/AdminOrderHistory'
-
+import {cable} from './components/Notifications';
+import Axios from 'axios';
+import jwt from 'jsonwebtoken';
+var Notifications = require('pui-react-notifications').Notifications;
+var AlertNotifications = require('pui-react-notifications').AlertNotifications;
+var NotificationItem = require('pui-react-notifications').NotificationItem;
+var Icon = require('pui-react-iconography').Icon;
+var Flag = require('pui-react-media').Flag;
+var Label = require('pui-react-labels').Label;
 
 class App extends Component {
+  constructor(props){
+      super(props);
+      this.state = {
+        messages: [],
+        message: ''
+      }
+    }
+
+    componentWillMount(){
+      const token = localStorage.getItem('jwtToken');
+        const loggedInUserIdObject = jwt.decode(token);
+        const loggedInUserId = loggedInUserIdObject.user_id;
+        const id = loggedInUserId;
+
+        cable.subscriptions.create({
+            channel: 'NotificationsChannel'
+        }, {
+            connected: (data) =>{
+                console.log('test')
+            },  
+            received: (data) => {
+                this.setState({
+                  message: data.message
+                })
+            }
+        })
+
+        Axios.get(`http://localhost:3000/notifications?user_id=${id}`)
+            .then((response) => {
+                this.setState({ messages: response.data });
+                
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
   render() {
+
     if (localStorage.Admin) {
       return (
       <div className="App">
@@ -38,6 +84,7 @@ class App extends Component {
               <li><Link to="/admin/orders">Order History</Link></li>
             </ul>
           </nav>
+          
           <Link className="logout" to="/" onClick={() => logout()}>Log out</Link>
         </header>
         <div className="App-container">
@@ -77,6 +124,26 @@ class App extends Component {
               <li><Link to="/orderhistory">Check your orders</Link></li>
             </ul>
           </nav>
+          {
+            this.state.message == '' && this.state.messages == []?
+                console.log('no notifications')
+            :
+           <Notifications className='notification'>
+         
+          <NotificationItem > {this.state.message} {this.state.messages.map((message) => {
+                    return  (
+                <div>
+                <ul>
+               <li>{message.action}</li>
+                </ul>
+                </div>        
+                )
+                }
+                )}
+                </NotificationItem>
+          </Notifications>  
+          }
+          
           <Link className="logout" to="/" onClick={() => logout()}>Log out</Link>
         </header>
         
@@ -142,3 +209,6 @@ export default App;
 // <Link to="/menu">Menu</Link>
 // <Link to="/admin/menu">AdminMenu</Link>
 // <Link to="/" className="logout">Log out</Link>
+
+/*<button onClick={this._addNotification}>Add notification</button>
+        {/*<NotificationSystem ref="notificationSystem" />*/

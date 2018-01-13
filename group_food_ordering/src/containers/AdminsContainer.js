@@ -59,7 +59,6 @@ const mapDispatchToProps = (dispatch) => {
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     
     return {
-        // Find the admin with the id passed from the url by the route
         ...stateProps,
         ...dispatchProps,
         ...ownProps

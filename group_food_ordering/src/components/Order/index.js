@@ -4,6 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import Checkout from '../Checkout';
 import { Link, Redirect } from 'react-router-dom';
+import {oneOrder} from '../../apiConfig'; 
 
 class Order extends Component {
     constructor(props){
@@ -16,7 +17,7 @@ class Order extends Component {
 
     willPayOnDelivery(){
         const { id } = this.props.order;
-        axios.patch(`http://localhost:3000/orders/${id}`,
+        axios.patch(oneOrder(id),
     {
       will_pay_on_delivery: true
     })

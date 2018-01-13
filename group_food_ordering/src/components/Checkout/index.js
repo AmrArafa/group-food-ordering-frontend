@@ -3,6 +3,7 @@ import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 import STRIPE_PUBLISHABLE from '../../constants/stripe';
 import { Link, Redirect } from 'react-router-dom';
+import { oneOrder, charges } from '../../apiConfig';
 
 export default class Checkout extends Component {
 
@@ -16,7 +17,7 @@ export default class Checkout extends Component {
 successPayment = (data) => {
   const {id} = this.props;
   alert('Payment Successful');
-  axios.patch(`http://localhost:3000/orders/${id}`,
+  axios.patch(oneOrder(id),
     {
       paid_online: true
     })
@@ -31,7 +32,7 @@ alert('Payment Error');
 
 onToken = (amount, description) => token =>
 
-   axios.post('http://localhost:3000/charges',
+   axios.post(charges,
     {
       stripeToken: token.id,
       amount: amount,

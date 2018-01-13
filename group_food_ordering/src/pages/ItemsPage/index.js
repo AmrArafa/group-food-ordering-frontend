@@ -4,13 +4,12 @@ import './index.css';
 import { Link, Route } from 'react-router-dom';
 
 export default class ItemsPage extends Component {
+
     render (){
         return (
-          <div>        
+          <div>  
             <Items className="items"/>
           </div>
         )
     }
 }
-
-// <Link to="/orderhistory">Check your orders</Link>

@@ -4,6 +4,7 @@ import './index.css';
 import Checkout from '../Checkout';
 import axios from 'axios';
 import { Image, Item } from 'semantic-ui-react'
+import {oneOrder} from '../../apiConfig'; 
 
 export default class OrderInHistory extends Component {
   constructor(props){
@@ -15,7 +16,7 @@ export default class OrderInHistory extends Component {
 
        willPayOnDelivery(){
         const { id } = this.props.order;
-        axios.patch(`http://localhost:3000/orders/${id}`,
+        axios.patch(oneOrder(id),
     {
       will_pay_on_delivery: true
     })
