@@ -56,7 +56,7 @@ export default class LogIn extends Component{
         <h2>Welcome to Almakinah Restaurant!</h2>
         <h3> Admin Please Log in :)</h3>
       </div>
-      <div className="login-form">
+      <div >
         <form onSubmit={this._handleSubmit} >
           <div className="email">
             <label>Email:</label>
@@ -73,3 +73,5 @@ export default class LogIn extends Component{
     )
   }
 }
+
+// className="login-form"
