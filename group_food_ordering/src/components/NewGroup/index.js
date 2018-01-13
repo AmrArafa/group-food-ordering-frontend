@@ -4,9 +4,11 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import Checkout from '../Checkout';
 import moment from 'moment';
+import {oneOrder} from '../../apiConfig'; 
 import { Redirect } from 'react-router-dom';
 import { Modal } from 'antd';
 import 'antd/lib/modal/style/index.css';
+
 
 class NewGroup extends Component {
     constructor(props){
@@ -24,10 +26,9 @@ class NewGroup extends Component {
           content: 'Thank you for completing the process',
         });
     }
-    
     willPayOnDelivery(){
         const { id } = this.props.group.orders[0];
-        axios.patch(`http://localhost:3000/orders/${id}`,
+        axios.patch(oneOrder(id),
     {
       will_pay_on_delivery: true
     })
@@ -36,6 +37,11 @@ class NewGroup extends Component {
        this.setState({paid: true})
      })
     }
+
+
+
+
+
 
     render(){
          if (this.state.paid){

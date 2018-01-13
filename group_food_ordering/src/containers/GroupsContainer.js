@@ -3,7 +3,6 @@ import Groups from '../components/Groups';
 import {
     getGroupsLoading, getGroups, getGroupsSuccess, getGroupsFailure,
     createGroupLoading, createGroup, createGroupSuccess, createGroupFailure,
-    // createOrderLoading, createOrder, createOrderSuccess, createOrderFailure
 createSingleOrder, createSingleOrderLoading, createSingleOrderSuccess, createSingleOrderFailure
 } from '../actions/groups';
 
@@ -46,18 +45,6 @@ const mapDispatchToProps = (dispatch) => {
                     }
                 })
         },
-
-        //  createOrder: (id, itemsIdsAndQuantity) => {
-        //      dispatch(createOrderLoading());
-        //         dispatch(createOrder(id, itemsIdsAndQuantity)).then(response => {
-        //             if(response.payload.status < 400){
-        //                 dispatch(createOrderSuccess(response.payload.data));
-                        
-        //             }else{
-        //                 dispatch(createOrderFailure(response.payload.message));
-        //             }
-        //         })
-        // },
 
            createSingleOrder: (itemsIdsAndQuantity) => {
              dispatch(createSingleOrderLoading());

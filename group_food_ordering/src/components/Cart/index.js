@@ -22,7 +22,6 @@ export default class Cart extends Component {
   calculateCartTotal(newPrice){
     const token = localStorage.getItem('jwtToken');
     const loggedInUserID = jwt.decode(token);
-    console.log(loggedInUserID.user_id);
     this.setState({
       cartTotal: this.state.cartTotal + newPrice
     });
@@ -95,7 +94,6 @@ export default class Cart extends Component {
 
   render(){
       const { items, copyItems} = this.props;
-      console.log(this.state.cartArray);
     return (
       <div className='cart'>
         <p id="cart-title">Your Cart</p>

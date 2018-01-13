@@ -3,9 +3,11 @@ import './index.css';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import Checkout from '../Checkout';
+import {oneOrder} from '../../apiConfig'; 
 import { Redirect } from 'react-router-dom';
 import { Modal } from 'antd';
 import 'antd/lib/modal/style/index.css';
+
 
 class Order extends Component {
     constructor(props){
@@ -25,7 +27,7 @@ class Order extends Component {
     }
     willPayOnDelivery(){
         const { id } = this.props.order;
-        axios.patch(`http://localhost:3000/orders/${id}`,
+        axios.patch(oneOrder(id),
     {
       will_pay_on_delivery: true
     })
@@ -65,7 +67,7 @@ class Order extends Component {
                  <div className='clearfix'>
                   <p className='string'>Total</p><p className='total'>  EGP {order.totalPrice}  </p>
                   </div>
-                  <p className='text'> Please choose your payment method within 10 minutes. Otherwise, the order will be cancelled.</p>
+                  <p className='text'> Please choose your payment method within 10 minutes. Otherwise, the order will be cancelled. You also can cancel it within 10 minutes from your orders history page if you still have not paid.</p>
                   <button className='delivery' onClick={() => this.willPayOnDelivery()}>Pay On Delivery </button>
                  <Checkout
                     name={'Pay for your order'}

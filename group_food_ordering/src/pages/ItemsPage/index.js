@@ -3,13 +3,12 @@ import Items from '../../containers/ItemsContainer';
 import './index.css';	
 
 export default class ItemsPage extends Component {
+
     render (){
         return (
-          <div>        
+          <div>  
             <Items className="items"/>
           </div>
         )
     }
 }
-
-// <Link to="/orderhistory">Check your orders</Link>

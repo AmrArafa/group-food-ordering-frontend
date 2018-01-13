@@ -11,15 +11,7 @@ export default class AdminDashBoard extends Component{
       const loggedInUserID = jwt.decode(token);
       console.log(this.props);
         getDashBoard()
-        getAdmin(loggedInUserID.admin_id)
-        //getLessItem()
-			  // getLessUser()
-			  // getMostItem()
-			  // getMostUser()
-			  // getTotalSold()
-			  // getTotalSoldLastDay()
-			  // getTotalSoldLastHour()
-			  // getTotalSoldLastMonth()		     	
+        getAdmin(loggedInUserID.admin_id)	     	
     }
      componentWillReceiveProps(nextProps) {
       if (this.props.Admin.id !== nextProps.Admin.id) {
@@ -38,54 +30,54 @@ export default class AdminDashBoard extends Component{
               <Row>
               <Col sm="3">
                 <Card body inverse color="success" className="dashBordCard" >
-                  <CardTitle>Most Item</CardTitle>
+                  <CardTitle>Most Ordered Item</CardTitle>
                   <CardText>{dashboard.mostItem.item.name}</CardText>
                   <CardText>Quantity: {dashboard.mostItem.quantity}</CardText>
                 </Card>
               </Col>
               <Col sm="3">
                 <Card body inverse color="danger" className="dashBordCard">
-                  <CardTitle>Less Item</CardTitle>
+                  <CardTitle>Least Ordered Item</CardTitle>
                   <CardText>{dashboard.lessItem.item.name}</CardText>
                   <CardText>Quantity: {dashboard.lessItem.quantity}</CardText>
                 </Card>
               </Col>
               <Col sm="3">
                 <Card body inverse color="success" className="dashBordCard">
-                  <CardTitle>Most User</CardTitle>
+                  <CardTitle>Most Active User</CardTitle>
                   <CardText>{dashboard.mostUser.user.first_name} {dashboard.mostUser.user.last_name}</CardText>
-                  <CardText>Orders Count: {dashboard.mostUser.orderCount}</CardText>
+                  <CardText>Number of Orders: {dashboard.mostUser.orderCount}</CardText>
                 </Card>
               </Col>
               <Col sm="3">
                 <Card body inverse color="danger" className="dashBordCard">
-                  <CardTitle>Less User</CardTitle>
+                  <CardTitle>Least Active User</CardTitle>
                   <CardText>{dashboard.lessUser.user.first_name} {dashboard.lessUser.user.last_name}</CardText>
-                  <CardText>Orders Count: {dashboard.lessUser.orderCount}</CardText>
+                  <CardText>Number of Orders: {dashboard.lessUser.orderCount}</CardText>
                 </Card>
               </Col>
               <Col sm="3">
                 <Card body inverse color="primary" className="dashBordCard">
-                  <CardTitle>Total Sold</CardTitle>
-                  <CardText>{dashboard.totalSold}</CardText>
+                  <CardTitle>Total Sales</CardTitle>
+                  <CardText>EGP {dashboard.totalSold}</CardText>
                 </Card>
               </Col>
               <Col sm="3">
                 <Card body inverse color="primary" className="dashBordCard">
-                  <CardTitle>Total Sold Last Month</CardTitle>
-                  <CardText>{dashboard.totalLastMonth}</CardText>
+                  <CardTitle>Total Sales for Last Month</CardTitle>
+                  <CardText>EGP {dashboard.totalLastMonth}</CardText>
                 </Card>
               </Col>
               <Col sm="3">
                 <Card body inverse color="primary" className="dashBordCard">
-                  <CardTitle>Total Sold Last Day</CardTitle>
-                  <CardText>{dashboard.tatalLastday}</CardText>
+                  <CardTitle>Total Salse for Last Day</CardTitle>
+                  <CardText>EGP {dashboard.tatalLastday}</CardText>
                 </Card>
               </Col>
               <Col sm="3">
                 <Card body inverse color="primary" className="dashBordCard">
-                  <CardTitle>Total Sold Last Hour</CardTitle>
-                  <CardText>{dashboard.tatalLasthour}</CardText>
+                  <CardTitle>Total Sales for Last Hour</CardTitle>
+                  <CardText>EGP {dashboard.tatalLasthour}</CardText>
                 </Card>
               </Col>
             </Row>
