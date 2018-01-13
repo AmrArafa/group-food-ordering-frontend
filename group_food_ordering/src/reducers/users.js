@@ -42,26 +42,26 @@ export default (currentState = INITIAL_STATE, action) => {
         // Edit single user
         case EDIT_USER_LOADING:
             var newUsers = currentState.users.map(user => {
-                if (user.id == action.id) user.loading = true;
+                if (user.id === action.id) user.loading = true;
                 return user;
             })
             return {...currentState, users: newUsers}
         case EDIT_USER_SUCCESS:
             var newUsers = currentState.users.map(user => {
-                if (user.id == action.user.id) {user = action.user}
+                if (user.id === action.user.id) {user = action.user}
                 return user;
             })
             return {...currentState, users: newUsers}
         case EDIT_USER_FAILURE:
             var newUsers = currentState.users.map(user => {
-                if (user.id == action.id) {user.loading = false; user.error = action.error}
+                if (user.id === action.id) {user.loading = false; user.error = action.error}
                 return user;
             })
             return {...currentState, users: newUsers}
         // Delete single user
         case DELETE_USER_LOADING:
             var newUsers = currentState.users.map(user => {
-                if (user.id == action.id) user.loading = true;
+                if (user.id === action.id) user.loading = true;
                 return user;
             })
             return {...currentState, users: newUsers}
@@ -72,7 +72,7 @@ export default (currentState = INITIAL_STATE, action) => {
             return {...currentState, users: newUsers}
         case DELETE_USER_FAILURE:
             var newUsers = currentState.users.map(user => {
-                if (user.id == action.id) {user.loading = false; user.error = action.error}
+                if (user.id === action.id) {user.loading = false; user.error = action.error}
                 return user;
             })
             return {...currentState, users: newUsers}

@@ -4,7 +4,7 @@ import './index.css';
 import Cart from '../../containers/CartContainer';
 import {Button } from 'reactstrap';
 import moment from 'moment';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 
 export default class Groups extends Component {

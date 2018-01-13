@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import { groups, orders } from '../apiConfig';
 
 
 // Get all groups
@@ -32,7 +33,7 @@ export const getGroupsLoading = () => {
     }
 }
 export const getGroups = () => {
-    const payload = Axios.get('http://localhost:3000/groups');
+    const payload = Axios.get(groups);
     return {
         type: GET_GROUPS,
         payload
@@ -69,7 +70,7 @@ export const createGroupLoading = () => {
     }
 }
 export const createGroup = (timeframe, itemsIdsAndQuantity, loggedInUserId) => {
-    const payload = Axios.post('http://localhost:3000/groups', {
+    const payload = Axios.post(groups, {
         group: {time_frame: timeframe,
         orders_attributes: [{
             user_id: loggedInUserId,
@@ -103,7 +104,7 @@ export const createOrderLoading = () => {
     }
 }
 export const createOrder = (id, itemsIdsAndQuantity) => {
-    const payload = Axios.post('http://localhost:3000/orders', {
+    const payload = Axios.post(orders, {
         order: {
             group_id : id,
             order_items_attributes: itemsIdsAndQuantity
@@ -136,7 +137,7 @@ export const createSingleOrderLoading = () => {
     }
 }
 export const createSingleOrder = (itemsIdsAndQuantity) => {
-    const payload = Axios.post('http://localhost:3000/orders', {
+    const payload = Axios.post(orders, {
         order: {
             order_items_attributes: itemsIdsAndQuantity
         }

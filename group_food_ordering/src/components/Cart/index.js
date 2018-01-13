@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
 import CartItem from '../../containers/CartItemContainer';
-import { Link, Route } from 'react-router-dom';
-import {Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 
 export default class Cart extends Component {
@@ -10,12 +9,11 @@ export default class Cart extends Component {
   constructor(){
     super();
     this.state = {
-      itemsAndQuantities: [],
-      cartArray: []
+      itemsAndQuantities: []
     }
     this.updateItemsAndQuantities = this.updateItemsAndQuantities.bind(this);
   }
-
+  
   updateItemsAndQuantities(item_id,quantity){
     var newArray = this.state.itemsAndQuantities.slice();
     if (newArray.length === 0){
@@ -47,7 +45,7 @@ export default class Cart extends Component {
   }
 
   render(){
-      const { items, quantities, total, copyItems} = this.props;
+     const { items, quantities, total, copyItems} = this.props;
     return (
       <div className='cart'>
         <p id="cart-title">Your Cart</p>
@@ -63,8 +61,8 @@ export default class Cart extends Component {
         
       <Link className={items.length === 0? 'invisible' : 'confirm-order'} onClick={() => {copyItems(items, this.state.itemsAndQuantities);}} to="/options">Confirm your Order</Link>
     
-</div>
-        )
+    </div>
+    )
   }
 
 }

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import './index.css';	
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Button } from 'reactstrap';
 import Checkout from '../Checkout';
 import moment from 'moment';
-import { Link, Redirect } from 'react-router-dom';
+import {oneOrder} from '../../apiConfig'; 
+import { Redirect } from 'react-router-dom';
+
 
 
 class NewGroup extends Component {
@@ -17,9 +18,12 @@ class NewGroup extends Component {
       }
     }
 
+
+
+
     willPayOnDelivery(){
         const { id } = this.props.group.orders[0];
-        axios.patch(`http://localhost:3000/orders/${id}`,
+        axios.patch(oneOrder(id),
     {
       will_pay_on_delivery: true
     })
@@ -28,6 +32,11 @@ class NewGroup extends Component {
        this.setState({paid: true})
      })
     }
+
+
+
+
+
 
     render(){
          if (this.state.paid){

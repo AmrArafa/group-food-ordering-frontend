@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
+import {  Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import './index.css'; 
 
 
 export default class AdminInvitations extends Component {
@@ -22,7 +23,7 @@ export default class AdminInvitations extends Component {
 
     }
      componentWillReceiveProps(nextProps) {
-      if (this.props.admin.invitation_token != nextProps.admin.invitation_token) {
+      if (this.props.admin.invitation_token !== nextProps.admin.invitation_token) {
         this.setState({...this.state, 
           first_name: nextProps.admin.first_name,
           last_name: nextProps.admin.last_name,
@@ -49,12 +50,7 @@ export default class AdminInvitations extends Component {
           var adminEmail = this.state.email
           var adminPassword =this.state.password
           var adminPassword_confrmation =  this.state.password_confirmation
-          // var itemEdit = {
-          //   name: this.state.name,
-          //   image: this.state.image,
-          //   price: this.state.price
-          // }
-            var addAdmin = {admin: {
+          var addAdmin = {admin: {
               first_name: this.state.first_name,
               last_name: this.state.last_name,
               email: this.state.email,
@@ -64,33 +60,32 @@ export default class AdminInvitations extends Component {
             } } 
      return (
 
-      <div>
-        <form>
-          <div className="itemName">
-            <label>First name </label>
-            <input type="text" name="first_name" value={adminFirstName} onChange={this._handleChange} />
-          </div>
-           <div className="itemName">
-            <label>Last name </label>
-            <input type="text" name="last_name" value={adminLastName} onChange={this._handleChange} />
-          </div>
-           <div className="itemName">
-            <label>Email </label>
-            <input type="email" name="email" value={adminEmail} onChange={this._handleChange} />
-          </div>
-           <div className="itemName">
-            <label>Password </label>
-            <input type="password" name="password" value={adminPassword} onChange={this._handleChange} />
-          </div>
-          
-          <div className="itemName">
-            <label>Password Confrmation</label>
-            <input type="password" name="password_confirmation" value={adminPassword_confrmation} onChange={this._handleChange} />
-          </div>
-        </form>
-
-
-        <Button onClick={() => editAdmin(admin.invitation_token, addAdmin)}><Link to="/admin">Submit</Link></Button>
+      <div className="clearfix">
+      <Form id="adminInviteForm">
+        <FormGroup>
+          <Label for="FirstName">First Name</Label>
+          <Input type="email" name="first_name" id="FirstName" placeholder="Enter your First Name" value={adminFirstName} onChange={this._handleChange} />
+        </FormGroup>
+        <FormGroup>
+          <Label for="LastName">Last Name</Label>
+          <Input type="email" name="last_name" id="LastName"value={adminLastName} onChange={this._handleChange} placeholder="Enter your First Last" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="Email">Email</Label>
+          <Input type="email" name="email"  value={adminEmail} onChange={this._handleChange} id="Email" placeholder="Enter Your Email" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="Password">Password</Label>
+          <Input type="password" name="password" id="Password" value={adminPassword} onChange={this._handleChange}  placeholder="password placeholder" />
+        </FormGroup>
+         <FormGroup>
+          <Label for="PasswordConfemation">Password Confrmation</Label>
+          <Input type="password" name="password_confirmation" id="PasswordConfemation" value={adminPassword_confrmation} onChange={this._handleChange} placeholder="password confrmation" />
+        </FormGroup>
+        <div className="admin-invite-button">
+          <Link id="invite-button" onClick={() => editAdmin(admin.invitation_token, addAdmin)} to="/admin">Submit</Link>
+        </div>
+      </Form>
 
        </div>
        

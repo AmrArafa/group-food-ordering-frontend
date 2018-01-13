@@ -6,7 +6,6 @@ export default class CartItem extends Component {
   constructor(props){
     super(props);
     const {item, quantity} = this.props;
-    
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
     this.deleteAndUpdateCart = this.deleteAndUpdateCart.bind(this);

@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import './index.css';	
-import { Card, Button, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Card,  CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
-import { Link, Route } from 'react-router-dom';
 import ReactCountdownClock from 'react-countdown-clock';
+import { Link } from 'react-router-dom';
 
 export default class Group extends Component {
-    constructor(){
-        super();
-    }
-
-
     render(){
-        const { group, items , createOrder, itemsIdsAndQuantity} = this.props;
+        const { group , createOrder, itemsIdsAndQuantity} = this.props;
         var now = moment();
         var a = moment(now,'YYYY-MM-DD HH:mm:ss');
         var b = moment(group.time_frame,'YYYY-MM-DD HH:mm:ss');

@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import Axios from 'axios';
 import setAuthorizationToken from '../../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
+import { userLogin } from '../../apiConfig';
 
 export default class LogIn extends Component{
   constructor(){
@@ -23,7 +24,7 @@ export default class LogIn extends Component{
 
   _handleSubmit(e){
     e.preventDefault();
-    Axios.post('http://localhost:3000/login.json', {
+    Axios.post( userLogin , {
       email: this.state.email,
       password: this.state.password
     })

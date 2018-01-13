@@ -1,0 +1,25 @@
+.admin-invite-button{
+	text-align: center;
+
+}
+#invite-button {
+	text-decoration: none;
+	background-color: #af1e1e;
+	color: #ffaf49;
+	border-radius: 5px;
+	padding: 5px;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+	height: 40px;
+}
+#invite-button:hover{
+	color: #ffaf49;
+	text-decoration: none;
+}
+#adminInviteForm{
+	padding: 10px;
+	color: #af1e1e;
+}

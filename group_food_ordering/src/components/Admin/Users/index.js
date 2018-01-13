@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import './index.css';
 import  User from '../User';
-import { Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
 export default class Users extends Component {
      componentWillMount(){
         this.props.getUsers();
     }
+    submit(id){
+    confirmAlert({
+      title: 'Delete User',                       
+      message: 'Are you sure to do this.',            
+      confirmLabel: 'Confirm',                         
+      cancelLabel: 'Cancel',                           
+      onConfirm: () =>(this.props.deleteUser(id)),    
+      onCancel: () => alert('Delete Canceld'),      
+      })
+    };
     render(){
-        const { users, loading, error, deleteUser} = this.props;
+        const { users, loading, error} = this.props;
         if(loading){
             return (
                 <p>Is loading</p>
@@ -21,12 +31,14 @@ export default class Users extends Component {
                 )
         }else{
             return (
-                <div className='users'>
-                    <p>Users</p>
+                <div className='users clearfix'>
+                    <div className="admin-title">
+                        <p>Users List</p>
+                    </div>
                     {users.map((user) => {
                      return  (
                         <User user={user} 
-                        handleDelete={deleteUser}
+                        handleDelete={this.submit.bind(this)}
                          />
                         )
                      })
