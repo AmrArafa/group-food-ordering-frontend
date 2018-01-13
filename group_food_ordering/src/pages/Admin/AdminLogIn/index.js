@@ -52,23 +52,23 @@ export default class LogIn extends Component{
     }
     return(
       <div className="login-page clearfix">
-      <div className="welcome-msg">
-        <h2>Welcome to Almakinah Restaurant!</h2>
-        <h3> Admin Please Log in :)</h3>
-      </div>
-      <div >
-        <form onSubmit={this._handleSubmit} >
-          <div className="email">
-            <label>Email:</label>
-            <input className="field" type="email" name="email" onChange={this._handleChange} />
-          </div>
-          <div className="password">
-            <label>Password:</label>
-            <input className="field" type="password" name="password" onChange={this._handleChange}/>
-          </div>
-          <input id="login-button" type="submit" value="Log in"/>
-        </form>
-      </div>
+        <div className="welcome-msg">
+          <h2>Welcome to Almakinah Restaurant!</h2>
+          <h3> Admin Please Log in &#9786;</h3>
+        </div>
+      <div className="login-form">
+          <form onSubmit={this._handleSubmit} >
+            <div className="email">
+              <label>Email</label>
+              <input className="field" type="email" name="email" onChange={this._handleChange} />
+            </div>
+            <div className="password">
+              <label>Password</label>
+              <input className="field" type="password" name="password" onChange={this._handleChange}/>
+            </div>
+            <input id="login-button" type="submit" value="Log in"/>
+          </form>
+        </div>
       </div>
     )
   }
