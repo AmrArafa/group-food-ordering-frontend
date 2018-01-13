@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Checkout from '../Checkout';
 import moment from 'moment';
 import { Redirect } from 'react-router-dom';
+import { Modal } from 'antd';
+import 'antd/lib/modal/style/index.css';
 import './index.css';   
 
 
@@ -14,8 +16,16 @@ class JoinGroup extends Component {
         group: '',
         paid: false
       }
+      this.success = this.success.bind(this)
     }
 
+
+     success() {
+      const modal = Modal.success({
+        title: 'Thank you',
+        content: 'Thank you for completing the process',
+      });
+    }
     willPayOnDelivery(){
         const { id } = this.props.order;
         Axios.patch(`http://localhost:3000/orders/${id}`,
@@ -23,7 +33,7 @@ class JoinGroup extends Component {
       will_pay_on_delivery: true
     })
     .then(() => {
-        alert('Thank you for completing the process.')
+       this.success()
        this.setState({paid: true})
      })
     }
