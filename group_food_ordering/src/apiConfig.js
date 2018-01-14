@@ -1,7 +1,12 @@
-export const rootApi = `http://localhost:3000`;
-export const AdminLogin = `http://localhost:3000/admin/login`
-export const AdminRoot = `http://localhost:3000/admin`
+export const rootApi = process.env.NODE_ENV === 'production'
+? `https://ordering-food-app.herokuapp.com`
+: `http://localhost:3000`
 
+export const cable = process.env.NODE_ENV === 'production'
+? `wss://ordering-food-app.herokuapp.com`
+: `ws://localhost:3000`
+
+export const actionCable = (token) => `${cable}/cable?token=${token}`;
 // Items
 export const itemsApi = `${rootApi}/items`;
 export const itemApi = (id) => `${itemsApi}/${id}`;
@@ -44,7 +49,6 @@ export const oneOrder = (id) => `${orders}/${id}`;
 export const charges = `${rootApi}/charges`;
 export const oneGroup = (id) => `${groups}/${id}`;
 
-export const actionCable = (token) => `${rootApi}/cable?token=${token}`;
 
 export const oneOrderInHistory = (id) => `${orders}?user_id=${id}`;
 
