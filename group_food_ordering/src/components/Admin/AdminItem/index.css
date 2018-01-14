@@ -26,12 +26,17 @@
     border-radius: 5px;
     background-color: #ffaf49;
     border: 0;
-    position: relative;
-    left: 43%;
-    bottom: 5%;
+    position: absolute;
+    left: 46%;
+    top: 84.7%;
     color: #b22121;
     cursor: pointer;
-    display: inline-block;
+    text-transform: none;
+    height: 40px;
+}
+
+.btn {
+   
 }
 
 .addItem{

@@ -14,11 +14,11 @@ export default class AdminItems extends Component {
     submit(id){
     confirmAlert({
       title: 'Delete Item',                        
-      message: 'Are you sure to do this.',               
+      message: 'Are you sure?',               
       confirmLabel: 'Confirm',                           
       cancelLabel: 'Cancel',                             
-      onConfirm: () =>(this.props.deleteItem(id)),    
-      onCancel: () => alert('Delete Canceld'),     
+      onConfirm: () =>(this.props.deleteItem(id))  
+      // onCancel: () => alert('Delete Canceld')    
     })
   };
     render(){

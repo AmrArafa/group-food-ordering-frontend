@@ -52,8 +52,8 @@ export default class LogIn extends Component{
     return(
       <div className="login-page clearfix">
         <div className="welcome-msg">
-          <h2>Welcome to Almakinah Restaurant!</h2>
-          <h3> Admin Please Log in &#9786;</h3>
+          <p>Welcome to Almakinah Restaurant!</p>
+          <p>Admin Please Log in &#9786;</p>
         </div>
       <div className="login-form">
           <form onSubmit={this._handleSubmit} >

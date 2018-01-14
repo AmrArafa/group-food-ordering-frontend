@@ -26,7 +26,7 @@ export default class AdminDashBoard extends Component{
          if (( dashboard != null  ) && (localStorage.getItem('AdminLastName') != null)){
            return(
             <div className="clearfix">
-            <h2 className="welcome-admin"> Welcome Back Mr. {localStorage.getItem('AdminLastName')} </h2>
+            <h2 className="welcome-admin"> Welcome Back Mr./Mrs. {localStorage.getItem('AdminLastName')} </h2>
               <Row>
               <Col sm="3">
                 <Card body inverse color="success" className="dashBordCard" >

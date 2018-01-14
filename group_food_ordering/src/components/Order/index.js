@@ -24,13 +24,13 @@ class Order extends Component {
     })
     .then(() => {
         alert('Thank you for completing the process. Your order will be delivered within 45 min.')
-       this.setState({paid: true})
+       this.setState({paid: true});
+       window.store.dispatch({type: 'USER_LOG_OUT'});
      })
     }
 
 
     render(){
-      debugger;
         if (this.state.paid){
       return <Redirect to="/menu" />
         }

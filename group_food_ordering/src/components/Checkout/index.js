@@ -22,7 +22,8 @@ successPayment = (data) => {
       paid_online: true
     })
     .then(() => {
-       this.setState({paid: true})
+       this.setState({paid: true});
+       window.store.dispatch({type: 'USER_LOG_OUT'});
      })
 }
 

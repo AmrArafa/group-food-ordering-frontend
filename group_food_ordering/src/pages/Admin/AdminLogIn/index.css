@@ -62,10 +62,6 @@ form {
   background-color: #ffaf49;
 }
 
-.login-form p {
-  padding-top: 5%;
-}
-
 .welcome-msg {
   float: left;
   width: 60%;
@@ -80,6 +76,6 @@ form {
   font-weight: bold;
 }
 
-.welcome-msg p {
+.login-page .welcome-msg p {
   font-size: 50px;
 }

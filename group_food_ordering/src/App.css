@@ -38,7 +38,13 @@ html {
   padding: 0;
   margin: 0;
   background-color: white;
-  /*border-radius: 0px 5px 0px 0px;*/
+}
+
+.App-header #admin-nav ul {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border-radius: 0px 5px 0px 0px;
 }
 
 .App-header nav {
@@ -55,9 +61,14 @@ html {
   font-family: 'Montserrat', sans-serif;
 }
 
-.App-header nav li + li {
+.App-header #admin-nav li + li {
   border-left: 2px solid #b22121;
-  padding-top: 4.6%;
+  padding-top: 2.8%;
+}
+
+.App-header #user-nav li + li {
+  border-left: 2px solid #b22121;
+  padding-top: 4.7%;
 }
 
 .App-header .logout {
@@ -70,7 +81,19 @@ html {
   font-size: 12px;
   padding: 0 0.5%;
   text-decoration: none;
+}
+
+.App-header #welcome-user {
+  position: absolute;
+  bottom: -6.5%;
+  right: 5%;
+  background-color: white;
+  color: #b22121;
+  font-size: 12px;
+  padding: 0 0.5%;
   border-radius: 5px 0px 0px 0px;
+  font-family: 'Montserrat', sans-serif;
+  min-width: 98.63px;
 }
 
 .App-title {
@@ -87,10 +110,6 @@ html {
 /*.App-intro {
   font-size: large;
 }*/
-
-.items {
-  
-}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
@@ -158,6 +177,8 @@ header .dropdown {
 header .dropdown .icon .icon-notifications {
   fill: #b22121;
   border-left: 2px solid #b22121;
+  position: relative;
+  bottom: 2%;
 }
 
 header .dropdown-notifications-title::after {
@@ -168,6 +189,10 @@ header .dropdown-notifications-title::after {
   bottom: 15%;
   color: #b22121;
   font-weight: normal;
+}
+
+.dropdown .dropdown-menu ul li {
+  font-family: 'Montserrat', sans-serif;
 }
 
 header .notification .dropdown-toggle::after {

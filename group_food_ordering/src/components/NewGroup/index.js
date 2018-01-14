@@ -29,7 +29,8 @@ class NewGroup extends Component {
     })
     .then(() => {
         alert('Thank you for completing the process.');
-       this.setState({paid: true})
+       this.setState({paid: true});
+       window.store.dispatch({type: 'USER_LOG_OUT'});
      })
     }
 
