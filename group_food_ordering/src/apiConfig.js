@@ -1,6 +1,8 @@
 export const rootApi = process.env.NODE_ENV === 'production'
 ? `https://ordering-food-app.herokuapp.com`
 : `http://localhost:3000`
+export const AdminRoot = `${rootApi}/admin`
+export const AdminLogin = `${AdminRoot}/login`
 
 export const cable = process.env.NODE_ENV === 'production'
 ? `wss://ordering-food-app.herokuapp.com`
