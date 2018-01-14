@@ -6,28 +6,16 @@ import jwt from 'jsonwebtoken';
 
 export default class AdminDashBoard extends Component{
 	  componentWillMount(){
-     	const { getDashBoard, getAdmin } = this.props;
-      const token = localStorage.getItem('jwtToken');
-      const loggedInUserID = jwt.decode(token);
-      console.log(this.props);
-        getDashBoard()
-        getAdmin(loggedInUserID.admin_id)	     	
+      const {getDashBoard} = this.props;
+     	getDashBoard();     	
     }
-     componentWillReceiveProps(nextProps) {
-      if (this.props.Admin.id !== nextProps.Admin.id) {
-     localStorage.setItem('AdminLastName', nextProps.Admin.last_name);
-      }
-      
-     }
-
-    render(){
+     render(){
     	const { dashboard } = this.props;
           
-         if (( dashboard != null  ) && (localStorage.getItem('AdminLastName') != null)){
+         if ( dashboard != null  ){
            return(
             <div className="clearfix">
-            <h2 className="welcome-admin"> Welcome Back Mr./Mrs. {localStorage.getItem('AdminLastName')} </h2>
-              <Row>
+             <Row>
               <Col sm="3">
                 <Card body inverse color="success" className="dashBordCard" >
                   <CardTitle>Most Ordered Item</CardTitle>
