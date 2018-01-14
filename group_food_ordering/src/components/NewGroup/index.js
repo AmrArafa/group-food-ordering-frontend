@@ -56,10 +56,10 @@ class NewGroup extends Component {
                     {
                         group.orders[0].items.map(item => {
                             return (
-                                 <div className='clearfix'>
+                                 <div className='create-item clearfix'>
                                 <div className='left '>
-                                    <p>{item.name}</p>
-                                    <p className='quantity'>{item.quantity}</p>
+                                    <p className="item-name">{item.name}</p>
+                                    <p className='quantity'>({item.quantity})</p>
                                 </div>    
                                       <p className='right '>EGP {item.price} </p>
                                     
@@ -67,7 +67,6 @@ class NewGroup extends Component {
                             )
                         })
                     }
-                         ------------------------------------------------------------------------------------------------------
                   <div className='clearfix'>
                   <p className='string'>Total</p><p className='total'>  EGP {group.totalPrice}  </p>
                   </div>

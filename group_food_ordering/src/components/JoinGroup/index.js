@@ -76,10 +76,10 @@ class JoinGroup extends Component {
                     {
                         order.items.map(item => {
                             return (
-                                  <div className='clearfix'>
+                                  <div className='join-item clearfix'>
                                 <div className='left '>
-                                    <p>{item.name}</p>
-                                    <p className='quantity'>{item.quantity}</p>
+                                    <p className="item-name">{item.name}</p>
+                                    <p className='quantity'>({item.quantity})</p>
                                 </div>    
                                       <p className='right '>EGP {item.price} </p>
                                     
@@ -87,7 +87,6 @@ class JoinGroup extends Component {
                             )
                         })
                     }
-  ------------------------------------------------------------------------------------------------------
                   <div className='clearfix'>
                   <p className='string'>Total</p><p className='total'>  EGP {order.totalPrice}  </p>
                   </div>

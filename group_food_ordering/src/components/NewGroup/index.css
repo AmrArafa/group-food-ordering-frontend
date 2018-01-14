@@ -26,3 +26,17 @@ float: right;
 	font-weight: bold;
 	border-radius: 10px;
 }
+
+.create-item {
+	border-bottom: 1px solid black;
+}
+
+.create-item .item-name,
+.create-item .quantity {
+	display: inline-block;
+}
+
+.create-item .item-name {
+	width: 500px;
+	text-align: left;
+}
