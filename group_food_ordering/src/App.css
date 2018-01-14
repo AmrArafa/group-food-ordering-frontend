@@ -1,28 +1,211 @@
-.App {
+/*.App {
   text-align: center;
+}*/
+
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
+html {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+/*.App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
+}*/
 
 .App-header {
-  background-color: #222;
+  background-image: url("./images/tomatoes.jpg");
+  background-repeat: no-repeat;
+  background-color: #FFFFFF;
   height: 150px;
-  padding: 20px;
+  background-size: 100%;
   color: white;
+  position: relative;
+  margin-bottom: 2%;
+}
+
+.App-header nav li {
+  display: inline;
+  text-decoration: none;
+  padding: 4px;
+}
+
+.App-header nav ul {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+
+.App-header #admin-nav ul {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border-radius: 0px 5px 0px 0px;
+}
+
+.App-header nav {
+  position: absolute;
+  bottom: 0;
+}
+
+.App-header nav a {
+  text-decoration: none;
+  color: #b22121;
+  /*border: 2px solid #b22121;*/
+  padding: 5px;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.App-header #admin-nav li + li {
+  border-left: 2px solid #b22121;
+  padding-top: 2.8%;
+}
+
+.App-header #user-nav li + li {
+  border-left: 2px solid #b22121;
+  padding-top: 4.7%;
+}
+
+.App-header .logout {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  color: #b22121;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  padding: 0 0.5%;
+  text-decoration: none;
+}
+
+.App-header #welcome-user,
+.App-header #welcome-admin {
+  position: absolute;
+  bottom: -6.5%;
+  right: 5%;
+  background-color: white;
+  color: #b22121;
+  font-size: 12px;
+  padding: 0 0.5%;
+  border-radius: 5px 0px 0px 0px;
+  font-family: 'Montserrat', sans-serif;
+  min-width: 98.63px;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 46px;
+  text-align: left;
+  color: #ffaf49;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+  position: relative;
+  top: 25%;
+  padding-left: 3%;
 }
 
-.App-intro {
+/*.App-intro {
   font-size: large;
-}
+}*/
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.footer {
+  margin: 0 auto;
+  border-top: 2px solid #b22121;
+  padding: 15px 0;
+}
+
+#footer-p {
+  float: right;
+}
+
+.footer p {
+  display: inline;
+  font-size: 9px;
+  color: #737373;
+}
+
+.footer > p {
+  padding-left: 0.8%;
+}
+
+footer a {
+  text-decoration: none;
+  color: #737373;
+}
+
+#footer-p > p {
+  padding-right: 10px; 
+}
+
+footer {
+  margin-top: 3%;
+  position: relative;
+  z-index: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.notification{
+  max-width: 300px;
+  position: absolute;
+  top: 60px;
+  right: -278px;
+  background-color: white;
+}
+
+header .dropdown {
+  width: 18%;
+  position: relative;
+  margin: 0 auto;
+  right: 18%;
+  border-radius: 0px 5px 0px 0px;
+}
+
+header .dropdown .icon .icon-notifications {
+  fill: #b22121;
+  border-left: 2px solid #b22121;
+  position: relative;
+  bottom: 2%;
+}
+
+header .dropdown-notifications-title::after {
+  content:"Notifications";
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  position: absolute;
+  bottom: 15%;
+  color: #b22121;
+  font-weight: normal;
+}
+
+.dropdown .dropdown-menu ul li {
+  font-family: 'Montserrat', sans-serif;
+}
+
+header .notification .dropdown-toggle::after {
+  color: #b22121;
+  font-size: 20px;
+}
+
+.dropdown-toggle::after {
+  position: relative;
+  left: 88%;
+}
+
+.dropdown-notifications .dropdown-toggle .dropdown-notifications-title {
+  right: 4%;
 }

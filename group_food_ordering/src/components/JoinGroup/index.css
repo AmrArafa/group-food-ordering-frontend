@@ -1,0 +1,13 @@
+.join-item {
+  border-bottom: 1px solid black;
+}
+
+.join-item .item-name,
+.join-item .quantity {
+  display: inline-block;
+}
+
+.join-item .item-name {
+  width: 500px;
+  text-align: left;
+}

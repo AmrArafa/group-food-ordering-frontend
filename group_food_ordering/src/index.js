@@ -4,6 +4,16 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import {Router} from 'react-router-dom';
+import history from './history';
+import {Provider} from 'react-redux';
+import createStore from './configureStore';
+import setAuthorizationToken from './utils/setAuthorizationToken';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore();
+window.store = store;
+
+setAuthorizationToken(localStorage.getItem('jwtToken'));
+
+ReactDOM.render(<Provider store={store}><Router history={history}><App /></Router></Provider>, document.getElementById('root'));
 registerServiceWorker();

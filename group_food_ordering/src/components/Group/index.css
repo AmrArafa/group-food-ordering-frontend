@@ -1,0 +1,40 @@
+/*.oneGroup {
+	display: none;
+}*/
+
+.group-card {
+	width: 33%;
+	float: left;
+  margin: 0 1%;
+  margin-bottom: 2%;
+}
+
+.react-countdown-clock {
+  text-align: center;
+}
+
+.alert {
+	background: red;
+}
+
+#join-group-button {
+  text-decoration: none;
+  color: #ffaf49;
+  border: 2px solid #ffaf49;
+  border-radius: 5px;
+  width: 25%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 2%;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.group-card .card-subtitle {
+  font-size: 14px;
+  padding-bottom: 2%;
+}
+
+.group-card .card-title {
+  font-size: 16px;
+}

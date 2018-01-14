@@ -1,0 +1,14 @@
+.dashBordCard {
+	margin: 5px;
+	height: 150px;
+	padding: 0px;
+	text-align: center;
+}
+.welcome-admin {
+	font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #ffaf49;
+    text-align: left;
+    font-weight: bold;
+
+}

@@ -1,0 +1,45 @@
+.order_name{
+	float: left;
+}
+.order_deliver{
+	float: right;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix:before {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.order-history{
+	width: 70%;
+	margin: auto;
+  font-family: 'Montserrat', sans-serif;
+}
+#adminOrder {
+  width: 80%;
+  padding: 10px;
+  margin-left: 10px;
+  background-color: #F1FFEA;
+  font-size: 80%;
+  font-weight: 700;
+  font: 400 125%/1.4 Lato,Helvetica,Arial,sans-serif;
+  color: #42413e;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+#history-total-price,
+#ordered-by {
+  margin-top: 2%;
+}

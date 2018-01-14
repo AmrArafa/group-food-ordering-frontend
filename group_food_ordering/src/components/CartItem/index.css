@@ -1,0 +1,47 @@
+.item-name, .remove {
+  float: left;
+}
+
+.item-name {
+  width: 79%;
+}
+
+.item-price {
+  float: right;
+  width: 21%;
+}
+
+.increment, .quantity1, .decrement {
+  float: right;
+}
+
+.increment, .decrement {
+  width: 25px;
+}
+
+.quantity1 {
+  padding: 5px;
+}
+
+.cartItem {
+  border-bottom: 1px solid #b22121;
+}
+
+.cart-items :last-child {
+  border-bottom: 0;
+}
+
+.cartItem button {
+  text-decoration: none;
+  background-color: #ffaf49;
+  color: #b22121;
+  border: 1px solid #b22121;
+  padding: 0px 7px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.item-total {
+  padding: 2px 0px 0px 44px;
+}
