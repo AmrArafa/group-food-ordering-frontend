@@ -1,6 +1,17 @@
-export const rootApi = `http://localhost:3000`;
-export const AdminLogin = `http://localhost:3000/admin/login`
-export const AdminRoot = `http://localhost:3000/admin`
+export const rootApi = process.env.NODE_ENV === 'production'
+? `https://ordering-food-app.herokuapp.com`
+: `http://localhost:3000`
+
+export const cable = process.env.NODE_ENV === 'production'
+? `wss://ordering-food-app.herokuapp.com`
+: `ws://localhost:3000`
+
+
+export const actionCable = (token) => `${cable}/cable?token=${token}`;
+
+export const userLogin = `${rootApi}/login.json`
+export const AdminLogin = `${rootApi}/admin/login`
+export const AdminRoot = `${rootApi}/admin`
 
 // Items
 export const itemsApi = `${rootApi}/items`;
@@ -44,13 +55,12 @@ export const oneOrder = (id) => `${orders}/${id}`;
 export const charges = `${rootApi}/charges`;
 export const oneGroup = (id) => `${groups}/${id}`;
 
-export const actionCable = (token) => `${rootApi}/cable?token=${token}`;
+
 
 export const oneOrderInHistory = (id) => `${orders}?user_id=${id}`;
 
 export const adminOrderFilter = (created_at) => `${adminOrders}/filter/${created_at}`
 
-export const userLogin = `http://localhost:3000/login.json`
 
 export const notifications = `${rootApi}/notifications`;
 export const userNotifications = (id) => `${notifications}?user_id=${id}`;
