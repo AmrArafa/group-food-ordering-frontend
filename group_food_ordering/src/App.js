@@ -83,7 +83,7 @@ class App extends Component {
               <li><Link to="/admin/admins">Admins</Link></li>
             </ul>
           </nav>
-          
+          <p id="welcome-admin">Welcome {localStorage.adminName}</p>
           <Link className="logout" to="/" onClick={() => logout()}>Log out</Link>
         </header>
         <div className="App-container">

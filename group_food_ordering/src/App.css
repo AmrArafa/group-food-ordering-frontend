@@ -83,7 +83,8 @@ html {
   text-decoration: none;
 }
 
-.App-header #welcome-user {
+.App-header #welcome-user,
+.App-header #welcome-admin {
   position: absolute;
   bottom: -6.5%;
   right: 5%;
