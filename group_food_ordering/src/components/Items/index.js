@@ -37,6 +37,21 @@ export default class Items extends Component {
                 </div>
             )
         }else{
+    	return (
+            
+            
+    		<div className='allItems clearfix'>
+            <h2 className="Welcome-user">Hello {localStorage.getItem('UserFirstName')}</h2>
+    	
+    	{items.map((item) => {
+      return  (
+                <Item item={item} />
+                            )
+                    }
+                    )}
+        <Cart />
+</div>
+    	)
             return (
                 <div>Is loading</div>
             )
