@@ -41,7 +41,6 @@ export default class Items extends Component {
             
             
     		<div className='allItems clearfix'>
-            <h2 className="Welcome-user">Hello {localStorage.getItem('UserFirstName')}</h2>
     	
     	{items.map((item) => {
       return  (
