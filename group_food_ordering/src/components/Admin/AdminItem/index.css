@@ -27,11 +27,16 @@
     background-color: #ffaf49;
     border: 0;
     position: absolute;
-    left: 43%;
-    bottom: 5%;
+    left: 46%;
+    top: 84.7%;
     color: #b22121;
     cursor: pointer;
-    display: inline-block;
+    text-transform: none;
+    height: 40px;
+}
+
+.btn {
+   
 }
 
 .addItem{

@@ -16,7 +16,7 @@ export default class Item extends Component {
         <CardImg className= 'cardImage' top width="50px" src={item.image_url} alt="Card image cap" />
        <CardBody>
           <CardText>{item.name}</CardText>
-          <CardText>{item.price} EGP</CardText>
+          <CardText>EGP {item.price}</CardText>
           <Link className="EditItem" to={`/admin/menu/edit/${item.id}`}>Edit</Link>
           <Button id="itemButton" onClick={() => handleDelete(item.id)} > Delete </Button>
         </CardBody>

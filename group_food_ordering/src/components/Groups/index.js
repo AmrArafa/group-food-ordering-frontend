@@ -108,13 +108,14 @@ export default class Groups extends Component {
             )
           })}
           <p className="summary-total">Total: EGP {total}</p>
-          <p className="user-message">If you need to edit your order, click on the "Menu" link above and edit your cart</p>
+          <p className="user-message">If you need to edit your order, click on the "Menu" link above and edit your cart, then click "Confirm your order" again.</p>
         <div className='allGroups'>
 
 
         
 <div className={groups.length === 0 || itemsIdsAndQuantity.length === 0? 'invisible' : 'visible clearfix join-group-area'}>
-        <h3 >Join a Group Order</h3>
+        <p className="join-group-title">Join a Group Order</p>
+        <p className="join-user-instructions">Here you can join a group of your friends and order food together</p>
       
       {groups.map((group) => {
       return  (
@@ -124,22 +125,22 @@ export default class Groups extends Component {
                     )}
 </div>
 <div className={itemsIdsAndQuantity.length === 0? 'invisible' : 'visible'}>
-        <div className="create-group-area clearfix">
-        <div className="create-group clearfix">
-      <h3>Create a New Group Order</h3>
-      <div className="form-group">
-       <p className="form">Make your order after</p> 
-      <form onSubmit={() => this.createGroup(this.state.formattedTime, itemsIdsAndQuantity, loggedInUserId)}>
-        <input  className="form" type="number" value={this.state.timeframe} onChange={this.handleNewGroup.bind(this)} required/>
-          <p className="form"> minutes.</p>
-         <button type="submit">Create</button>
-       </form>
+    <div className="create-group-area clearfix">
+      <div className="create-group">
+        <p className="create-group-title">Create a New Group Order</p>
+        <p className="create-user-instructions">Here you can create your own group and anyone of your friends can join you. You only to specify the waiting time (in minutes) to collect your friends' orders, then click "Create"</p>
+        <form onSubmit={() => this.createGroup(this.state.formattedTime, itemsIdsAndQuantity, loggedInUserId)}>
+          <div className="inner-form clearfix">
+            <p className="form-group">Make your order after</p> 
+            <input className="form-group" type="number" value={this.state.timeframe} onChange={this.handleNewGroup.bind(this)} required/>
+            <p className="form-group"> minutes.</p>
+          </div>
+          <button className="create-group-button" type="submit">Create</button>
+        </form>
       </div>
-        </div>
-       <h3>
-        <Link id="order-immediately-button" onClick={() => createSingleOrder(itemsIdsAndQuantity)} to='/options/order'>Order Immediately</Link>
-      </div>
-      </h3>
+    </div>
+    <Link id="order-immediately-button" onClick={() => createSingleOrder(itemsIdsAndQuantity)} to='/options/order'>Order Immediately</Link>
+    <p className="immediate-user-instructions">Here you can order your meal individually</p>
 </div>
 </div>
 </div>

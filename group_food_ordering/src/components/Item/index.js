@@ -13,7 +13,7 @@ export default class Item extends Component {
         <CardImg className= 'cardImage' top width="50px" src={item.image_url} alt="Card image cap" />
        <CardBody>
           <CardText>{item.name}</CardText>
-          <CardText>{parseFloat(item.price)} EGP</CardText>
+          <CardText>EGP {parseFloat(item.price)}</CardText>
           <button className= "card-button" onClick={() => addItemToCart(item)}>Add to Cart </button>
         </CardBody>
         </Card>

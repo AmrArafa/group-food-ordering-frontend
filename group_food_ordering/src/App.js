@@ -51,6 +51,8 @@ class App extends Component {
                 console.log(error);
             });
 
+      }
+        
             cable.subscriptions.create({
             channel: 'NotificationsChannel'
         }, {
@@ -63,8 +65,6 @@ class App extends Component {
                 })
             }
         })
-      }
-        
     }
 
   render() {
@@ -74,7 +74,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Almakinah Restaurant</h1>
-          <nav>
+          <nav id="admin-nav">
             <ul>
               <li><Link to="/admin/home">Home</Link></li>
               <li><Link to="/admin/menu">Menu</Link></li>
@@ -116,8 +116,8 @@ class App extends Component {
       return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Almakinah Resturant</h1>
-          <nav>
+          <h1 className="App-title">Almakinah Restaurant</h1>
+          <nav id="user-nav">
             <ul>
               <li><Link to="/menu">Menu</Link></li>
               <li><Link to="/orderhistory">Check your orders</Link></li>
@@ -142,7 +142,7 @@ class App extends Component {
                 </NotificationItem>
           </Notifications>  
           }
-          
+          <p id="welcome-user">Welcome {localStorage.userName}</p> 
           <Link className="logout" to="/" onClick={() => logout()}>Log out</Link>
         </header>
         

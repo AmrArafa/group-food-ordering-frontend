@@ -33,13 +33,12 @@ class Order extends Component {
     })
     .then(() => {
        this.success();
-       this.setState({paid: true})
+       this.setState({paid: true});
+       window.store.dispatch({type: 'USER_LOG_OUT'});
      })
     }
 
-
     render(){
-      debugger;
         if (this.state.paid){
       return <Redirect to="/menu" />
         }

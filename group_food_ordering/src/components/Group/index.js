@@ -32,7 +32,7 @@ export default class Group extends Component {
         <ReactCountdownClock
             seconds={diffMinutes * 60}
             color="#ffaf49"
-            size={140}
+            size={130}
         />
         <CardText>Members: <br/> {(group.members).map((member) => {
       return  (

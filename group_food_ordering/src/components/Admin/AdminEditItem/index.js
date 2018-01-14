@@ -71,9 +71,6 @@ export default class AdminEditItems extends Component {
                 <Label for="Image" sm={2}>Upload image</Label>
                 <Col sm={6}>
                   <Input type="file" name="image" accept="image/*" className="image-file-input" onChange={this._handleNewImage} id="Image" />
-                  <FormText color="muted">
-                    Put your image here
-                  </FormText>
                 <img className="edit-img" src={itemImage} alt="Card image cap" />
                 </Col>
               </FormGroup>

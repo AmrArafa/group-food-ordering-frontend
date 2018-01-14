@@ -32,7 +32,7 @@ export default class AdminAddItems extends Component {
      return (
       <div className="clearfix ">
         <div className="admin-title">
-          <p>add your new item </p>
+          <p>Add your new item </p>
         </div>
         <Form id="addItemForm">
         <FormGroup row>
@@ -45,9 +45,6 @@ export default class AdminAddItems extends Component {
           <Label for="Image" sm={2}>Upload image</Label>
           <Col sm={6}>
             <Input type="file" name="image" accept="image/*" className="image-file-input" onChange={this._handleNewImage} id="Image" />
-            <FormText color="muted">
-              Put your image here
-            </FormText>
           </Col>
         </FormGroup>
         <FormGroup row>

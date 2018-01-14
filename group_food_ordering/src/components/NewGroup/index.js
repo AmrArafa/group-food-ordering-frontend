@@ -33,15 +33,11 @@ class NewGroup extends Component {
       will_pay_on_delivery: true
     })
     .then(() => {
-        this.success()
-       this.setState({paid: true})
+       this.success()
+       this.setState({paid: true});
+       window.store.dispatch({type: 'USER_LOG_OUT'});
      })
     }
-
-
-
-
-
 
     render(){
          if (this.state.paid){

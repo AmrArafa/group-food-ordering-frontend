@@ -43,10 +43,10 @@ export default class AdminOrder extends Component {
         var orderTime = moment(date).format('YYYY-MM-DD HH:mm:ss');
           if (Object.keys(order).length !== 0) {
                 return (
-                    <div className="clearfix orderH" >
+                    <div className="clearfix order-history" >
                         <div id='adminOrder'>
                           <h2 className='id'>{order.id}</h2>
-                           <p>Order By : {order.creator_f} {order.creator_l}</p>
+                           <p id="ordered-by">Ordered By : {order.creator_f} {order.creator_l}</p>
                            <div className="">
                           {!order.delivered? 
                             <Button onClick={() => deliveredOrder(order.id)}> Order delivered</Button>
@@ -61,7 +61,7 @@ export default class AdminOrder extends Component {
                             <p>Order paid</p> 
                           }
                         </div> 
-                        <p>Total Price:   {order.totalPrice} EGP</p>
+                        <p id="history-total-price">Total Price:   {order.totalPrice} EGP</p>
                                                 
                         <div className="details">        
                         <Collapse

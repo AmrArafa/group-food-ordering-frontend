@@ -34,7 +34,8 @@ class JoinGroup extends Component {
     })
     .then(() => {
        this.success()
-       this.setState({paid: true})
+       this.setState({paid: true});
+       window.store.dispatch({type: 'USER_LOG_OUT'});
      })
     }
 

@@ -22,7 +22,9 @@
   font-size: 20px;
 }
 
-.title {
+.title .item-title,
+.title .price-title,
+.title .quantity-title{
   font-weight: bold;
   color: #b22121;
 }
@@ -40,6 +42,7 @@
 .price-title,
 .quantity-title {
   float: left;
+  font-size: 18px;
 }
 
 .summary-item, .item-title {
@@ -62,7 +65,7 @@
   text-align: right;
   margin: 0 auto;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .user-message {
@@ -70,11 +73,7 @@
   font-weight: bold;
   color: #b22121;
   margin-top: 5%;
-}
-
-.options h3 {
-  text-align: center;
-  margin-bottom: 3%;
+  font-size: 18px;
 }
 
 .join-group-area {
@@ -89,40 +88,45 @@
 .create-group-area {
   border: 1px solid #c6c6c6;
   border-radius: 5px;
-  width: 40%;
+  width: 50%;
   margin: 0 auto;
   margin-top: 5%;
   padding: 2%;
 }
 
+.create-group form p {
+  font-size: 18px;
+}
+
 .create-group {
   width: 100%;
   text-align: center;
-}
-
-.create-group h3 {
-  margin-top: 0;
-}
-
-.form-group {
-  width: 71%;
-  text-align: center;
   display: inline-block;
-  margin-top: 5%;
 }
 
-.create-group .form {
+.create-group-title {
+  font-size: 30px;
+  margin-bottom: 4%;
+}
+
+form .form-group {
   float: left;
-  margin-right: 1%;
+  margin-left: 1%;
 }
 
-.create-group input {
-  width: 50px;
+form .inner-form {
+  width: 100%;
+  position: relative;
+  left: 18%;
+}
+
+.create-group form input {
+  width: 10%;
   border: 1px solid #b22121;
   border-radius: 5px;
 }
 
-#create-group-button {
+.create-group-button {
   text-decoration: none;
   color: #b22121;
   border: 1px solid #b22121;
@@ -130,19 +134,53 @@
   border-radius: 5px;
   font-size: 20px;
   background-color: #ffaf49;
-  position: relative;
-  left: 42%;
+  width: 14%;
+  margin-top: 2%;
 }
 
 #order-immediately-button {
   text-decoration: none;
   color: #b22121;
+  font-size: 30px;
   border: 1px solid #b22121;
   padding: 5px;
   border-radius: 5px;
   background-color: #ffaf49;
+  margin-top: 5%;
+  display: inline-block;
+  position: relative;
+  left: 37.5%;
 }
 
-.visible h3 {
-  margin-top: 5%;
+.join-group-area .group-card {
+  float: left;
+  width: 31.25%;
+  padding: 2%;
+}
+
+.join-user-instructions,
+.create-user-instructions,
+.immediate-user-instructions{
+  font-size: 12px;
+  color: #6d7177;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.join-group-title {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 2%;
+}
+
+.join-user-instructions{
+  padding-bottom: 2%;
+}
+
+.create-user-instructions{
+  padding-bottom: 5%;
+}
+
+.immediate-user-instructions{
+  padding-top: 2%;
 }

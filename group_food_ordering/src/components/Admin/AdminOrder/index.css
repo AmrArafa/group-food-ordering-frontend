@@ -20,9 +20,10 @@
   clear: both;
   height: 0;
 }
-.orderH{
+.order-history{
 	width: 70%;
 	margin: auto;
+  font-family: 'Montserrat', sans-serif;
 }
 #adminOrder {
   width: 80%;
@@ -36,4 +37,9 @@
   text-align: center;
   margin: auto;
   margin-bottom: 20px;
+}
+
+#history-total-price,
+#ordered-by {
+  margin-top: 2%;
 }

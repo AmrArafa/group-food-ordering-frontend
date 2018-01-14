@@ -50,30 +50,30 @@ export default class SignUp extends Component{
       return <Redirect to="/" />
     }
     return(
-      <div>
-        <h3>Please enter your data :)</h3>
+      <div className="user-signup-form">
+        <p>Please enter your data &#9786;</p>
         <form onSubmit={this._handleSubmit} >
-          <div className="sign-up">
-            <label>Email:</label>
-            <input type="email" name="email" onChange={this._handleChange} />
+          <div className="user-signup">
+            <label className="label">Email</label>
+            <input className="input-field" type="email" name="email" onChange={this._handleChange} />
           </div>
-          <div className="sign-up">
-            <label>First name:</label>
-            <input type="text" name="firstName" onChange={this._handleChange} />
+          <div className="user-signup">
+            <label className="label">First name</label>
+            <input className="input-field" type="text" name="firstName" onChange={this._handleChange} />
           </div>
-          <div className="sign-up">
-            <label>Last name:</label>
-            <input type="text" name="lastName" onChange={this._handleChange} />
+          <div className="user-signup">
+            <label className="label">Last name</label>
+            <input className="input-field" type="text" name="lastName" onChange={this._handleChange} />
           </div>
-          <div className="sign-up">
-            <label>Password:</label>
-            <input type="password" name="password" onChange={this._handleChange}/>
+          <div className="user-signup">
+            <label className="label">Password</label>
+            <input className="input-field" type="password" name="password" onChange={this._handleChange}/>
           </div>
-          <div className="sign-up">
-            <label>Password confirmation:</label>
-            <input type="password" name="passwordConfirmation" onChange={this._handleChange}/>
+          <div className="user-signup">
+            <label className="label">Password confirmation</label>
+            <input className="input-field" type="password" name="passwordConfirmation" onChange={this._handleChange}/>
           </div>
-          <input type="submit" value="Sign up"/>
+          <input id="signup-button" type="submit" value="Sign up"/>
         </form>
       </div>
     )
