@@ -51,6 +51,8 @@ class App extends Component {
                 console.log(error);
             });
 
+      }
+        
             cable.subscriptions.create({
             channel: 'NotificationsChannel'
         }, {
@@ -63,8 +65,6 @@ class App extends Component {
                 })
             }
         })
-      }
-        
     }
 
   render() {
@@ -116,7 +116,7 @@ class App extends Component {
       return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Almakinah Resturant</h1>
+          <h1 className="App-title">Almakinah Restaurant</h1>
           <nav>
             <ul>
               <li><Link to="/menu">Menu</Link></li>
