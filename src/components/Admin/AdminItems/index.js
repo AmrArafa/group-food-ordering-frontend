@@ -4,7 +4,8 @@ import AdminItem from '../AdminItem';
 import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';
-
+import { Spin } from 'antd';
+import 'antd/lib/spin/style/index.css';
 
 export default class AdminItems extends Component {
      componentWillMount(){
@@ -26,7 +27,7 @@ export default class AdminItems extends Component {
         
         if(loading){
             return (
-                <p>Is loading</p>
+                <Spin />
                 )            
         }else if(error){
             return (

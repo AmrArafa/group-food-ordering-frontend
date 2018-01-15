@@ -65,6 +65,11 @@ export default class OrderHistory extends Component {
     }
     render(){
         const {orders } = this.state;
+        if( orders != null ){
+            return (
+                <Spin />
+                )            
+        }else{
         return (
             <div className="clearfix">
                     <FormGroup id="filer"  className="col-3"  >

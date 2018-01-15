@@ -3,6 +3,8 @@ import './index.css';
 import  User from '../User';
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { Spin } from 'antd';
+import 'antd/lib/spin/style/index.css';
 
 
 export default class Users extends Component {
@@ -23,7 +25,7 @@ export default class Users extends Component {
         const { users, loading, error} = this.props;
         if(loading){
             return (
-                <p>Is loading</p>
+                <Spin />
                 )            
         }else if(error){
             return (

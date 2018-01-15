@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './index.css';
 import {  Form, Input, FormGroup, Col, FormText, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { rootApi }from '../../../apiConfig'
 
 
 export default class AdminEditItems extends Component {
@@ -47,7 +46,7 @@ export default class AdminEditItems extends Component {
     render(){
           const { editItem, item } = this.props;
           var itemName = this.state.name
-          var itemImage = `${ rootApi }`+this.state.image_url
+          var itemImage = this.state.image_url
           var itemPrice = this.state.price
           let itemEdit = new FormData();
           itemEdit.append('name', this.state.name);

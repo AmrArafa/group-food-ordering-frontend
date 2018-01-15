@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 import { Card, CardTitle, CardText, Row, Col } from 'reactstrap';
 import { Spin } from 'antd';
+import 'antd/lib/spin/style/index.css';
 import jwt from 'jsonwebtoken';
 
 export default class AdminDashBoard extends Component{

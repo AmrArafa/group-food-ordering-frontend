@@ -3,6 +3,7 @@ import moment from 'moment';
 import './index.css'; 
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import { Spin } from 'antd';
+import 'antd/lib/spin/style/index.css';
 
 export default class AdminOrder extends Component {
   constructor(props){
