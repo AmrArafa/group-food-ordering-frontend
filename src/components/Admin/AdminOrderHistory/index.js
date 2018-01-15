@@ -14,7 +14,7 @@ export default class OrderHistory extends Component {
     constructor(props){
       super(props);
           this.state = {
-            orders: [],
+            orders: null,
             created_at: ''
           },
           this._handleChange = this._handleChange.bind(this)
@@ -68,7 +68,7 @@ export default class OrderHistory extends Component {
     }
     render(){
         const {orders } = this.state;
-        if( orders != null ){
+        if( orders === null ){
             return (
                 <Spin />
                 )            
