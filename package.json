@@ -10,7 +10,6 @@
     "json-server": "^0.12.1",
     "jsonwebtoken": "^8.1.0",
     "moment": "^2.20.1",
-    "pui-react-notifications": "^8.3.3",
     "rc-menu": "^6.2.4",
     "react": "^16.2.0",
     "react-confirm-alert": "^1.0.8",
