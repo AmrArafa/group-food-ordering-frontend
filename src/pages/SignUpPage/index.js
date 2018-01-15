@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import './index.css'
 import Axios from 'axios';
+import { userSingUp } from '../../apiConfig';
 
 export default class SignUp extends Component{
   constructor(){
@@ -24,7 +25,7 @@ export default class SignUp extends Component{
 
   _handleSubmit(e){
     e.preventDefault();
-    Axios.post('http://localhost:3000/signup.json', { user: {
+    Axios.post( userSingUp , { user: {
       email: this.state.email,
       first_name: this.state.firstName,
       last_name: this.state.lastName,

@@ -6,7 +6,7 @@ import { adminOrders, adminOrder, adminOrderFilter } from '../../../apiConfig'
 import './index.css'; 
 import { Spin } from 'antd';
 import 'antd/lib/spin/style/index.css';
-import { userSingUp } from '../../apiConfig';
+
 
 
 
