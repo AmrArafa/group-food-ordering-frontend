@@ -23,8 +23,8 @@ import {cable} from './components/Notifications';
 import Axios from 'axios';
 import jwt from 'jsonwebtoken';
 import {userNotifications} from './apiConfig';
-var Notifications = require('pui-react-notifications').Notifications;
-var NotificationItem = require('pui-react-notifications').NotificationItem;
+// var Notifications = require('pui-react-notifications').Notifications;
+// var NotificationItem = require('pui-react-notifications').NotificationItem;
 
 class App extends Component {
   constructor(props){
@@ -126,21 +126,8 @@ class App extends Component {
           {
             this.state.message == '' && this.state.messages == []?
                 console.log('no notifications')
-            :
-           <Notifications className='notification'>
-         
-          <NotificationItem > {this.state.message} {this.state.messages.map((message) => {
-                    return  (
-                <div>
-                <ul>
-               <li>{message.action}</li>
-                </ul>
-                </div>        
-                )
-                }
-                )}
-                </NotificationItem>
-          </Notifications>  
+            : 'NOTIFICATIONS'
+           
           }
           <p id="welcome-user">Welcome {localStorage.userName}</p> 
           <Link className="logout" to="/" onClick={() => logout()}>Log out</Link>
