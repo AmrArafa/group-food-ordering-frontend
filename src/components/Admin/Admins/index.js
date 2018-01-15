@@ -4,6 +4,8 @@ import  Admin from '../Admin';
 import { Button, Form, Input, FormGroup, Col,  Label } from 'reactstrap';
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { Spin } from 'antd';
+import 'antd/lib/spin/style/index.css';
 
 
 export default class Admins extends Component {
@@ -52,7 +54,7 @@ export default class Admins extends Component {
         }
         if(loading){
             return (
-                <p>Is loading</p>
+                <Spin />
                 )            
         }else if(error){
             return (
