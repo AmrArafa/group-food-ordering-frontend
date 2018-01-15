@@ -70,30 +70,31 @@ export default class OrderHistory extends Component {
                 <Spin />
                 )            
         }else{
-        return (
-            <div className="clearfix">
-                    <FormGroup id="filer"  className="col-3"  >
-                        <Label for="orderFilter" >Filter</Label>
-                        <Input type="select" name="created_at" id="orderFilter"  onChange={this._handleChange}>
-                            <option>All</option>
-                            <option>Last Hour</option>
-                            <option>Last Day</option>
-                            <option>Last Week</option>
-                            <option>Last Month</option>
-                        </Input>
-                    </FormGroup>
-               { 
-                orders.map((order) => {
-                    return (
-                        <div>
-                        <AdminOrder order={order} paidOrder={this.paidOrder.bind(this)} deliveredOrder={this.deliveredOrder.bind(this)} />
-                        </div>
-                            )
-                        }
-                    )
-                }
-            </div>
-        )
+            return (
+                <div className="clearfix">
+                        <FormGroup id="filer"  className="col-3"  >
+                            <Label for="orderFilter" >Filter</Label>
+                            <Input type="select" name="created_at" id="orderFilter"  onChange={this._handleChange}>
+                                <option>All</option>
+                                <option>Last Hour</option>
+                                <option>Last Day</option>
+                                <option>Last Week</option>
+                                <option>Last Month</option>
+                            </Input>
+                        </FormGroup>
+                   { 
+                    orders.map((order) => {
+                        return (
+                            <div>
+                            <AdminOrder order={order} paidOrder={this.paidOrder.bind(this)} deliveredOrder={this.deliveredOrder.bind(this)} />
+                            </div>
+                                )
+                            }
+                        )
+                    }
+                </div>
+            )
+        }
     }
 }
         
