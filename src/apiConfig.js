@@ -4,6 +4,9 @@ export const rootApi = process.env.NODE_ENV === 'production'
 export const AdminRoot = `${rootApi}/admin`
 export const AdminLogin = `${AdminRoot}/login`
 
+export const userLogin = `${rootApi}/login.json`
+export const userSingUp = `${rootApi}/signup.json`
+
 export const cable = process.env.NODE_ENV === 'production'
 ? `wss://ordering-food-app.herokuapp.com`
 : `ws://localhost:3000`
@@ -56,8 +59,7 @@ export const oneOrderInHistory = (id) => `${orders}?user_id=${id}`;
 
 export const adminOrderFilter = (created_at) => `${adminOrders}/filter/${created_at}`
 
-export const userLogin = `${rootApi}/login.json`
-export const userSingUp = `${rootApi}/signup.json`
+
 
 export const notifications = `${rootApi}/notifications`;
 export const userNotifications = (id) => `${notifications}?user_id=${id}`;
