@@ -27,7 +27,9 @@ export default class AdminItems extends Component {
         
         if(loading){
             return (
-                <Spin />
+                  <div className="Spin">
+                    <Spin />
+                  </div>
                 )            
         }else if(error){
             return (

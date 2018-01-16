@@ -74,7 +74,9 @@ export default class AdminDashBoard extends Component{
         	)
         }else{
             return (
-                <Spin />
+                <div className="Spin">
+                  <Spin />
+                </div>
             )
         }
       }

@@ -97,8 +97,8 @@ export default class AdminOrder extends Component {
                }
         else{
           return(
-            <div>
-               <Spin />
+            <div className="Spin">
+              <Spin />
             </div>
             )
          }

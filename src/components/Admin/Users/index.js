@@ -25,7 +25,9 @@ export default class Users extends Component {
         const { users, loading, error} = this.props;
         if(loading){
             return (
-                <Spin />
+                <div className="Spin">
+                  <Spin />
+                </div>
                 )            
         }else if(error){
             return (

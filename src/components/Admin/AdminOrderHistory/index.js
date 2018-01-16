@@ -70,7 +70,9 @@ export default class OrderHistory extends Component {
         const {orders } = this.state;
         if( orders === null ){
             return (
-                <Spin />
+                <div className="Spin">
+                    <Spin />
+                </div>
                 )            
         }else{
             return (
