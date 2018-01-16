@@ -5,6 +5,8 @@ import Checkout from '../Checkout';
 import axios from 'axios';
 import ReactCountdownClock from 'react-countdown-clock';
 import {oneOrder} from '../../apiConfig'; 
+import { Modal } from 'antd';
+import 'antd/lib/modal/style/index.css';
 
 export default class OrderInHistory extends Component {
   constructor(props){
