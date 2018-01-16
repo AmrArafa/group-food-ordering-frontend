@@ -57,7 +57,7 @@ class Order extends Component {
                                     <p>{item.name}</p>
                                     <p className='quantity'>{item.quantity}</p>
                                 </div>    
-                                      <p className='right '>EGP {item.price} </p>
+                                    <p className='right'>EGP {item.price}</p>
                                     
                                 </div>
                             )
