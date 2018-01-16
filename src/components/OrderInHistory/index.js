@@ -12,16 +12,23 @@ export default class OrderInHistory extends Component {
       this.state = {
         order: 'previous'
       }
+      this.success = this.success.bind(this)
     }
 
-       willPayOnDelivery(){
+    success(){
+        Modal.success({
+          title: 'Thank you',
+          content: 'Thank you for completing the process. Your order will be delivered within 45 min.',
+        });
+    }
+    willPayOnDelivery(){
         const { id } = this.props.order;
         axios.patch(oneOrder(id),
     {
       will_pay_on_delivery: true
     })
     .then(() => {
-        alert('Thank you for completing the process. Your order will be delivered within 45 min.');
+         this.success();
        window.location.reload();
      })
     }
@@ -94,7 +101,7 @@ export default class OrderInHistory extends Component {
                   color="#ffaf49"
                   size={200}
                   />
-                  <button className={this.state.order === 'current'? 'visible cancel' : 'invisible'} onClick={() => cancelOrder(order, order.id)}>Cancel Order</button>
+                  <button className={!order.paid_online && !order.will_pay_on_delivery && this.state.order === 'current'? 'visible cancel' : 'invisible'} onClick={() => cancelOrder(order, order.id)}>Cancel Order</button>
                   {order.group_id == null ?
                   <button className={!order.paid_online && !order.will_pay_on_delivery ? 'visible' : 'invisible'} onClick={() => cancelOrder(order, order.id)}>Cancel Order</button>
                   :

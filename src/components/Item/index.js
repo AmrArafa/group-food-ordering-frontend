@@ -10,7 +10,7 @@ export default class Item extends Component {
         <div className= 'oneItem'>
 
         <Card>
-        <CardImg className= 'cardImage' top width="50px" src={item.image_url=== null? "https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAf-AAAAJDAyZjY1Njc3LWQyMzItNDk3ZC1hOTk0LTJhNGY2MGUxMmQzZg.png": item.image_url} alt={`img for ${item.name}`} />
+        <CardImg className= 'cardImage' top width="50px" src={item.image_url=== null? "images/AlMakinah-Resturant.jpg": item.image_url} alt={`img for ${item.name}`} />
        <CardBody>
           <CardText>{item.name}</CardText>
           <CardText>EGP {parseFloat(item.price)}</CardText>
