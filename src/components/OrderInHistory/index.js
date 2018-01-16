@@ -82,12 +82,9 @@ export default class OrderInHistory extends Component {
                         order.items.map(item => {
                             return (
                                 <div className='history-item clearfix'>
-                                 <div className='left'>
-                                   <p>{item.name}</p>
-                                   
-                                   <p className='quantity'>{item.quantity}</p>
-                                    </div>
-                                    <p className='right '>EGP {item.price} </p>
+                                  <p className="name">{item.name}</p>
+                                  <p className='price'>EGP {item.price} </p>
+                                  <p className='quantity'>({item.quantity})</p>
                                 </div>
                             )
                         })

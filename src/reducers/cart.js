@@ -50,9 +50,9 @@ export default (currentState = INITIAL_STATE, action) => {
                 quantities,
                 total: newTotal
                 }
-            }else{
+            }else {
                 return currentState;
-            }
+            } 
             
         }
 

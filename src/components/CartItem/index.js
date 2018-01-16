@@ -20,7 +20,11 @@ export default class CartItem extends Component {
   }
 
   decrement(item, quantity){
-    const {decrementQuantity} = this.props;
+    const {decrementQuantity, deleteItem} = this.props;
+    if (quantity === 1){
+      deleteItem(item);
+      return;
+    }
     decrementQuantity(item);
     this.props.updateItemsAndQuantities(item.id, -1);
   }

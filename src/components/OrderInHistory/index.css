@@ -17,19 +17,17 @@
 	margin-bottom: 20px;
 }
 
-.left{
+.history-item .name {
 	float: left;
-	margin-left: 20px;
-	margin-top: 15px;
-	margin-bottom: -30px;
 }
 
-.right{
+.history-item .price,
+.history-item .quantity {
 	float: right;
-	color: #ff6008;
-	margin-right: 15px;
-	text-align: right;
-	margin-top: 15px;
+}
+
+.history-item .price {
+	margin-left: 3%;
 }
 
 .quantity{

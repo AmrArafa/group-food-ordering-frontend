@@ -23,6 +23,9 @@ import {cable} from './components/Notifications';
 import Axios from 'axios';
 import jwt from 'jsonwebtoken';
 import {userNotifications} from './apiConfig';
+import { Menu, Dropdown, Icon } from 'antd';
+import 'antd/dist/antd.css' 
+import './fontawesome-free-5.0.4/web-fonts-with-css/css/fontawesome-all.min.css'
 // var Notifications = require('pui-react-notifications').Notifications;
 // var NotificationItem = require('pui-react-notifications').NotificationItem;
 
@@ -44,6 +47,7 @@ class App extends Component {
 
         Axios.get(userNotifications(id))
             .then((response) => {
+              console.log(response)
                 this.setState({ messages: response.data });
                 
             })
@@ -68,7 +72,40 @@ class App extends Component {
     }
 
   render() {
-
+//     const menu = (
+//     <Menu>
+      
+//           <Menu.Item key="0"> 
+//             <p>"message"</p>
+//           </Menu.Item>
+     
+//     </Menu>
+// );
+var menu;
+if(this.state.messages.length != 0 ) {
+  menu = (
+    <Menu>
+    <Menu.Item>
+        <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">{this.state.message}</a>
+      </Menu.Item>
+    {
+      this.state.messages.map((msg) => {
+        return <Menu.Item>
+        <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">{msg.action}</a>
+      </Menu.Item>
+      })
+    }
+    </Menu>
+  );
+} else {
+  menu = (
+    <Menu>
+      <Menu.Item>
+      <p> No new notifications</p>
+      </Menu.Item>
+    </Menu>
+  );
+}
     if (localStorage.Admin) {
       return (
       <div className="App">
@@ -121,14 +158,19 @@ class App extends Component {
             <ul>
               <li><Link to="/menu">Menu</Link></li>
               <li><Link to="/orderhistory">Check your orders</Link></li>
+              <li>{
+                  this.state.message == '' && this.state.messages == []?
+                      console.log('no notifications')
+                  : <Dropdown overlay={menu} trigger={['click']}>
+                    <a className="ant-dropdown-link" href="#">
+                      <i class="fa fa-bell" aria-hidden="true"></i><Icon type="down" />
+                    </a>
+                   </Dropdown>
+                 
+                }</li>
             </ul>
           </nav>
-          {
-            this.state.message == '' && this.state.messages == []?
-                console.log('no notifications')
-            : 'NOTIFICATIONS'
-           
-          }
+
           <p id="welcome-user">Welcome {localStorage.userName}</p> 
           <Link className="logout" to="/" onClick={() => logout()}>Log out</Link>
         </header>
