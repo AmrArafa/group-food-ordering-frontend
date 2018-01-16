@@ -13,7 +13,7 @@ export default class Item extends Component {
         return (
         <div className= 'oneItem clearfix'>
         <Card>
-        <CardImg className= 'cardImage' top width="50px" src={item.image_url === null? "../../../images/makmak.png": item.image_url} alt={`img for ${item.name}`} />
+        <CardImg className= 'cardImage' top width="50px" src={item.image_url === null? "../../../../images/makmak.png": item.image_url} alt={`img for ${item.name}`} />
        <CardBody>
           <CardText>{item.name}</CardText>
           <CardText>EGP {item.price}</CardText>
