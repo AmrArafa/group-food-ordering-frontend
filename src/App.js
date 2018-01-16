@@ -163,7 +163,7 @@ if(this.state.messages.length != 0 ) {
                       console.log('no notifications')
                   : <Dropdown overlay={menu} trigger={['click']}>
                     <a className="ant-dropdown-link" href="#">
-                      <i class="fa fa-bell" aria-hidden="true"></i> <Icon type="down" />
+                      <i class="fa fa-bell" aria-hidden="true"></i><Icon type="down" />
                     </a>
                    </Dropdown>
                  
