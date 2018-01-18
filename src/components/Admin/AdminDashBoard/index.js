@@ -59,7 +59,7 @@ export default class AdminDashBoard extends Component{
               </Col>
               <Col sm="3">
                 <Card body inverse color="primary" className="dashBordCard">
-                  <CardTitle>Total Salse for Last Day</CardTitle>
+                  <CardTitle>Total Sales for Last Day</CardTitle>
                   <CardText>EGP {dashboard.tatalLastday}</CardText>
                 </Card>
               </Col>
